@@ -1,1 +1,42 @@
-<p>form-trip works!</p>
+<h1>Crear viaje</h1>
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label class="form-label" formControlName="destination">Destino</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="min_traveler">Mín.viajeros</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="max_traveler">Máx.viajeros</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="min_age">Edad mínima</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="max_age">Edad máxima</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="departure_date">Fecha de salida</label>
+            <input type="text">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="duration">Duración</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="price">Precio</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" formControlName="description">Descripción</label>
+            <textarea id="" cols="30" rows="10"></textarea>
+        </div>
+        <input type="submit" value="Crear viaje" class="btn btn-info">
+    </form>
+</div>

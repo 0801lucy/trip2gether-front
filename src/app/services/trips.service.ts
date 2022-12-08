@@ -67,6 +67,10 @@ export class TripsService {
     ]
   }
 
+  getAllTrips(): Trip[] {
+    return this.arrTrips;
+  }
+
   createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
     console.log(pTrip);

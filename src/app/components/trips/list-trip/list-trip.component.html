@@ -1,1 +1,29 @@
-<p>list-trip works!</p>
+<figure>
+    <img src="../../../../assets/images/home.jpg" alt="" class="img-fluid">
+</figure>
+<div class="container m-auto">
+    <h5 class="mt-5 text-center">Próximos viajes</h5>
+    <h1 class="mb-5 text-center">Descubre lo que te apasiona</h1>
+</div>
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let trip of trips">
+        <div class="card">
+            <div class="fotoCard" [ngStyle]="{backgroundImage:'url(../../../../assets/images/plane.jpg)'}">
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">{{trip.destination}}</div>
+                    <div class="col">desde {{trip.price}} €</div>
+                </div>
+                <div class="row">
+                    <div class="col">EDAD {{trip.min_age}}-{{trip.max_age}}</div>
+                    <div class="col">{{trip.departure_date | date: 'dd/MM/y'}}</div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary">Ver viaje</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

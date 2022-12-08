@@ -33,16 +33,16 @@ export class FormTripComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*  ngAfterViewInit() {
-     this.loadAutocomplete();
-   } */
+  ngAfterViewInit() {
+    this.loadAutocomplete();
+  }
 
   onSubmit() {
 
   }
 
-  /* loadAutocomplete() {
+  loadAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.inputPlaces.nativeElement);
   }
- */
+
 }

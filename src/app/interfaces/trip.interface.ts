@@ -1,6 +1,6 @@
 export interface Trip {
     id: number,
-    detination: string,
+    destination: string,
     min_traveler: number,
     max_traveler: number,
     min_age: number,
@@ -8,5 +8,11 @@ export interface Trip {
     departure_date: Date,
     duration: number,
     price: number,
-    description: string
+    description: string,
+    included_1: boolean,
+    included_2: boolean,
+    included_3: boolean,
+    included_4: boolean,
+    included_5: boolean,
+    included_6: boolean
 }

@@ -2,6 +2,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
   selector: 'app-form-trip',
@@ -14,7 +15,7 @@ export class FormTripComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor() {
+  constructor(private tripsService: TripsService) {
 
     this.formulario = new FormGroup({
       destination: new FormControl(),
@@ -25,7 +26,13 @@ export class FormTripComponent implements OnInit {
       departure_date: new FormControl(),
       duration: new FormControl(),
       price: new FormControl(),
-      description: new FormControl()
+      description: new FormControl(),
+      included_1: new FormControl(),
+      included_2: new FormControl(),
+      included_3: new FormControl(),
+      included_4: new FormControl(),
+      included_5: new FormControl(),
+      included_6: new FormControl()
 
     })
   }
@@ -38,11 +45,13 @@ export class FormTripComponent implements OnInit {
   }
 
   onSubmit() {
+    this.tripsService.createTrip(this.formulario.value);
 
   }
 
   loadAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.inputPlaces.nativeElement);
+
   }
 
 }

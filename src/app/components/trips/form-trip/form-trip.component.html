@@ -1,42 +1,82 @@
-<h1>Crear viaje</h1>
-<div class="container">
+<figure>
+    <img src="../../../../assets/images/nuevo_viaje.jpg" alt="" class="img-fluid">
+</figure>
+<div class="container m-auto">
+    <h1 class="my-5">Crear viaje</h1>
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-            <label class="form-label" formControlName="destination">Destino</label>
-            <input type="text" class="form-control" #inputPlaces>
+        <div class="row mb-3">
+            <div class="col-md">
+                <label class="form-label">Destino</label>
+                <input type="text" class="form-control" formControlName="destination" #inputPlaces>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Mín.viajeros</label>
+                <input type="number" class="form-control" formControlName="min_traveler">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Máx.viajeros</label>
+                <input type="number" class="form-control" formControlName="max_traveler">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Edad mínima</label>
+                <input type="number" class="form-control" formControlName="min_age">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Edad máxima</label>
+                <input type="number" class="form-control" formControlName="max_age">
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="min_traveler">Mín.viajeros</label>
-            <input type="number" class="form-control">
+        <div class="row mb-3">
+            <div class="col-md">
+                <label class="form-label">Fecha de salida</label>
+                <input type="date" class="form-control" formControlName="departure_date">
+            </div>
+            <div class="col-md">
+                <label class="form-label">Duración (días)</label>
+                <input type="number" class="form-control" formControlName="duration">
+            </div>
+            <div class="col-md">
+                <label class="form-label">Precio</label>
+                <input type="number" class="form-control" formControlName="price">
+            </div>
         </div>
+
+
         <div class="mb-3">
-            <label class="form-label" formControlName="max_traveler">Máx.viajeros</label>
-            <input type="number" class="form-control">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control" rows="8" formControlName="description"></textarea>
         </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="min_age">Edad mínima</label>
-            <input type="number" class="form-control">
+        <h6>Incluido</h6>
+        <div class="row px-4">
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="included_1">
+                <label class="form-check-label">Avión ida y vuelta</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="included_2">
+                <label class="form-check-label">Alojamiento en habitación individual</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="included_3">
+                <label class="form-check-label">Media pensión</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="included_4">
+                <label class="form-check-label">Excursiones</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="included_5">
+                <label class="form-check-label">Alquiler de coches</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="included_6">
+                <label class="form-check-label">Seguro asistencia</label>
+            </div>
+
         </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="max_age">Edad máxima</label>
-            <input type="number" class="form-control">
+        <div class="text-center my-4">
+            <input type="submit" value="Crear viaje" class="btn btn-primary">
         </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="departure_date">Fecha de salida</label>
-            <input type="text">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="duration">Duración</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="price">Precio</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" formControlName="description">Descripción</label>
-            <textarea id="" cols="30" rows="10"></textarea>
-        </div>
-        <input type="submit" value="Crear viaje" class="btn btn-info">
+
     </form>
 </div>

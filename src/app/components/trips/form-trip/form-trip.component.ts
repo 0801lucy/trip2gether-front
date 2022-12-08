@@ -2,6 +2,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class FormTripComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private tripsService: TripsService) {
+  constructor(private tripsService: TripsService, private router: Router) {
 
     this.formulario = new FormGroup({
       destination: new FormControl(),
@@ -46,6 +47,7 @@ export class FormTripComponent implements OnInit {
 
   onSubmit() {
     this.tripsService.createTrip(this.formulario.value);
+    this.router.navigate(['/trips']);
 
   }
 

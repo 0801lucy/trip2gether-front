@@ -71,6 +71,11 @@ export class TripsService {
     return this.arrTrips;
   }
 
+  getDestinations(): string[] {
+    const destinations = this.arrTrips.map(trip => trip.destination);
+    return [...new Set(destinations)];
+  }
+
   createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
     console.log(pTrip);

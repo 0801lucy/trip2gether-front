@@ -1,6 +1,6 @@
 .container {
-    color: #2E8682;
-    background-color: black;
+    background: linear-gradient(360deg, rgba(46, 134, 130, 1) 10%, rgba(79, 253, 45, 0) 80%);
+    padding: 20px;
 }
 
 svg {

@@ -76,8 +76,14 @@ export class TripsService {
     return [...new Set(destinations)];
   }
 
+  filterByDestination(pDestination: string): Trip[] {
+    return this.arrTrips.filter(trip => trip.destination === pDestination);
+  }
+
   createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
-    console.log(pTrip);
+    //console.log(pTrip);
   }
+
+
 }

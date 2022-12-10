@@ -37,8 +37,17 @@ export class ListTripComponent implements OnInit {
 
   }
 
+
   onClick() {
     this.router.navigate(['/trips/new']);
+  }
+
+  selectDestination($event: any) {
+    if ($event.target.value === 'all') {
+      this.trips = this.tripsService.getAllTrips();
+    } else {
+      this.trips = this.tripsService.filterByDestination($event.target.value);
+    }
   }
 
 }

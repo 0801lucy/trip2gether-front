@@ -8,8 +8,8 @@
         <div class="row mb-5 align-items-end">
             <div class="col-md">
                 <label class="form-label">¿A dónde quieres ir?</label>
-                <select class="form-select" formControlName="destination">
-                    <option selected>Todos los destinos</option>
+                <select (change)="selectDestination($event)" class="form-select" formControlName="destination">
+                    <option selected value="all">Todos los destinos</option>
                     <option [value]="destination" *ngFor="let destination of destinations">{{destination}}</option>
                 </select>
             </div>
@@ -31,10 +31,8 @@
                     <option value="12">Diciembre 2023</option>
                 </select>
             </div>
-            <div class="col-md-auto">
-                <button class="btn btn-primary">Buscar</button>
-            </div>
-            <div class="col-md-auto">
+
+            <div class="col-md-auto ms-5">
                 <button (click)="onClick()" class="btn btn-green">Crea tu viaje</button>
             </div>
         </div>

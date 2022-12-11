@@ -2,9 +2,9 @@
     <img src="../../../../assets/images/home.jpg" alt="" class="img-fluid">
 </figure>
 <div class="container m-auto">
-    <h5 class="mt-5 text-center">Próximos viajes</h5>
-    <h1 class="mb-5 text-center">Descubre lo que te apasiona</h1>
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <h5 class="mt-5 text-center textGreen">Próximos viajes</h5>
+    <h1 class="mb-5 text-center textBlack">Descubre lo que te apasiona</h1>
+    <form [formGroup]="formulario">
         <div class="row mb-5 align-items-end">
             <div class="col-md">
                 <label class="form-label">¿A dónde quieres ir?</label>
@@ -13,46 +13,27 @@
                     <option [value]="destination" *ngFor="let destination of destinations">{{destination}}</option>
                 </select>
             </div>
-            <div class="col-md">
-                <label class="form-label">¿Cuándo quieres viajar?</label>
-                <select class="form-select" formControlName="date">
-                    <option selected>Todas las fechas</option>
-                    <option value="01">Enero 2023</option>
-                    <option value="02">Febrero 2023</option>
-                    <option value="03">Marzo 2023</option>
-                    <option value="04">Abril 2023</option>
-                    <option value="05">Mayo 2023</option>
-                    <option value="06">Junio 2023</option>
-                    <option value="07">Julio 2023</option>
-                    <option value="08">Agosto 2023</option>
-                    <option value="09">Septiembre 2023</option>
-                    <option value="10">Octubre 2023</option>
-                    <option value="11">Noviembre 2023</option>
-                    <option value="12">Diciembre 2023</option>
-                </select>
-            </div>
-
-            <div class="col-md-auto ms-5">
-                <button (click)="onClick()" class="btn btn-green">Crea tu viaje</button>
+            <div class="col-md-6 offset-md-4 ms-5 text-end">
+                <button (click)="newTrip()" class="btn btn-green"><i class="fas fa-plus-circle"></i> Crea tu viaje</button>
             </div>
         </div>
     </form>
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let trip of trips">
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let trip of trips">
             <div class="card">
                 <div class="fotoCard" [ngStyle]="{backgroundImage:'url(../../../../assets/images/plane.jpg)'}">
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col">{{trip.destination}}</div>
-                        <div class="col text-end">desde {{trip.price}} €</div>
+                        <div class="col textBlack destination ">{{trip.destination}}</div>
+                        <div class="col text-end price">desde <span class="textGreen">{{trip.price}}€</span></div>
                     </div>
-                    <div class="row">
-                        <div class="col">EDAD {{trip.min_age}}-{{trip.max_age}}</div>
-                        <div class="col text-end">{{trip.departure_date | date: 'dd/MM/y'}}</div>
+                    <div class="row  my-3">
+                        <div class="col textGreen">EDAD {{trip.min_age}}-{{trip.max_age}}</div>
+                        <div class="col text-end textBlack"><i class="fas fa-plane-departure"></i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-green">Ver viaje</button>
+                        <button (click)="viewDetail()" class="btn btn-green">Ver viaje</button>
                     </div>
 
                 </div>

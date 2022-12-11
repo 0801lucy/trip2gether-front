@@ -82,8 +82,5 @@ export class TripsService {
 
   createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
-    //console.log(pTrip);
   }
-
-
 }

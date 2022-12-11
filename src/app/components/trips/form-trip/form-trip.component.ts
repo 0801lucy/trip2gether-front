@@ -47,13 +47,13 @@ export class FormTripComponent implements OnInit {
 
   onSubmit() {
     this.tripsService.createTrip(this.formulario.value);
+    //console.log(this.formulario.value)
     this.router.navigate(['/trips']);
 
   }
 
   loadAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.inputPlaces.nativeElement);
-
   }
 
 }

@@ -15,13 +15,13 @@ export class ListTripComponent implements OnInit {
   formulario: FormGroup;
   destinations: string[];
 
+
   constructor(private tripsService: TripsService, private router: Router) {
 
     this.trips = [];
 
     this.formulario = new FormGroup({
-      destination: new FormControl(),
-      date: new FormControl()
+      destination: new FormControl()
     })
 
     this.destinations = [];
@@ -33,12 +33,8 @@ export class ListTripComponent implements OnInit {
     this.destinations = this.tripsService.getDestinations();
   }
 
-  onSubmit() {
 
-  }
-
-
-  onClick() {
+  newTrip() {
     this.router.navigate(['/trips/new']);
   }
 
@@ -49,5 +45,10 @@ export class ListTripComponent implements OnInit {
       this.trips = this.tripsService.filterByDestination($event.target.value);
     }
   }
+
+  viewDetail() {
+    this.router.navigate(['/trips/:tripId']);
+  }
+
 
 }

@@ -1,5 +1,13 @@
-.container {
-    color: black;
-    background: linear-gradient(180deg, rgba(46, 134, 130, 1) 10%, rgba(79, 253, 45, 0) 100%);
-    padding: 40px;
+h2 {
+    color: #2E8682;
+}
+
+button {
+    color: #2E8682;
+}
+
+button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #2E8682;
 }

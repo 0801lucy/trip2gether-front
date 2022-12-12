@@ -1,15 +1,29 @@
-.text {
-    position: absolute;
-    top: 20%;
-    color: white;
+.principal {
+    background-image: url(../../../../assets/images/hero.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
-h2 {
-    margin-top: 50%;
+h1 {
+    margin-top: 30%;
+}
+
+
+.titulobotones {
+    color: white;
 }
 
 h4 {
     color: #2E8682;
+}
+
+button {
+    color: white;
+}
+
+button:hover {
+    color: #2E8682
 }
 
 .numero {

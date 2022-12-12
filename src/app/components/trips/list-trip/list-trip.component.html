@@ -9,7 +9,7 @@
             <div class="col-md">
                 <label class="form-label">¿A dónde quieres ir?</label>
                 <select (change)="selectDestination($event)" class="form-select" formControlName="destination">
-                    <option value="all">Todos los destinos</option>
+                    <option value="all" selected>Todos los destinos</option>
                     <option [value]="destination" *ngFor="let destination of destinations">{{destination}}</option>
                 </select>
             </div>
@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-6 col-lg-4 mb-4" *ngFor="let trip of trips">
             <div class="card">
-                <div class="fotoCard" [ngStyle]="{backgroundImage:'url(../../../../assets/images/plane.jpg)'}">
+                <div class="fotoCard" [ngStyle]="{backgroundImage:'url(../../../../assets/images/trip_default.jpg)'}">
                 </div>
                 <div class="card-body">
                     <div class="row">

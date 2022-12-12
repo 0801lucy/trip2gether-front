@@ -1,7 +1,19 @@
+h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 33.18px;
+    line-height: 120%;
+    color: #2E8682;
+    /*  color: #FFFFFF; */
+}
+
+
 #personalidad {
 
     height: 100px;
 }
+
 
 #aficiones {
     height: 100px;
@@ -21,5 +33,5 @@ button {
     width: 300px;
     height: 50px;
     background-color: #2E8682;
-    border-radius: 15px;
+    border-radius: 8px;
 }

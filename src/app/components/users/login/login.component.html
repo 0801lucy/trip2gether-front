@@ -1,40 +1,45 @@
-<header >
-    
-<h2>trip2gether</h2>
+<div class="cont">
+    <header>
 
-<div class="container">
-    <h3>Comienza la aventura</h3>
+        <h2>trip2gether</h2>
 
-    <div class="row">
-        <div class="col-4 offset-3 mb-4">
-            <label>Email</label>
-        </div>
+        <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h3>Comienza la aventura</h3>
 
-    </div>
-    <div class="row">
-        <div class="col-4 offset-3 mb-4">
-            <input type="text" class="form-control">
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <label>Email</label>
+                </div>
 
-    <div class="row">
-        <div class="col-4 offset-3 mb-4">
-            <label>Password</label>
-        </div>
+            </div>
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <input type="text" class="form-control" formControlName="email" placeholder="Introduce email">
+                    <p class="error" *ngIf="checkError('email', 'required')">Este campo es requerido</p>
+                    <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto</p>
+                </div>
+            </div>
 
-    </div>
-    <div class="row">
-        <div class="col-4 offset-3 mb-4">
-            <input type="text" class="form-control">
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <label>Contraseña</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Introduce contraseña">
+                    <p class="error" *ngIf="checkError('password', 'required')">Contraseña erronea</p>
+                </div>
+            </div>
 
 
-    <div>
+            <div>
 
-        <button class="btn btn-primary  col-4 mb-5 offset-4 " type="submit">Enviar</button>
-    </div>
+                <button class="btn btn-primary  col-2 mb-4 offset-5 " type="submit" [routerLink]="['/trips']" [disabled]="!form.valid">Enviar</button>
+            </div>
 
-    <p>¿Aun no te has unido? <a href="">Registrate</a></p>
+            <p>¿Aun no te has unido? <span [routerLink]="['/register']">Registrate</span> </p>
+        </form>
+    </header>
 </div>
-</header>

@@ -6,16 +6,27 @@
     height: unset !important;
 }
  */
+.cont {
+    background-image: url('../../../../assets/images/login.jpg');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
 .container {
-    border: 1px solid #2E8682;
-    border-radius: 15px;
+
+    border-radius: 20px;
     width: 611px;
-    height: 500px;
+    height: 550px;
     top: 240px;
     left: 610px;
     position: absolute;
-
+    background: rgba(255, 255, 255, 0.76);
 }
+
+
+
+
 
 
 input {
@@ -31,6 +42,12 @@ h3 {
 
 button {
     background-color: #2E8682;
+    border-radius: 8px;
+
+}
+
+button:hover {
+    background-color: lightblue;
 }
 
 h2 {
@@ -39,7 +56,7 @@ h2 {
     font-weight: 600;
     font-size: 33.18px;
     line-height: 120%;
-    /*  color: #FFFFFF; */
+    color: #FFFFFF;
 
 
 }

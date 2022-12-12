@@ -60,3 +60,7 @@ h2 {
 
 
 }
+
+h2:hover {
+    cursor: pointer;
+}

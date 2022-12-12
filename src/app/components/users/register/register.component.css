@@ -6,6 +6,12 @@ h2 {
     line-height: 120%;
     color: #2E8682;
     /*  color: #FFFFFF; */
+
+}
+
+h2:hover {
+    cursor: pointer;
+
 }
 
 

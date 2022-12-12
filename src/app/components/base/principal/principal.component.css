@@ -10,6 +10,8 @@
 }
 
 .titulotexto h1 {
+    font-family: 'Poppins';
+    font-style: normal;
     margin-top: 35%;
 }
 
@@ -22,13 +24,19 @@ button:hover {
 }
 
 .titulotexto h2 {
+    font-family: 'Poppins';
+    font-style: normal;
     margin-top: 35%;
 }
 
 h4 {
+    font-family: 'Poppins';
+    font-style: normal;
     color: #2E8682;
 }
 
 .numero {
+    font-family: 'Poppins';
+    font-style: normal;
     color: #2E8682
 }

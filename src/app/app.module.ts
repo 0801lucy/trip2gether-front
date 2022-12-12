@@ -10,6 +10,10 @@ import { LoginComponent } from './components/users/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ListTripComponent } from './components/trips/list-trip/list-trip.component';
+import { DetailTripComponent } from './components/trips/detail-trip/detail-trip.component';
+import { FormTripComponent } from './components/trips/form-trip/form-trip.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PrincipalComponent,
     RegisterComponent,
     LoginComponent,
-
+    ListTripComponent,
+    DetailTripComponent,
+    FormTripComponent
   ],
   imports: [
     BrowserModule,

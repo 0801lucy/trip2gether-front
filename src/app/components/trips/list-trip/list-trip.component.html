@@ -9,7 +9,7 @@
             <div class="col-md">
                 <label class="form-label">¿A dónde quieres ir?</label>
                 <select (change)="selectDestination($event)" class="form-select" formControlName="destination">
-                    <option selected value="all">Todos los destinos</option>
+                    <option value="all" selected>Todos los destinos</option>
                     <option [value]="destination" *ngFor="let destination of destinations">{{destination}}</option>
                 </select>
             </div>
@@ -33,7 +33,7 @@
                         <div class="col text-end textBlack"><i class="fas fa-plane-departure"></i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
                     </div>
                     <div class="text-center">
-                        <button (click)="viewDetail()" class="btn btn-green">Ver viaje</button>
+                        <button [routerLink]="['/trips', trip.id]" class="btn btn-green">Ver viaje</button>
                     </div>
 
                 </div>

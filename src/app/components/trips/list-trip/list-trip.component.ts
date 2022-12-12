@@ -21,7 +21,7 @@ export class ListTripComponent implements OnInit {
     this.trips = [];
 
     this.formulario = new FormGroup({
-      destination: new FormControl()
+      destination: new FormControl('all')
     })
 
     this.destinations = [];
@@ -46,9 +46,7 @@ export class ListTripComponent implements OnInit {
     }
   }
 
-  viewDetail() {
-    this.router.navigate(['/trips/:tripId']);
-  }
+
 
 
 }

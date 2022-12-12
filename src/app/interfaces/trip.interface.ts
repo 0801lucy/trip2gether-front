@@ -9,10 +9,10 @@ export interface Trip {
     duration: number,
     price: number,
     description: string,
-    included_1: boolean,
-    included_2: boolean,
-    included_3: boolean,
-    included_4: boolean,
-    included_5: boolean,
-    included_6: boolean
+    flights: boolean,
+    hotel: boolean,
+    meals: boolean,
+    excursions: boolean,
+    rent_car: boolean,
+    insurance: boolean
 }

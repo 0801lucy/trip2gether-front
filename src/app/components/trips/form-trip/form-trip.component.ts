@@ -46,12 +46,12 @@ export class FormTripComponent implements OnInit {
       description: new FormControl('', [
         Validators.required
       ]),
-      included_1: new FormControl(),
-      included_2: new FormControl(),
-      included_3: new FormControl(),
-      included_4: new FormControl(),
-      included_5: new FormControl(),
-      included_6: new FormControl()
+      flights: new FormControl(),
+      hotel: new FormControl(),
+      meals: new FormControl(),
+      excursions: new FormControl(),
+      rent_car: new FormControl(),
+      insurance: new FormControl()
 
     })
   }
@@ -70,6 +70,11 @@ export class FormTripComponent implements OnInit {
 
   loadAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.inputPlaces.nativeElement);
+    google.maps.event.addListener(autocomplete, 'place_changed', (event) => {
+      const place = autocomplete.getPlace();
+      console.log(place);
+      this.formulario.get('destination')?.setValue(place.formatted_address);
+    });
   }
 
   checkError(field: string, error: string): boolean | undefined {

@@ -1,1 +1,45 @@
-<p>detail-trip works!</p>
+<div class="container">
+    <div class="row">
+        <div *ngIf="detail">
+            <h1>{{detail.destination}}</h1>
+            <div>
+                <img src="https://avatars.githubusercontent.com/u/114173266?s=40&v=4" alt="creator">
+                Organizador
+                <p>Nombre</p>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <i class="far fa-calendar textGreen"></i>
+                    <h6 class="card-subtitle mb-2 text-muted">{{detail.duration}} días</h6>
+                    <h5 class="card-title">{{detail.departure_date | date: 'dd/MM/y'}}</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-arrows-h textGreen"></i>
+                    <h5 class="card-title">{{detail.min_age}}-{{detail.max_age}} años</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-users textGreen"></i>
+                    <h5 class="card-title">{{detail.min_traveler}}-{{detail.max_traveler}} viajeros</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-euro-sign textGreen"></i>
+                    <h5 class="card-title">{{detail.price}} aprox.</h5>
+                </div>
+            </div>
+            <h4 class="textBlack">Experiencias que te esperan</h4>
+            <div>
+                <div>{{detail.description}}</div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <button class="btn btn-green">Me gustaría unirme</button>
+    </div>
+</div>

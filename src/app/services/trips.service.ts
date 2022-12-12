@@ -21,12 +21,12 @@ export class TripsService {
         duration: 4,
         price: 499,
         description: 'viaje prueba Portugal',
-        included_1: true,
-        included_2: true,
-        included_3: true,
-        included_4: true,
-        included_5: false,
-        included_6: true
+        flights: true,
+        hotel: true,
+        meals: false,
+        excursions: false,
+        rent_car: false,
+        insurance: true
       },
       {
         id: 1,
@@ -39,12 +39,12 @@ export class TripsService {
         duration: 7,
         price: 699,
         description: 'viaje prueba Francia',
-        included_1: true,
-        included_2: false,
-        included_3: true,
-        included_4: true,
-        included_5: false,
-        included_6: true
+        flights: true,
+        hotel: true,
+        meals: false,
+        excursions: true,
+        rent_car: false,
+        insurance: true
       },
       {
         id: 2,
@@ -57,12 +57,12 @@ export class TripsService {
         duration: 8,
         price: 899,
         description: 'viaje prueba Italia',
-        included_1: true,
-        included_2: true,
-        included_3: false,
-        included_4: true,
-        included_5: false,
-        included_6: true
+        flights: true,
+        hotel: true,
+        meals: false,
+        excursions: true,
+        rent_car: true,
+        insurance: true
       }
     ]
   }
@@ -82,5 +82,9 @@ export class TripsService {
 
   createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
+  }
+
+  getTripById(tripId: number): Trip | undefined {
+    return this.arrTrips.find(trip => trip.id === tripId)
   }
 }

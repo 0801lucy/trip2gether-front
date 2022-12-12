@@ -7,7 +7,7 @@
         <div class="row mb-3">
             <div class="col-md">
                 <label class="form-label">Destino <span class="req">*</span></label>
-                <input type="text" class="form-control" formControlName="destination" #inputPlaces>
+                <input type="text" class="form-control" #inputPlaces>
                 <p class="error" *ngIf="checkError('destination', 'required')">El campo es obligatorio</p>
             </div>
             <div class="col-md-2">
@@ -56,27 +56,27 @@
         <h5 class="mb-3 mt-4">Incluido <span>(elige al menos 3 opciones)</span></h5>
         <div class="row px-4">
             <div class="form-check form-check-inline col-md-3">
-                <input class="form-check-input" type="checkbox" formControlName="included_1">
+                <input class="form-check-input" type="checkbox" formControlName="flights">
                 <label class="form-check-label">Avión ida y vuelta</label>
             </div>
             <div class="form-check form-check-inline col-md-3">
-                <input class="form-check-input" type="checkbox" formControlName="included_2">
+                <input class="form-check-input" type="checkbox" formControlName="hotel">
                 <label class="form-check-label">Alojamiento en habitación individual</label>
             </div>
             <div class="form-check form-check-inline col-md-3">
-                <input class="form-check-input" type="checkbox" formControlName="included_3">
+                <input class="form-check-input" type="checkbox" formControlName="meals">
                 <label class="form-check-label">Media pensión</label>
             </div>
             <div class="form-check form-check-inline col-md-3">
-                <input class="form-check-input" type="checkbox" formControlName="included_4">
+                <input class="form-check-input" type="checkbox" formControlName="excursions">
                 <label class="form-check-label">Excursiones</label>
             </div>
             <div class="form-check form-check-inline col-md-3">
-                <input class="form-check-input" type="checkbox" formControlName="included_5">
+                <input class="form-check-input" type="checkbox" formControlName="rent_car">
                 <label class="form-check-label">Alquiler de coches</label>
             </div>
             <div class="form-check form-check-inline col-md-3">
-                <input class="form-check-input" type="checkbox" formControlName="included_6">
+                <input class="form-check-input" type="checkbox" formControlName="insurance">
                 <label class="form-check-label">Seguro asistencia</label>
             </div>
         </div>

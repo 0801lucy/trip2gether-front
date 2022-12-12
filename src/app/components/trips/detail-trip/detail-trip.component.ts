@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Trip } from 'src/app/interfaces/trip.interface';
+import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
   selector: 'app-detail-trip',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailTripComponent implements OnInit {
 
-  constructor() { }
+  detail: Trip | undefined;
+
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      const numTrip = parseInt(params['tripId'])
+      this.detail = this.tripsService.getTripById(numTrip);
+    })
   }
 
 }

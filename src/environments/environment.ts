@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://plain-spoons-work-77-225-253-65.loca.lt/api'
 };
 
 /*

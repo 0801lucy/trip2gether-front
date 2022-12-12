@@ -73,7 +73,7 @@ export class FormTripComponent implements OnInit {
     google.maps.event.addListener(autocomplete, 'place_changed', (event) => {
       const place = autocomplete.getPlace();
       console.log(place);
-      this.formulario.get('destination')?.setValue(place.formatted_address);
+      this.formulario.get('destination')?.setValue(place.name);
     });
   }
 

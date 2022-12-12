@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Trip } from '../interfaces/trip.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +10,12 @@ import { Trip } from '../interfaces/trip.interface';
 export class TripsService {
 
   arrTrips: Trip[];
+  private baseUrl: string;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
+
+    this.baseUrl = `${environment.apiUrl}/trips`;
+
     this.arrTrips = [
       {
         id: 0,
@@ -71,6 +78,14 @@ export class TripsService {
     return this.arrTrips;
   }
 
+  /* getAllTrips(): Promise<Trip[]> {
+    return firstValueFrom(
+      this.httpClient.get<Trip[]>(this.baseUrl)
+    )
+  } */
+
+
+
   getDestinations(): string[] {
     const destinations = this.arrTrips.map(trip => trip.destination);
     return [...new Set(destinations)];
@@ -83,6 +98,13 @@ export class TripsService {
   createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
   }
+
+  //FUNCIONA
+  /* createTrip(pTrip: any) {
+       return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}`, pTrip)
+    );
+  } */
 
   getTripById(tripId: number): Trip | undefined {
     return this.arrTrips.find(trip => trip.id === tripId)

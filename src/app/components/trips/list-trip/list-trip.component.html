@@ -9,7 +9,7 @@
             <div class="col-md">
                 <label class="form-label">¿A dónde quieres ir?</label>
                 <select (change)="selectDestination($event)" class="form-select" formControlName="destination">
-                    <option value="all" selected>Todos los destinos</option>
+                    <option value="all">Todos los destinos</option>
                     <option [value]="destination" *ngFor="let destination of destinations">{{destination}}</option>
                 </select>
             </div>

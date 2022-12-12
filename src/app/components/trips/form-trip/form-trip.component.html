@@ -37,15 +37,20 @@
                 <input type="date" class="form-control" formControlName="departure_date">
                 <p class="error" *ngIf="checkError('departure_date', 'required')">El campo es obligatorio</p>
             </div>
-            <div class="col-md">
+            <div class="col-md-2">
                 <label class="form-label">Duración (días) <span class="req">*</span></label>
                 <input type="number" class="form-control" formControlName="duration">
                 <p class="error" *ngIf="checkError('duration', 'required')">El campo es obligatorio</p>
             </div>
-            <div class="col-md">
+            <div class="col-md-2">
                 <label class="form-label">Precio <span class="req">*</span></label>
                 <input type="number" class="form-control" formControlName="price">
                 <p class="error" *ngIf="checkError('price', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md">
+                <label class="form-label">Subir imagen <span class="req">*</span></label>
+                <input type="file" class="form-control" formControlName="img_trip">
+
             </div>
         </div>
         <div class="mb-3">

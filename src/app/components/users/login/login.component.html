@@ -1,0 +1,45 @@
+<div class="cont">
+    <header>
+
+        <h2>trip2gether</h2>
+
+        <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h3>Comienza la aventura</h3>
+
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <label>Email</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <input type="text" class="form-control" formControlName="email" placeholder="Introduce email">
+                    <p class="error" *ngIf="checkError('email', 'required')">Este campo es requerido</p>
+                    <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <label>Contraseña</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4 offset-3 mb-4">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Introduce contraseña">
+                    <p class="error" *ngIf="checkError('password', 'required')">Contraseña erronea</p>
+                </div>
+            </div>
+
+
+            <div>
+
+                <button class="btn btn-primary  col-2 mb-4 offset-5 " type="submit" [routerLink]="['/trips']" [disabled]="!form.valid">Enviar</button>
+            </div>
+
+            <p>¿Aun no te has unido? <span [routerLink]="['/register']">Registrate</span> </p>
+        </form>
+    </header>
+</div>

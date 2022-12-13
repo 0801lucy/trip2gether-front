@@ -78,6 +78,7 @@ export class TripsService {
     return this.arrTrips;
   } */
 
+  // FUNCIONA
   getAllTrips(): Promise<Trip[]> {
     return firstValueFrom(
       this.httpClient.get<Trip[]>(this.baseUrl)
@@ -99,13 +100,22 @@ export class TripsService {
   } */
 
   //FUNCIONA
-  createTrip(pTrip: any) {
+  createTrip(pTrip: FormData) {
     return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}`, pTrip)
+      this.httpClient.post<Trip>(`${this.baseUrl}`, pTrip)
     );
   }
 
-  getTripById(tripId: number): Trip | undefined {
+  /* getTripById(tripId: number): Trip | undefined {
     return this.arrTrips.find(trip => trip.id === tripId)
+  } */
+
+  //FUNCIONA
+  getTripById(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get<Trip>(`${this.baseUrl}/${tripId}`)
+    );
+
   }
 }
+

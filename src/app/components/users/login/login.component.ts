@@ -10,6 +10,8 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup
+
+
   constructor(private usersService: UsersService) {
     this.form = new FormGroup({
       email: new FormControl('', [
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   async onSubmit() {
@@ -31,18 +34,34 @@ export class LoginComponent implements OnInit {
     console.log(response)
     if (response.success) {
       localStorage.setItem('token', response.token);
+      this.form.reset();
     } else {
 
       alert('Error  en el login ')
     }
   }
+
+
+
   checkError(field: string, error: string): boolean | undefined {
     return this.form.get(field)?.hasError(error)
       &&
       this.form.get(field)?.touched
   }
 
+  //async onSubmit() {
+  // const response = await this.usersService.register(this.form.value);
+  ///console.log(response)
+  // if (response.success) {
+  // alert(response.success);
+  // this.form.reset();
+  //} else {
+  // alert('revisa tus errores');
+  // }
+
 }
+
+
 
 
 

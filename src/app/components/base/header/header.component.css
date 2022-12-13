@@ -4,12 +4,15 @@ h2 {
     color: #2E8682;
 }
 
-button {
-    color: #2E8682;
+h2:hover {
+    cursor: pointer;
 }
 
-button:hover {
+li {
+    color: #2E8682;
+    list-style: none
+}
+
+li:hover {
     cursor: pointer;
-    color: white;
-    background-color: #2E8682;
 }

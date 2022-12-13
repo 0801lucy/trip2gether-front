@@ -14,6 +14,19 @@ h5:hover {
     cursor: pointer;
 }
 
+input.ng-valid.ng-touched {
+    border: 3px solid lightgreen;
+}
+
+input.ng-invalid.ng-touched {
+    border: 3px solid lightcoral;
+}
+
+.error {
+    font-size: 12px;
+    color: lightcoral;
+}
+
 span {
     color: red
 }
@@ -31,24 +44,3 @@ button:hover {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     font-size: 14px;
 }
-
-/* .card .fotoCard { 
-    height: 230px;
-    background-size: cover;
-    border-radius: 8px;
-    margin: 10px;
-}
-
-.card .destination {
-    font-weight: 800;
-    font-size: 18px;
-}
-
-.card .price {
-    color: #686B6A;
-}
-
-.card .price span {
-    font-weight: 800;
-    font-size: 16px;
-}*/

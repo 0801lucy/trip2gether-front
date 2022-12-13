@@ -1,8 +1,8 @@
 <div>
-    <header>
+    <div>
         <h2>trip2gether</h2>
         <img src="./assets/images/registro.jpg" alt="">
-    </header>
+    </div>
 
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
         <div class="row">
@@ -92,7 +92,7 @@
 
 
 
-        <button class="btn btn-primary offset-4" type="submit" [disabled]="!formulario.valid">Enviar</button>
+        <button class="btn btn-green offset-4" type="submit" [disabled]="!formulario.valid">Enviar</button>
     </form>
 
     <footer>

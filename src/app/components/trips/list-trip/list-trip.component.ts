@@ -30,7 +30,8 @@ export class ListTripComponent implements OnInit {
 
   async ngOnInit() {
     this.trips = await this.tripsService.getAllTrips();
-    this.destinations = this.tripsService.getDestinations();
+    this.destinations = await this.tripsService.getDestinations();
+    console.log(this.trips);
   }
 
 

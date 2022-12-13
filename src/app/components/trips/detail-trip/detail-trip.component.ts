@@ -11,14 +11,31 @@ import { TripsService } from 'src/app/services/trips.service';
 export class DetailTripComponent implements OnInit {
 
   detail: Trip | undefined;
+  includes: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) { }
+
+
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
+
+    this.includes = true;
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       const numTrip = parseInt(params['tripId'])
       this.detail = this.tripsService.getTripById(numTrip);
+      console.log(this.detail);
     })
   }
+
+  viewSelected() {
+
+  }
+
+  createItinerary() {
+    console.log(this.detail?.duration);
+  }
+
+
 
 }

@@ -81,8 +81,6 @@ export class FormTripComponent implements OnInit {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
 
-  back() {
-    this.router.navigate(['/trips']);
-  }
+
 
 }

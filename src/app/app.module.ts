@@ -7,12 +7,13 @@ import { FooterComponent } from './components/base/footer/footer.component';
 import { PrincipalComponent } from './components/base/principal/principal.component';
 import { RegisterComponent } from './components/users/register/register.component';
 import { LoginComponent } from './components/users/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ListTripComponent } from './components/trips/list-trip/list-trip.component';
 import { DetailTripComponent } from './components/trips/detail-trip/detail-trip.component';
 import { FormTripComponent } from './components/trips/form-trip/form-trip.component';
+import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 
 
 @NgModule({
@@ -34,7 +35,13 @@ import { FormTripComponent } from './components/trips/form-trip/form-trip.compon
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddHeaderInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

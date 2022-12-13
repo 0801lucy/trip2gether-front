@@ -1,4 +1,4 @@
-.container {
+.container-fluid {
     background: linear-gradient(360deg, rgba(46, 134, 130, 1) 30%, rgba(79, 253, 45, 0) 100%);
     padding: 20px;
 }

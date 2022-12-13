@@ -28,7 +28,7 @@ export class TripsService {
         duration: 4,
         price: 499,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
-        flights: true,
+        flights: false,
         hotel: true,
         meals: false,
         excursions: false,
@@ -74,16 +74,16 @@ export class TripsService {
     ]
   }
 
-  getAllTrips(): Trip[] {
+  /* getAllTrips(): Trip[] {
     return this.arrTrips;
-  }
+  } */
 
-  /* getAllTrips(): Promise<Trip[]> {
+  // FUNCIONA
+  getAllTrips(): Promise<Trip[]> {
     return firstValueFrom(
       this.httpClient.get<Trip[]>(this.baseUrl)
     )
-  } */
-
+  }
 
 
   getDestinations(): string[] {
@@ -95,18 +95,27 @@ export class TripsService {
     return this.arrTrips.filter(trip => trip.destination === pDestination);
   }
 
-  createTrip(pTrip: Trip) {
+  /* createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
-  }
-
-  //FUNCIONA
-  /* createTrip(pTrip: any) {
-       return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}`, pTrip)
-    );
   } */
 
-  getTripById(tripId: number): Trip | undefined {
+  //FUNCIONA
+  createTrip(pTrip: FormData) {
+    return firstValueFrom(
+      this.httpClient.post<Trip>(`${this.baseUrl}`, pTrip)
+    );
+  }
+
+  /* getTripById(tripId: number): Trip | undefined {
     return this.arrTrips.find(trip => trip.id === tripId)
+  } */
+
+  //FUNCIONA
+  getTripById(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get<Trip>(`${this.baseUrl}/${tripId}`)
+    );
+
   }
 }
+

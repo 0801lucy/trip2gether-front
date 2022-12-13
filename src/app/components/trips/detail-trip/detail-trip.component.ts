@@ -10,15 +10,25 @@ import { TripsService } from 'src/app/services/trips.service';
 })
 export class DetailTripComponent implements OnInit {
 
-  detail: Trip | undefined;
+  detail!: Trip;
 
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) { }
+
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
+
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      const numTrip = parseInt(params['tripId'])
-      this.detail = this.tripsService.getTripById(numTrip);
+    this.activatedRoute.params.subscribe(async params => {
+      const tripId = parseInt(params['tripId'])
+      this.detail = await this.tripsService.getTripById(tripId);
+      console.log(this.detail);
     })
   }
+
+  createItinerary() {
+    console.log(this.detail?.duration);
+  }
+
+
 
 }

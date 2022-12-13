@@ -1,5 +1,6 @@
 /// <reference path="../../../../../node_modules/@types/googlemaps/index.d.ts" />
 
+import { ThisReceiver } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ export class FormTripComponent implements OnInit {
   @ViewChild('inputPlaces') inputPlaces!: ElementRef;
 
   formulario: FormGroup;
+  files: any;
 
   constructor(private tripsService: TripsService, private router: Router) {
 
@@ -63,9 +65,17 @@ export class FormTripComponent implements OnInit {
     this.loadAutocomplete();
   }
 
-  onSubmit() {
-    this.tripsService.createTrip(this.formulario.value);
+  onChange($event: any) {
+    this.files = $event.target.files;
+  }
+
+  async onSubmit() {
+    let fd = new FormData();
+    fd.append('img_trip', this.files[0]);
+
+    this.tripsService.createTrip(fd);
     this.router.navigate(['/trips']);
+
   }
 
   loadAutocomplete() {
@@ -81,8 +91,6 @@ export class FormTripComponent implements OnInit {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
 
-  back() {
-    this.router.navigate(['/trips']);
-  }
+
 
 }

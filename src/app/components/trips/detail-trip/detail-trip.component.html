@@ -59,17 +59,26 @@
         <div class="col-auto ms-5">
             <div class="included">
                 <h3 class="textBlack">¿Qué está incluido?</h3>
-                <div class="included_items"><i class="fas fa-check-circle textGreen"></i> Avión ida y vuelta</div>
-                <div class="included_items"><i class="fas fa-check-circle textGreen"></i> Alojamiento</div>
-                <div class="included_items"><i class="fas fa-check-circle textGreen"></i> Media pensión</div>
-                <div class="included_items"><i class="fas fa-check-circle textGreen"></i> Excursiones</div>
-                <div class="included_items"><i class="fas fa-check-circle textGreen"></i> Alquiler coches</div>
-                <div class="included_items"><i class="fas fa-check-circle textGreen"></i> Seguro asistencia</div>
+                <div class="included_items" *ngIf="detail.flights"><i class="fas fa-check-circle textGreen"></i> Avión ida y vuelta</div>
+                <div class="included_items" *ngIf="detail.hotel"><i class="fas fa-check-circle textGreen"></i> Alojamiento</div>
+                <div class="included_items" *ngIf="detail.meals"><i class="fas fa-check-circle textGreen"></i> Media pensión</div>
+                <div class="included_items" *ngIf="detail.excursions"><i class="fas fa-check-circle textGreen"></i> Excursiones</div>
+                <div class="included_items" *ngIf="detail.rent_car"><i class="fas fa-check-circle textGreen"></i> Alquiler de coches</div>
+                <div class="included_items" *ngIf="detail.insurance"><i class="fas fa-check-circle textGreen"></i> Seguro asistencia</div>
             </div>
         </div>
     </div>
     <h2 class="mt-5 textBlack">Itinerario</h2>
-    <div class="my-5 text-center">
-        <button class="btn btn-lg btn-green">Me gustaría unirme</button>
+    <div class="row">
+        <div class="col my-5 text-center">
+            <button class="btn btn-lg btn-green">Me gustaría unirme</button>
+        </div>
+        <div class="col my-5 text-center">
+            <button (click)="createItinerary()" class="btn btn-lg btn-green">Crea tu itinerario</button>
+        </div>
+        <div class="col text-center my-5">
+            <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
+        </div>
     </div>
+
 </div>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://plain-spoons-work-77-225-253-65.loca.lt/api'
+  apiUrl: 'https://ce2d-77-225-253-65.eu.ngrok.io/api'
 };
 
 /*

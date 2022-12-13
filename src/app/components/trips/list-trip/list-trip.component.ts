@@ -14,6 +14,7 @@ export class ListTripComponent implements OnInit {
   trips: Trip[];
   formulario: FormGroup;
   destinations: string[];
+  detailTrip: Trip | undefined;
 
 
   constructor(private tripsService: TripsService, private router: Router) {
@@ -26,11 +27,13 @@ export class ListTripComponent implements OnInit {
 
     this.destinations = [];
 
+
   }
 
   async ngOnInit() {
     this.trips = await this.tripsService.getAllTrips();
-    this.destinations = this.tripsService.getDestinations();
+    this.destinations = await this.tripsService.getDestinations();
+    console.log(this.trips);
   }
 
 
@@ -45,6 +48,8 @@ export class ListTripComponent implements OnInit {
       this.trips = this.tripsService.filterByDestination($event.target.value);
     }
   }
+
+
 
 
 

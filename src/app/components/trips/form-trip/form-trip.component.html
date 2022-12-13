@@ -49,8 +49,7 @@
             </div>
             <div class="col-md">
                 <label class="form-label">Subir imagen <span class="req">*</span></label>
-                <input type="file" class="form-control" formControlName="img_trip">
-
+                <input type="file" class="form-control" name="img_trip" (change)="onChange($event)">
             </div>
         </div>
         <div class="mb-3">
@@ -85,12 +84,8 @@
                 <label class="form-check-label">Seguro asistencia</label>
             </div>
         </div>
-        <!-- <div class="text-center my-5">
-            <button (click)="back()" class="btn btn-outline-danger me-3">Volver</button>
-            <input class="btn btn-green" type="submit" [disabled]="!formulario.valid" value="Crear viaje" [ngClass]="{'disabled': !formulario.valid}">
-        </div> -->
         <div class="text-center my-5">
-            <button [routerLink]="" class="btn btn-outline-danger me-3">Volver</button>
+            <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
             <input class="btn btn-green" type="submit" [disabled]="!formulario.valid" value="Crear viaje" [ngClass]="{'disabled': !formulario.valid}">
 
         </div>

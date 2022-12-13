@@ -1,0 +1,17 @@
+.messageBox {
+    height: 400px;
+    width: 1200px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 1em;
+}
+
+.textBox {
+    margin: 1em;
+    display: flex;
+
+}
+
+button {
+    margin-left: 1em;
+}

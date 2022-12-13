@@ -8,13 +8,15 @@ import { PrincipalComponent } from './components/base/principal/principal.compon
 import { RegisterComponent } from './components/users/register/register.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+
 
 import { ListTripComponent } from './components/trips/list-trip/list-trip.component';
 import { DetailTripComponent } from './components/trips/detail-trip/detail-trip.component';
 import { FormTripComponent } from './components/trips/form-trip/form-trip.component';
 import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
+import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
 
 
 @NgModule({
@@ -28,13 +30,16 @@ import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
     ListTripComponent,
     DetailTripComponent,
     FormTripComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    CommentsTripsComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormControl
 
   ],
   providers: [

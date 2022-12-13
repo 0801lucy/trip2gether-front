@@ -29,15 +29,22 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     const response = await this.usersService.login(this.form.value);
     console.log(response)
-    //if(response.success){
-    // localStorage.setItem('token', response.token);
-    //}else {
-    // alert('Error  en el login ')
-    //}
+    if (response.success) {
+      localStorage.setItem('token', response.token);
+    } else {
+
+      alert('Error  en el login ')
+    }
   }
   checkError(field: string, error: string): boolean | undefined {
     return this.form.get(field)?.hasError(error)
       &&
       this.form.get(field)?.touched
   }
+
 }
+
+
+
+
+

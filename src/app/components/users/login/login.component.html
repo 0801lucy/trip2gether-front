@@ -1,5 +1,5 @@
 <div class="cont">
-    <header>
+    <div>
 
         <h2>trip2gether</h2>
 
@@ -36,10 +36,9 @@
 
             <div>
 
-                <button class="btn btn-primary  col-2 mb-4 offset-5 " type="submit" [routerLink]="['/trips']" [disabled]="!form.valid">Enviar</button>
+                <button class="btn btn-green  col-5 mb-3 offset-3 " type="submit" [disabled]="!form.valid" [routerLink]="['/trips']">Enviar</button>
             </div>
-
-            <p>¿Aun no te has unido? <span [routerLink]="['/register']">Registrate</span> </p>
+            <p>¿Aun no te has unido? <span class="textGreen" [routerLink]="['/register']">Registrate</span> </p>
         </form>
-    </header>
+    </div>
 </div>

@@ -57,13 +57,13 @@ export class RegisterComponent implements OnInit {
   async onSubmit() {
     const response = await this.usersService.register(this.formulario.value);
     console.log(response)
-    // if(response.success){
-    // alert(response.success);
-    //this.formulario.reset();
-    //}else{
-    // alert('revisa tus errores');
-    //}
-    //poner el alert preguntar si es success
+    if (response.success) {
+      alert(response.success);
+      this.formulario.reset();
+    } else {
+      alert('revisa tus errores');
+    }
+
   }
 
   checkError(field: string, error: string): boolean | undefined {

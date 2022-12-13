@@ -14,6 +14,7 @@ export class ListTripComponent implements OnInit {
   trips: Trip[];
   formulario: FormGroup;
   destinations: string[];
+  detailTrip: Trip | undefined;
 
 
   constructor(private tripsService: TripsService, private router: Router) {
@@ -25,6 +26,7 @@ export class ListTripComponent implements OnInit {
     })
 
     this.destinations = [];
+
 
   }
 
@@ -46,6 +48,8 @@ export class ListTripComponent implements OnInit {
       this.trips = this.tripsService.filterByDestination($event.target.value);
     }
   }
+
+
 
 
 

@@ -28,9 +28,10 @@ export class ListTripComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    this.trips = this.tripsService.getAllTrips();
-    this.destinations = this.tripsService.getDestinations();
+  async ngOnInit() {
+    this.trips = await this.tripsService.getAllTrips();
+    this.destinations = await this.tripsService.getDestinations();
+    console.log(this.trips)
   }
 
 
@@ -38,9 +39,9 @@ export class ListTripComponent implements OnInit {
     this.router.navigate(['/trips/new']);
   }
 
-  selectDestination($event: any) {
+  async selectDestination($event: any) {
     if ($event.target.value === 'all') {
-      this.trips = this.tripsService.getAllTrips();
+      this.trips = await this.tripsService.getAllTrips();
     } else {
       this.trips = this.tripsService.filterByDestination($event.target.value);
     }

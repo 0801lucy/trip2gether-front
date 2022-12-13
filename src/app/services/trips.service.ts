@@ -1,4 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Trip } from '../interfaces/trip.interface';
 
 @Injectable({
@@ -6,9 +9,13 @@ import { Trip } from '../interfaces/trip.interface';
 })
 export class TripsService {
 
+  private baseUrl: string;
+
+
   arrTrips: Trip[];
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/trips`;
     this.arrTrips = [
       {
         id: 0,
@@ -67,8 +74,12 @@ export class TripsService {
     ]
   }
 
-  getAllTrips(): Trip[] {
-    return this.arrTrips;
+  getAllTrips(): Promise<Trip[]> {
+    return firstValueFrom(
+      this.httpClient.get<Trip[]>(this.baseUrl)
+
+    )
+
   }
 
   getDestinations(): string[] {

@@ -1,0 +1,130 @@
+<figure>
+    <img src="../../../../assets/images/perfil.jpg" alt="">
+</figure>
+
+<h3 class="offset-2 mt-3">Mis datos personales</h3>
+
+<form [formGroup]="formulario">
+    <div class="row">
+        <div class="col-4 offset-2 mb-3 mt-5">
+            <label class="form-label">Nombre:</label>
+            <input type="text" class="form-control" formControlName="name" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('name', 'required')">Este campo es requerido <span>*</span></p>
+        </div>
+        <div class="col-4 offset-1 mb-3 mt-5">
+            <label class="form-label">Apellidos:</label>
+            <input type="text" class="form-control" formControlName="surname" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('surname', 'required')">Este campo es requerido <span>*</span></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 offset-2 mb-3 mt-2">
+            <label class="form-label">Usuario:</label>
+            <input type="text" class="form-control" formControlName="username" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('username', 'required')"> Campo requerido <span>*</span></p>
+        </div>
+        <div class="col-4 offset-1 mb-3 mt-2">
+            <label class="form-label">Contraseña:</label>
+            <input type="password" class="form-control" formControlName="password" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('password', 'required')">Campo requerido <span>*</span></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 offset-2 mb-3 mt-2">
+            <label class="form-label">Teléfono:</label>
+            <input type="text" class="form-control" formControlName="phone" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('phone', 'required')">Campo requerido <span>*</span></p>
+        </div>
+        <div class="col-4 offset-1 mb-3 mt-2">
+            <label class="form-label">Email:</label>
+            <input type="text" class="form-control" formControlName="email" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('email', 'required')">Campo requerido <span>*</span></p>
+            <p class="error" *ngif="checkError('email', 'pattern')">Debe tener un formato correcto <span>*</span></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 offset-2 mb-3 mt-2">
+            <label class="form-label">Fecha de nacimiento:</label>
+            <input type="date" class="form-control" formControlName="birth_date" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('birth_date', 'required')">Campo requerido <span>*</span></p>
+        </div>
+        <!--   <div class="col-4 mb-3 offset-1">
+                <label class="form-label"> Foto Perfil</label>
+                <input type="text" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null">
+                <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
+            </div> -->
+    </div>
+
+    <div class="row">
+        <div class="col-8 offset-2 mb-3 mt-2">
+            <label class="form-label">Aficiones:</label>
+            <input type="text" class="form-control" id="aficiones" formControlName="hobbies" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('hobbies', 'required')">Campo requerido <span>*</span></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 mb-3 offset-2">
+            <label class="form-label">Personalidad:</label>
+            <input type="text" class="form-control col-8" id="personalidad" formControlName="personality" [attr.disabled]="bloqueo ? 'disabled': null">
+            <p class="error" *ngif="checkError('personality', 'required')">Campo requerido <span>*</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn col-2 offset-4" type="submit" (click)="pulsarBoton()" [disabled]="!formulario.valid">Guardar cambios</button>
+        <button class="btn col-2 offset-1" (click)="pulsarBoton()" *ngIf="bloqueo">Editar perfil</button>
+    </div>
+</form>
+
+<h3 class="offset-2 mt-3">Mis viajes</h3>
+
+<div class="row">
+    <div class="col-8 offset-2 mb-3">
+        <div class="card">
+            <div class="fotoCard" [ngStyle]="{backgroundImage:'url(../../../../assets/images/plane.jpg)'}">
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col textBlack destination ">destination</div>
+                    <div class="col text-end price">desde <span class="textGreen">price €</span></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col textGreen">EDAD min_age max_age</div>
+                    <div class="col text-end textBlack"><i class="fas fa-plane-departure"></i> departure_date</div>
+                </div>
+                <div class="row">
+                    <div class="offset-5 mb-1 text-center">
+                        <button [routerLink]="['']" class="btn">Ver viaje</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-8 offset-2 mb-3">
+        <div class="card">
+            <div class="fotoCard" [ngStyle]="{backgroundImage:'url(../../../../assets/images/plane.jpg)'}">
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col textBlack destination ">destination</div>
+                    <div class="col text-end price">desde <span class="textGreen">price€</span></div>
+                </div>
+                <div class="row my-3">
+                    <div class="col textGreen">EDAD min_age max_age}}</div>
+                    <div class="col text-end textBlack"><i class="fas fa-plane-departure"></i> departure_date</div>
+                </div>
+                <div class="row">
+                    <div class="offset-5 mb-1 text-center">
+                        <button [routerLink]="['']" class="btn">Ver viaje</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

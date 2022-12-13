@@ -3,6 +3,22 @@ h1 {
     font-weight: 700;
 }
 
+h2 {
+    color: #2E8682;
+}
+
+h2:hover {
+    cursor: pointer;
+}
+
+header h5 {
+    color: #2E8682;
+}
+
+header h5:hover {
+    cursor: pointer;
+}
+
 h5 {
     font-size: 16px;
     font-weight: 700;

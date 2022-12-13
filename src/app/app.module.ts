@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListTripComponent } from './components/trips/list-trip/list-trip.component';
 import { DetailTripComponent } from './components/trips/detail-trip/detail-trip.component';
 import { FormTripComponent } from './components/trips/form-trip/form-trip.component';
+import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormTripComponent } from './components/trips/form-trip/form-trip.compon
     LoginComponent,
     ListTripComponent,
     DetailTripComponent,
-    FormTripComponent
+    FormTripComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

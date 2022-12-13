@@ -8,7 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class MyProfileComponent implements OnInit {
 
-  formulario: FormGroup
+  formulario: FormGroup;
+  bloqueo: boolean
 
   constructor() {
     this.formulario = new FormGroup
@@ -48,6 +49,8 @@ export class MyProfileComponent implements OnInit {
           Validators.required,
         ])
       })
+
+    this.bloqueo = true;
   }
 
   ngOnInit(): void {
@@ -55,6 +58,10 @@ export class MyProfileComponent implements OnInit {
 
   checkError(field: string, error: string): boolean | undefined {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
+  };
+
+  pulsarBoton() {
+    this.bloqueo = !this.bloqueo
   }
 
 }

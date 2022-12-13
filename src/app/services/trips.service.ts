@@ -1,16 +1,20 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Trip } from '../interfaces/trip.interface';
-import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TripsService {
 
-  arrTrips: Trip[];
   private baseUrl: string;
+
+
+  arrTrips: Trip[];
+
 
   constructor(private httpClient: HttpClient) {
 

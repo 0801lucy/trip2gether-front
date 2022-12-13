@@ -11,7 +11,7 @@ export class UsersService {
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = `${environment.apiUrl}/users`;
+    this.baseUrl = `${environment.apiUrl}/users`
   }
 
   register(pValues: any) {
@@ -26,19 +26,16 @@ export class UsersService {
   login(pValues: any) {
     console.log(pValues)
 
-    // return firstValueFrom(
-    //  this.httpClient.post<any>('http://trip2gether/api/users/login', pValues)
-    //)
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/login`, pValues)
+    )
   }
 
-  //isLogget(): boolean {
-  // if (localStorage.getItem('tokrn')) {
-  // return true;
-  //} else {
-  //  return false;
-  // }
-  // }
-
-
-
+  isLogged(): boolean {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -8,7 +8,7 @@ import { PrincipalComponent } from './components/base/principal/principal.compon
 import { RegisterComponent } from './components/users/register/register.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { ListTripComponent } from './components/trips/list-trip/list-trip.component';
 import { DetailTripComponent } from './components/trips/detail-trip/detail-trip.component';
@@ -33,7 +33,8 @@ import { CommentsTripsComponent } from './components/trips/comments-trips/commen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormControl
 
   ],
   providers: [],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, } from '@angular/router';
 
 @Component({
@@ -8,13 +9,22 @@ import { ActivatedRoute, } from '@angular/router';
 })
 export class CommentsTripsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  form: FormGroup;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+
+    this.form = new FormGroup({
+      inputMessage: new FormControl()
+    })
+  }
 
   ngOnInit(): void {
   }
 
-  sendMessage() {
-
+  onSubmit() {
+    console.log()
   }
+
+
 
 }

@@ -14,8 +14,7 @@ export class UsersService {
     this.baseUrl = `${environment.apiUrl}/users`
   }
 
-  register(pValues: any) {
-
+  register(pValues: FormData) {
     console.log(pValues)
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/register`, pValues)

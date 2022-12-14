@@ -3,7 +3,6 @@
     <h2 [routerLink]="['/']">trip2gether</h2>
 
     <div>
-        <h2>trip2gether</h2>
 
         <img src="../../../../assets/images/registro.jpg" alt="">
     </div>
@@ -56,12 +55,12 @@
                 <input type="date" class="form-control" formControlName="birth_date">
                 <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido</p>
             </div>
-            <!--   <div class="col-md-4 mb-3 offset-1">
+            <div class="col-md-4 mb-3 offset-1">
                 <label> Foto Perfil</label>
-                <input type="text" class="form-control" formControlName="photo">
-                <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido</p>
+                <input type="file" class="form-control" name="img_user" (change)="onChange($event)">
 
-            </div> -->
+
+            </div>
         </div>
 
         <div class="row">

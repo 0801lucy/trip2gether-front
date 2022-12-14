@@ -39,6 +39,19 @@ h1 {
     background-color: #1C5653;
 }
 
+.error {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
+
+h5 span {
+    font-size: 14px;
+    font-weight: 400;
+    color: gray;
+}
+
 input[type=text].ng-valid.ng-touched,
 input[type=number].ng-valid.ng-touched,
 input[type=date].ng-valid.ng-touched,

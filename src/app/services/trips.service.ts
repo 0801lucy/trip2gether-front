@@ -124,5 +124,15 @@ export class TripsService {
     );
 
   }
+  createComment(message: string, trip_id: number) {
+    const body = { message, trip_id }
+    return firstValueFrom(
+      this.httpClient.post(`${this.baseUrl}/trips/comment/new`, body)
+    )
+  }
 }
+
+
+
+
 

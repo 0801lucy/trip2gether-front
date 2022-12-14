@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  servers: 'https://1cd0-77-225-253-65.eu.ngrok.io/',
   apiUrl: 'https://ce2d-77-225-253-65.eu.ngrok.io/api'
 };
 

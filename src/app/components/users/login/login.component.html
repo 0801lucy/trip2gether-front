@@ -3,7 +3,7 @@
 
         <h2 [routerLink]="''">trip2gether</h2>
 
-        <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form class="container col-4" [formGroup]="form" (ngSubmit)="onSubmit()">
             <h3>Comienza la aventura</h3>
 
             <div class="row">
@@ -38,7 +38,7 @@
 
                 <button class="btn btn-green  col-5 mb-3 offset-3 " type="submit" [disabled]="!form.valid">Enviar</button>
             </div>
-            <p>¿Aun no te has unido? <span class="textGreen" [routerLink]="['/register']">Registrate</span> </p>
+            <p class="offset-3 mt-5">¿Aun no te has unido? <span class="textGreen" [routerLink]="['/register']">Registrate aquí</span> </p>
         </form>
     </div>
 </div>

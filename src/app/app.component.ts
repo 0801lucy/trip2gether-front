@@ -16,6 +16,7 @@ export class AppComponent {
 
 
   constructor(private router: Router) {
+
     this.mostrarCabecera = true;
     this.publicUrls = ['/login', '/register', '/']
     this.currentRoute = "";
@@ -29,5 +30,8 @@ export class AppComponent {
         }
       }
     })
+
   }
+
+
 }

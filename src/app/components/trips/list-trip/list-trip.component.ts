@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Trip } from 'src/app/interfaces/trip.interface';
 import { TripsService } from 'src/app/services/trips.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-trip',
@@ -15,6 +16,7 @@ export class ListTripComponent implements OnInit {
   formulario: FormGroup;
   destinations: string[];
   detailTrip: Trip | undefined;
+  serverUrl: string;
 
 
   constructor(private tripsService: TripsService, private router: Router) {
@@ -26,6 +28,7 @@ export class ListTripComponent implements OnInit {
     })
 
     this.destinations = [];
+    this.serverUrl = environment.serverUrl;
 
 
   }

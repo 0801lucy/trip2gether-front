@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Trip } from 'src/app/interfaces/trip.interface';
 import { TripsService } from 'src/app/services/trips.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detail-trip',
@@ -11,10 +12,11 @@ import { TripsService } from 'src/app/services/trips.service';
 export class DetailTripComponent implements OnInit {
 
   detail!: Trip;
+  serverUrl: string;
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
-
+    this.serverUrl = environment.serverUrl;
   }
 
   ngOnInit(): void {

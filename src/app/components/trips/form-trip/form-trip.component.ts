@@ -16,44 +16,45 @@ export class FormTripComponent implements OnInit {
   @ViewChild('inputPlaces') inputPlaces!: ElementRef;
 
   formulario: FormGroup;
+
   files: any;
 
   constructor(private tripsService: TripsService, private router: Router) {
 
     this.formulario = new FormGroup({
-      destination: new FormControl('', [
+      destination: new FormControl('Polonia', [
         Validators.required
       ]),
-      min_traveler: new FormControl('', [
+      min_traveler: new FormControl('10', [
         Validators.required
       ]),
-      max_traveler: new FormControl('', [
+      max_traveler: new FormControl('20', [
         Validators.required
       ]),
-      min_age: new FormControl('', [
+      min_age: new FormControl('25', [
         Validators.required
       ]),
-      max_age: new FormControl('', [
+      max_age: new FormControl('35', [
         Validators.required
       ]),
-      departure_date: new FormControl('', [
+      departure_date: new FormControl('2023-05-10', [
         Validators.required
       ]),
-      duration: new FormControl('', [
+      duration: new FormControl('10', [
         Validators.required
       ]),
-      price: new FormControl('', [
+      price: new FormControl('1500', [
         Validators.required
       ]),
-      description: new FormControl('', [
+      description: new FormControl('prueba', [
         Validators.required
       ]),
-      flights: new FormControl(),
-      hotel: new FormControl(),
-      meals: new FormControl(),
-      excursions: new FormControl(),
-      rent_car: new FormControl(),
-      insurance: new FormControl()
+      flights: new FormControl(false),
+      hotel: new FormControl(false),
+      meals: new FormControl(false),
+      excursions: new FormControl(false),
+      rent_car: new FormControl(false),
+      insurance: new FormControl(false)
 
     })
   }
@@ -65,7 +66,8 @@ export class FormTripComponent implements OnInit {
     this.loadAutocomplete();
   }
 
-  onSubmit() {
+  async onSubmit() {
+    // Creación del objeto donde incluimos todos los campos del formulario y además la imagen
     let fd = new FormData();
     fd.append('img_trip', this.files[0]);
     fd.append('destination', this.formulario.value.destination);
@@ -84,7 +86,8 @@ export class FormTripComponent implements OnInit {
     fd.append('rent_car', this.formulario.value.rent_car);
     fd.append('insurance', this.formulario.value.insurance);
 
-    this.tripsService.createTrip(fd);
+    // Delegamos el envío del formulario en el servicio
+    await this.tripsService.createTrip(fd);
     this.router.navigate(['/trips']);
   }
 
@@ -104,7 +107,5 @@ export class FormTripComponent implements OnInit {
   checkError(field: string, error: string): boolean | undefined {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
-
-
 
 }

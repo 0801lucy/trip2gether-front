@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -9,9 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MyProfileComponent implements OnInit {
 
   formulario: FormGroup;
-  bloqueo: boolean
+  bloqueo: boolean;
+  user: any
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute, private userService: UsersService) {
     this.formulario = new FormGroup
       ({
         name: new FormControl('', [
@@ -54,6 +57,10 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(async params => {
+      const userId = parseInt(params['userId'])
+      this.user = await this.userService.getUserById(userId)
+    })
   }
 
   checkError(field: string, error: string): boolean | undefined {

@@ -8,11 +8,7 @@
 .container {
 
     border-radius: 20px;
-    width: 611px;
     height: 550px;
-    top: 240px;
-    left: 610px;
-    position: absolute;
     background: rgba(255, 255, 255, 0.76);
 }
 

@@ -37,4 +37,11 @@ export class UsersService {
       return false;
     }
   }
+
+  // Recupero el usuario por id para que aparezca en myProfile
+  getUserById(userId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/${userId}`)
+    );
+  }
 }

@@ -65,17 +65,31 @@ export class FormTripComponent implements OnInit {
     this.loadAutocomplete();
   }
 
-  onChange($event: any) {
-    this.files = $event.target.files;
-  }
-
-  async onSubmit() {
+  onSubmit() {
     let fd = new FormData();
     fd.append('img_trip', this.files[0]);
+    fd.append('destination', this.formulario.value.destination);
+    fd.append('min_traveler', this.formulario.value.min_traveler);
+    fd.append('max_traveler', this.formulario.value.max_traveler);
+    fd.append('min_age', this.formulario.value.min_age);
+    fd.append('max_age', this.formulario.value.max_age);
+    fd.append('departure_date', this.formulario.value.departure_date);
+    fd.append('duration', this.formulario.value.duration);
+    fd.append('price', this.formulario.value.price);
+    fd.append('description', this.formulario.value.description);
+    fd.append('flights', this.formulario.value.flights);
+    fd.append('hotel', this.formulario.value.hotel);
+    fd.append('meals', this.formulario.value.meals);
+    fd.append('excursions', this.formulario.value.excursions);
+    fd.append('rent_car', this.formulario.value.rent_car);
+    fd.append('insurance', this.formulario.value.insurance);
 
     this.tripsService.createTrip(fd);
     this.router.navigate(['/trips']);
+  }
 
+  onChange($event: any) {
+    this.files = $event.target.files;
   }
 
   loadAutocomplete() {

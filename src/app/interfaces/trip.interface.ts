@@ -8,6 +8,7 @@ export interface Trip {
     departure_date: Date,
     duration: number,
     price: number,
+    img_trip: string;
     description: string,
     flights: boolean,
     hotel: boolean,

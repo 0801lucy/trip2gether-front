@@ -38,9 +38,7 @@ import { CommentsTripsComponent } from './components/trips/comments-trips/commen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    FormControl
-
+    ReactiveFormsModule
   ],
   providers: [
     {

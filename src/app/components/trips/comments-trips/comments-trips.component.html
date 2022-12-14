@@ -1,12 +1,24 @@
 <div>
-    <div class="messageBox">
-        <p><!-- nombre de usuario: mensaje  -fecha --></p>
+    <div class="row">
+        <h3 class="offset-2 mt-3">Comentarios</h3>
     </div>
-    <form class="form" (ngSubmit)="onSubmit()">
-        <div class="textBox">
-            <input type="text" class="form-control" formControlName="inputMessage">
-            <button type="submit">enviar</button>
-        </div>
-    </form>
 
+    <div class="row">
+        <div class="col-8 offset-2 mb-3 messageBox">
+            <p><!-- nombre de usuario: mensaje  -fecha --></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5 class="offset-2 ">Escribe tu comentario:</h5>
+    </div>
+
+    <div class="row">
+        <div class="textBox mb-5">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <input type="text" class="col-7 offset-2 me-4" formControlName="inputMessage">
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
 </div>

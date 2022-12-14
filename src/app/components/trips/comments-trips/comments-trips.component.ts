@@ -12,7 +12,6 @@ export class CommentsTripsComponent implements OnInit {
   form: FormGroup;
 
   constructor(private activatedRoute: ActivatedRoute) {
-
     this.form = new FormGroup({
       inputMessage: new FormControl()
     })
@@ -24,7 +23,4 @@ export class CommentsTripsComponent implements OnInit {
   onSubmit() {
     console.log()
   }
-
-
-
 }

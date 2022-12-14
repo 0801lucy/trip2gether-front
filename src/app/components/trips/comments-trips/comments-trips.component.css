@@ -1,17 +1,18 @@
 .messageBox {
-    height: 400px;
-    width: 1200px;
-    border: 1px solid black;
-    box-sizing: border-box;
-    margin: 1em;
+
+    border: 2px solid #2E8682;
+    border-radius: 20px;
+    height: 20em;
 }
 
-.textBox {
-    margin: 1em;
-    display: flex;
+.textBox input {
 
+    border-radius: 20px;
+    border: 2px solid #2E8682;
 }
 
 button {
-    margin-left: 1em;
+    border: 2px solid #2E8682;
+    border-radius: 20px;
+
 }

@@ -16,4 +16,5 @@ export class AddHeaderInterceptor implements HttpInterceptor {
     const clonedRequest = request.clone({ headers: request.headers.append('ngrok-skip-browser-warning', 'prueba') });
     return next.handle(clonedRequest);
   }
+
 }

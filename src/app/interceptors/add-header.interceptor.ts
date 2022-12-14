@@ -14,6 +14,8 @@ export class AddHeaderInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const clonedRequest = request.clone({ headers: request.headers.append('ngrok-skip-browser-warning', 'prueba') });
-    return next.handle(clonedRequest);
+    const tokenAuth = localStorage.getItem('token') || "";
+    const authorization = clonedRequest.clone({ headers: request.headers.set('Authorization', tokenAuth) });
+    return next.handle(authorization);
   }
 }

@@ -8,6 +8,7 @@ import { ListTripComponent } from './components/trips/list-trip/list-trip.compon
 import { PrincipalComponent } from './components/base/principal/principal.component';
 import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
+import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
@@ -15,9 +16,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'trips', component: ListTripComponent },
-  { path: 'trips/new', component: FormTripComponent },
-  { path: 'trips/comment', component: CommentsTripsComponent },
-  { path: 'trips/:tripId', component: DetailTripComponent }
+  { path: 'trips/new', component: FormTripComponent, canActivate: [LoginGuard] },
+  { path: 'trips/comment', component: CommentsTripsComponent, canActivate: [LoginGuard] },
+  { path: 'trips/:tripId', component: DetailTripComponent, canActivate: [LoginGuard] }
 
 ]
 

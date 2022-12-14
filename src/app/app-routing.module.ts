@@ -16,9 +16,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'trips', component: ListTripComponent },
-  { path: 'trips/new', component: FormTripComponent, canActivate: [LoginGuard] },
-  { path: 'trips/comment', component: CommentsTripsComponent, canActivate: [LoginGuard] },
-  { path: 'trips/:tripId', component: DetailTripComponent, canActivate: [LoginGuard] }
+  { path: 'trips/new', component: FormTripComponent },
+  { path: 'trips/:tripId', component: DetailTripComponent }
 
 ]
 

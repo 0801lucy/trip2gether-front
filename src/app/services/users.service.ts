@@ -21,7 +21,6 @@ export class UsersService {
     )
   }
 
-
   login(pValues: any) {
     console.log(pValues)
 
@@ -38,10 +37,15 @@ export class UsersService {
     }
   }
 
-  // Recupero el usuario por id para que aparezca en myProfile
   getUserById(userId: number) {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/${userId}`)
     );
+  }
+
+  getProfile() {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/profile`)
+    )
   }
 }

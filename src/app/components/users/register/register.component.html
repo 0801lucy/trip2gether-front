@@ -45,7 +45,6 @@
                 <input type="text" class="form-control" formControlName="email">
                 <p class="error" *ngIf="checkError('email', 'required')">Campo requerido</p>
                 <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto</p>
-
             </div>
         </div>
 
@@ -55,11 +54,9 @@
                 <input type="date" class="form-control" formControlName="birth_date">
                 <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido</p>
             </div>
-            <div class="col-md-4 mb-3 offset-1">
+            <div class="col-md-4 mb-3">
                 <label> Foto Perfil</label>
                 <input type="file" class="form-control" name="img_user" (change)="onChange($event)">
-
-
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup
 
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService,
+    private router: Router) {
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.required,
@@ -34,7 +36,8 @@ export class LoginComponent implements OnInit {
     console.log(response)
     if (response.success) {
       localStorage.setItem('token', response.token);
-      this.form.reset();
+      this.router.navigate(['/trips'])
+
     } else {
 
       alert('Error  en el login ')
@@ -49,15 +52,7 @@ export class LoginComponent implements OnInit {
       this.form.get(field)?.touched
   }
 
-  //async onSubmit() {
-  // const response = await this.usersService.register(this.form.value);
-  ///console.log(response)
-  // if (response.success) {
-  // alert(response.success);
-  // this.form.reset();
-  //} else {
-  // alert('revisa tus errores');
-  // }
+
 
 }
 

@@ -35,7 +35,7 @@ export class ListTripComponent implements OnInit {
 
   async ngOnInit() {
     this.trips = await this.tripsService.getAllTrips();
-    this.destinations = await this.tripsService.getDestinations();
+    //this.destinations = await this.tripsService.getDestinations();
     console.log(this.trips);
   }
 
@@ -48,7 +48,7 @@ export class ListTripComponent implements OnInit {
     if ($event.target.value === 'all') {
       this.trips = await this.tripsService.getAllTrips();
     } else {
-      this.trips = this.tripsService.filterByDestination($event.target.value);
+      //this.trips = this.tripsService.filterByDestination($event.target.value);
     }
   }
 

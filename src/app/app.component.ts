@@ -27,6 +27,8 @@ export class AppComponent {
 
         if (this.publicUrls.includes(event.url)) {
           this.mostrarCabecera = false;
+        } else {
+          this.mostrarCabecera = true;
         }
       }
     })

@@ -42,6 +42,8 @@ export class UsersService {
   getUserById(userId: number) {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/${userId}`)
-    );
+    )
+
   }
+
 }

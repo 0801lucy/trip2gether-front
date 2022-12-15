@@ -13,14 +13,14 @@ export class TripsService {
   private baseUrl: string;
 
 
-  arrTrips: Trip[];
+  //arrTrips: Trip[];
 
 
   constructor(private httpClient: HttpClient) {
 
     this.baseUrl = `${environment.apiUrl}/trips`;
 
-    this.arrTrips = [
+    /* this.arrTrips = [
       {
         id: 0,
         destination: 'Portugal',
@@ -78,7 +78,7 @@ export class TripsService {
         rent_car: true,
         insurance: true
       }
-    ]
+    ] */
   }
 
   /* getAllTrips(): Trip[] {
@@ -93,14 +93,14 @@ export class TripsService {
   }
 
 
-  getDestinations(): string[] {
+  /* getDestinations(): string[] {
     const destinations = this.arrTrips.map(trip => trip.destination);
     return [...new Set(destinations)];
   }
 
   filterByDestination(pDestination: string): Trip[] {
     return this.arrTrips.filter(trip => trip.destination === pDestination);
-  }
+  } */
 
   /* createTrip(pTrip: Trip) {
     this.arrTrips.push(pTrip);
@@ -129,6 +129,22 @@ export class TripsService {
     return firstValueFrom(
       this.httpClient.post(`${this.baseUrl}/trips/comment/new`, body)
     )
+  }
+
+
+  getTripsByUser() {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/user/created`)
+
+    )
+
+  }
+  getUserSuscrited() {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/user/suscribed`)
+
+    )
+
   }
 }
 

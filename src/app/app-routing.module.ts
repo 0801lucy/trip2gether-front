@@ -18,7 +18,6 @@ const routes: Routes = [
   { path: 'trips', component: ListTripComponent },
   { path: 'trips/new', component: FormTripComponent },
   { path: 'trips/:tripId', component: DetailTripComponent },
-  { path: 'trips/comment', component: CommentsTripsComponent },
   { path: 'myprofile', component: MyProfileComponent }
 
 ]

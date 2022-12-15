@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Trip } from 'src/app/interfaces/trip.interface';
+import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-my-profile',
@@ -12,9 +15,15 @@ export class MyProfileComponent implements OnInit {
 
   formulario: FormGroup;
   bloqueo: boolean;
-  user: any
+  user: any;
+  tripsOwn: any;
+  serverUrl: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private userService: UsersService) {
+
+  constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
+    private tripsService: TripsService
+  ) {
+    this.serverUrl = environment.serverUrl;
     this.formulario = new FormGroup
       ({
         name: new FormControl('', [
@@ -56,19 +65,28 @@ export class MyProfileComponent implements OnInit {
     this.bloqueo = true;
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.activatedRoute.params.subscribe(async params => {
-      const userId = parseInt(params['userId'])
-      this.user = await this.userService.getUserById(userId)
+      const userId = parseInt(params['userId']);
+      this.user = await this.userService.getUserById(userId);
+      console.log(this.user)
     })
+
+    this.tripsOwn = await this.tripsService.getTripsByUser();
+
   }
 
   checkError(field: string, error: string): boolean | undefined {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   };
 
+
   pulsarBoton() {
     this.bloqueo = !this.bloqueo
   }
+
+
+
+
 
 }

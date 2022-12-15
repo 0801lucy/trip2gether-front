@@ -60,6 +60,22 @@ export class TripsService {
       this.httpClient.post(`${this.baseUrl}/trips/comment/new`, body)
     )
   }
+
+
+  getTripsByUser() {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/user/created`)
+
+    )
+
+  }
+  getUserSuscrited() {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/user/suscribed`)
+
+    )
+
+  }
 }
 
 

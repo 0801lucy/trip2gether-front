@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   formulario: FormGroup;
   files: any;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService,
+    private router: Router) {
     this.formulario = new FormGroup({
       name: new FormControl('Pepito', [
         Validators.required,
@@ -72,7 +74,7 @@ export class RegisterComponent implements OnInit {
 
     if (response.success) {
       alert(response.success);
-      this.formulario.reset();
+      this.router.navigate(['/login'])
     } else {
       alert('revisa tus errores');
     }

@@ -79,24 +79,29 @@
 </form>
 
 <h3 class="offset-2 mt-3">Mis viajes</h3>
-
-<div class="row">
-    <div class="col-8 offset-2 mb-3">
-        <div class="card">
-            <div class="fotoCard">
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col textBlack destination ">destination</div>
-                    <div class="col text-end price">desde <span class="textGreen">price €</span></div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2 mb-3">
+            <div class="card" *ngFor="let trip of tripsOwn">
+                <div class="fotoCard">
                 </div>
-                <div class="row my-3">
-                    <div class="col textGreen">EDAD min_age max_age</div>
-                    <div class="col text-end textBlack"><i class="fas fa-plane-departure"></i> departure_date</div>
-                </div>
-                <div class="row">
-                    <div class="offset-5 mb-1 text-center">
-                        <button [routerLink]="['']" class="btn">Ver viaje</button>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col textBlack destination ">{{trip.destination}}</div>
+                        <div>
+                            <img class="img" [src]="serverUrl +'/images' + trip.img_trip" alt="">
+                        </div>
+                        <div class="col text-end price">desde <span class="textGreen">
+                                {{trip.price}}</span></div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col textGreen"></div>
+                        <div class="col text-end textBlack"><i class="fas fa-plane-departure"></i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-5 mb-1 text-center">
+                            <button [routerLink]="['/detail']" class="btn">Ver viaje</button>
+                        </div>
                     </div>
                 </div>
             </div>

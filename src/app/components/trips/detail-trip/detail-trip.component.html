@@ -8,10 +8,10 @@
         <div class="col-auto">
             <div class="row">
                 <div class="col-auto p-0">
-                    <img src="https://avatars.githubusercontent.com/u/114173266?s=40&v=4" alt="" class="img_user">
+                    <img [src]="serverUrl + '/images/' + detail.img_user" alt="" class="img_user">
                 </div>
                 <div class="col textBlack creator"><span>Organizador</span>
-                    <p>Username</p>
+                    <p>{{detail.username}}</p>
                 </div>
             </div>
         </div>

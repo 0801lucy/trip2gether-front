@@ -23,6 +23,7 @@ export class DetailTripComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       const tripId = parseInt(params['tripId'])
       this.detail = await this.tripsService.getTripById(tripId);
+
       console.log(this.detail);
     })
   }

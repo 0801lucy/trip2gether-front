@@ -1,12 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-4 mt-3">
-            <h2 [routerLink]="['']">trip2gether</h2>
+            <h2 [routerLink]="['/']">trip2gether</h2>
         </div>
         <nav class="row col-4 offset-4 mt-4">
-            <li class="col-3" [routerLink]="''">Home</li>
-            <li class="col-3 offset-1" [routerLink]="'/myprofile'">Mi perfil</li>
-            <li class="col-3 offset-1" (click)="onLogOut()">Logout</li>
+            <ul>
+                <li class="col-3" [routerLink]="['/trips']">Viajes</li>
+                <li class="col-3 offset-1" [routerLink]="['/myprofile']">Mi perfil</li>
+                <li class="col-3 offset-1" (click)="onLogOut()">Logout</li>
+            </ul>
         </nav>
     </div>
 </div>

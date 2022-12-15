@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Trip } from 'src/app/interfaces/trip.interface';
 import { TripsService } from 'src/app/services/trips.service';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail-trip',
@@ -15,7 +16,7 @@ export class DetailTripComponent implements OnInit {
   serverUrl: string;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer) {
     this.serverUrl = environment.serverUrl;
   }
 

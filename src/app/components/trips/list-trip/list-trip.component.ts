@@ -29,16 +29,13 @@ export class ListTripComponent implements OnInit {
 
     this.destinations = [];
     this.serverUrl = environment.serverUrl;
-
-
   }
 
   async ngOnInit() {
     this.trips = await this.tripsService.getAllTrips();
     this.destinations = await this.tripsService.getDestinations();
-    console.log(this.trips);
+    console.log(this.destinations);
   }
-
 
   newTrip() {
     this.router.navigate(['/trips/new']);
@@ -48,7 +45,7 @@ export class ListTripComponent implements OnInit {
     if ($event.target.value === 'all') {
       this.trips = await this.tripsService.getAllTrips();
     } else {
-      this.trips = this.tripsService.filterByDestination($event.target.value);
+      this.trips = await this.tripsService.filterByDestination($event.target.value);
     }
   }
 

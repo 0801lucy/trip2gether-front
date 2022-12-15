@@ -8,7 +8,7 @@
         <div class="col-auto">
             <div class="row">
                 <div class="col-auto p-0">
-                    <img [src]="serverUrl + '/images/' + detail.img_user" alt="" class="img_user">
+                    <img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)" alt="" class="img_user">
                 </div>
                 <div class="col textBlack creator"><span>Organizador</span>
                     <p>{{detail.username}}</p>

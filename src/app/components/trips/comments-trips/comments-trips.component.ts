@@ -37,7 +37,6 @@ export class CommentsTripsComponent implements OnInit {
 
       this.comments = await this.tripsService.getCommentsByTrips(this.tripid)
       console.log(this.comments)
-
     })
   }
 

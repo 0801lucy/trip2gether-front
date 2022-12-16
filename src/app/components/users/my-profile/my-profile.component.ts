@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Trip } from 'src/app/interfaces/trip.interface';
 import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -17,12 +17,15 @@ export class MyProfileComponent implements OnInit {
   bloqueo: boolean;
   user: any;
   tripsOwn: any;
+  tripsSuscribed: any;
   serverUrl: string;
 
 
+
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
-    private tripsService: TripsService
+    private tripsService: TripsService, private router: Router
   ) {
+
     this.serverUrl = environment.serverUrl;
     this.formulario = new FormGroup
       ({
@@ -73,6 +76,7 @@ export class MyProfileComponent implements OnInit {
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
+    this.tripsSuscribed = await this.tripsService.getUserSuscrited();
 
   }
 
@@ -86,7 +90,5 @@ export class MyProfileComponent implements OnInit {
   }
 
 
-
-
-
 }
+

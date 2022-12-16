@@ -78,6 +78,7 @@ export class MyProfileComponent implements OnInit {
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
+    this.tripsSuscribed = await this.tripsService.getUserSuscrited();
     let changeProfile = new FormData(); {
       changeProfile.append('img_user', this.files[0]);
       changeProfile.append('name', this.formulario.value.name);
@@ -87,8 +88,8 @@ export class MyProfileComponent implements OnInit {
       changeProfile.append('hobbies', this.formulario.value.hobbies);
       changeProfile.append('personality', this.formulario.value.personality);
       changeProfile.append('birth_date', this.formulario.value.birth_date);
-
       const response = await this.userService.updateProfile(changeProfile);
+
 
       if (response.success) {
         alert(response.success);
@@ -96,7 +97,6 @@ export class MyProfileComponent implements OnInit {
         alert('Revisa los errores');
       }
     }
-    this.tripsSuscribed = await this.tripsService.getUserSuscrited();
 
   }
 

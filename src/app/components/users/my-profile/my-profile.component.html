@@ -51,12 +51,28 @@
             <input type="date" class="form-control" formControlName="birth_date" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span></p>
         </div>
+
+
+
+
+
+
         <div class="col-3 offset-1 mb-2">
             <label class="form-label"> Foto de perfil:</label>
             <input type="file" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null" name="img_user" (change)="onChange($event)">
             <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
 
     <div class="row">
         <div class="col-3 offset-2 mb-3 mt-2">

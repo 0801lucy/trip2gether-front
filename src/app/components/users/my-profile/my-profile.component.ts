@@ -75,6 +75,8 @@ export class MyProfileComponent implements OnInit {
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
+
+
     let changeProfile = new FormData(); {
       changeProfile.append('img_user', this.files[0]);
       changeProfile.append('name', this.formulario.value.name);

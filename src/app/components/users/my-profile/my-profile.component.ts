@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -23,7 +24,7 @@ export class MyProfileComponent implements OnInit {
 
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
-    private tripsService: TripsService, private router: Router
+    private tripsService: TripsService, private router: Router, public sanitizer: DomSanitizer
   ) {
 
     this.serverUrl = environment.serverUrl;

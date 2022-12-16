@@ -123,7 +123,7 @@
                     <div class="row">
                         <div class="col textBlack destination ">{{trip.destination}}</div>
                         <div>
-                            <img class="img" [src]="serverUrl +'/images' + trip.img_trip" alt="">
+                            <img class="img" [src]="sanitizer.bypassSecurityTrustUrl(serverUrl +'/images' + trip.img_trip)" alt="">
                         </div>
                         <div class="col text-end price">desde <span class="textGreen">
                                 {{trip.price}}</span></div>

@@ -57,6 +57,11 @@ export class MyProfileComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
         ]),
+
+        img_user: new FormControl(response.img_user, [
+          Validators.required,
+        ]),
+
         birth_date: new FormControl(response.birth_date, [
           Validators.required,
         ]),

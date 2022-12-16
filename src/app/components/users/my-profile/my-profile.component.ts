@@ -76,14 +76,14 @@ export class MyProfileComponent implements OnInit {
       changeProfile.append('name', this.formulario.value.name);
       changeProfile.append('surname', this.formulario.value.surname);
       changeProfile.append('username', this.formulario.value.username);
-      changeProfile.append('email', this.formulario.value.email);
-      changeProfile.append('password', this.formulario.value.password);
+      // changeProfile.append('email', this.formulario.value.email);
+      // changeProfile.append('password', this.formulario.value.password);
       changeProfile.append('phone', this.formulario.value.phone);
       changeProfile.append('hobbies', this.formulario.value.hobbies);
       changeProfile.append('personality', this.formulario.value.personality);
       changeProfile.append('birth_date', this.formulario.value.birth_date);
 
-      const response = await this.userService.register(changeProfile);
+      const response = await this.userService.updateProfile(changeProfile);
 
       if (response.success) {
         alert(response.success);
@@ -104,6 +104,18 @@ export class MyProfileComponent implements OnInit {
 
   pulsarBoton() {
     this.bloqueo = !this.bloqueo
+  }
+
+  async onSubmit() {
+    const response = await this.userService.updateProfile(this.formulario.value)
+    console.log(response);
+
+    if (response.success) {
+      alert('Perfil actualizado!');
+    } else {
+      alert('Ha habido algún problema, comprueba todos los datos')
+    }
+
   }
 
 

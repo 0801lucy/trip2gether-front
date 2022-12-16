@@ -4,7 +4,7 @@
 
 <h3 class="offset-2 mt-3">Mis datos personales</h3>
 
-<form [formGroup]="formulario" *ngIf="formulario">
+<form [formGroup]="formulario" *ngIf="formulario" (ngSubmit)="onSubmit()">
     <div class="row">
         <div class="col-3 offset-2 mb-3 mt-5">
             <label class="form-label">Nombre:</label>
@@ -75,14 +75,6 @@
     <div class="row mt-3">
         <button class="btn col-2 offset-3" type="submit" (click)="pulsarBoton()" [disabled]="!formulario.valid">Guardar cambios</button>
         <button class="btn col-2 offset-1" (click)="pulsarBoton()" *ngIf="bloqueo">Editar perfil</button>
-        <!-- 
-UPDATE users
-SET name = 'Mario', surname = 'Giron', username = 'MarioGiron', password = '123456', phone = '66777777', 
-hobbies = 'me gusta la pesca y el tiro con arco', personality = 'tengo personalidad', birth_date = '1990/03/02';
-WHERE id = '7' 
-
-TENGO QUE HACER UN PUT
--->
     </div>
 </form>
 

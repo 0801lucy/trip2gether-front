@@ -48,4 +48,12 @@ export class UsersService {
       this.httpClient.get<any>(`${this.baseUrl}/profile`)
     )
   }
+
+  updateProfile(pValues: FormData) {
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/profile`, pValues)
+    )
+  }
+
+
 }

@@ -1,7 +1,9 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
+
 
 
 @Component({
@@ -12,30 +14,35 @@ import { TripsService } from 'src/app/services/trips.service';
 export class CommentsTripsComponent implements OnInit {
 
   form: FormGroup;
-  tripid: number
+  tripid: number;
+  userid: number;
+  comments: any[];
+
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
+
     this.form = new FormGroup({
       inputMessage: new FormControl()
-    })
+    });
 
-    this.tripid = 0
-
+    this.tripid = 0;
+    this.userid = 0;
+    this.comments = [];
 
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.tripid = parseInt(params['tripId'])
+    this.activatedRoute.params.subscribe(async params => {
+      this.tripid = parseInt(params['tripId']);
+
+      this.comments = await this.tripsService.getCommentsByTrips(this.tripid)
+      console.log(this.comments)
 
     })
   }
 
-  onSubmit() {
-    console.log(this.form.value.inputMessage) //esto es el mensaje
-    console.log(this.tripid) // esto el el id del trip
-    //llamar al metodo createComment que esta en el service
-    this.tripsService.createComment(this.form.value.inputMessage, this.tripid)
+  async onSubmit() {
+    const responseComments = await this.tripsService.createComment(this.form.value.inputMessage, this.tripid);
   }
 }
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -57,7 +57,7 @@ export class TripsService {
   createComment(message: string, trip_id: number) {
     const body = { message, trip_id }
     return firstValueFrom(
-      this.httpClient.post(`${this.baseUrl}/trips/comment/new`, body)
+      this.httpClient.post(`${this.baseUrl}/comment/new`, body)
     )
   }
 
@@ -76,7 +76,16 @@ export class TripsService {
     )
 
   }
+  getCommentsByTrips(tripId: number) {
+
+    return firstValueFrom(
+      this.httpClient.get<any[]>(`${this.baseUrl}/comment/${tripId}`)
+    )
+  }
+
 }
+
+
 
 
 

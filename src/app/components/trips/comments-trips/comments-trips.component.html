@@ -3,10 +3,10 @@
         <h3 class="offset-2 mt-3">Comentarios</h3>
     </div>
 
-    <div class="row">
-        <div class="col-8 offset-2 mb-3 messageBox">
-            <p>{{this.form.value.inputMessage}}</p>
-        </div>
+    <div class="row col-8 offset-2 mb-3 textContainer">
+
+        <div class="col-8 messageBox" *ngFor="let Comment of comments">{{Comment.name}} {{Comment.message}}
+            --{{Comment.date}}</div>
     </div>
 
     <div class="row">

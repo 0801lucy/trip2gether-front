@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
 import { environment } from 'src/environments/environment';
@@ -16,13 +16,16 @@ export class MyProfileComponent implements OnInit {
   bloqueo: boolean;
   user: any;
   tripsOwn: any;
+  tripsSuscribed: any;
   serverUrl: string;
   files: any;
   profile: any
 
+
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
-    private tripsService: TripsService
+    private tripsService: TripsService, private router: Router
   ) {
+
     this.serverUrl = environment.serverUrl;
     this.bloqueo = true;
     this.profile = '';
@@ -93,6 +96,7 @@ export class MyProfileComponent implements OnInit {
         alert('Revisa los errores');
       }
     }
+    this.tripsSuscribed = await this.tripsService.getUserSuscrited();
 
   }
 
@@ -120,3 +124,4 @@ export class MyProfileComponent implements OnInit {
   }
 
 }
+

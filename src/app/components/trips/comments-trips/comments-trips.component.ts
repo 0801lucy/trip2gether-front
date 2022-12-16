@@ -28,20 +28,18 @@ export class CommentsTripsComponent implements OnInit {
     this.tripid = 0;
     this.userid = 0;
     this.comments = [];
-
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async params => {
       this.tripid = parseInt(params['tripId']);
-
-      this.comments = await this.tripsService.getCommentsByTrips(this.tripid)
-      console.log(this.comments)
+      this.comments = await this.tripsService.getCommentsByTrips(this.tripid);
     })
   }
 
   async onSubmit() {
     const responseComments = await this.tripsService.createComment(this.form.value.inputMessage, this.tripid);
+    this.comments = await this.tripsService.getCommentsByTrips(this.tripid);
   }
 }
 

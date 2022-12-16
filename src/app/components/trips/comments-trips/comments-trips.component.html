@@ -5,8 +5,9 @@
 
     <div class="row col-8 offset-2 mb-3 textContainer">
 
-        <div class="col-8 messageBox" *ngFor="let Comment of comments">{{Comment.name}} {{Comment.message}}
-            --{{Comment.date}}</div>
+        <div class="col-8 messageBox" *ngFor="let Comment of comments">{{Comment.name}}: {{Comment.message}}
+            -- {{Comment.date | date:'dd-MM-yyyy h:mm'}}
+        </div>
     </div>
 
     <div class="row">

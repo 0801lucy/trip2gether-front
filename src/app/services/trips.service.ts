@@ -54,6 +54,14 @@ export class TripsService {
     );
 
   }
+
+  createItinerary(itinerary: any) {
+    return firstValueFrom(
+      this.httpClient.post(`${this.baseUrl}/itinerary`, itinerary)
+    );
+  }
+
+
   createComment(message: string, trip_id: number) {
     const body = { message, trip_id }
     return firstValueFrom(

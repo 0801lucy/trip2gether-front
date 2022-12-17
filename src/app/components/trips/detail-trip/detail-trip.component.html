@@ -80,8 +80,17 @@
             <button class="btn btn-lg btn-green">Me gustaría unirme</button>
         </div>
         <div class="col my-5 text-center">
-            <button (click)="createItinerary()" class="btn btn-lg btn-green">Crea tu itinerario</button>
+            <button (click)="onClick()" class="btn btn-lg btn-green">Crea tu itinerario</button>
         </div>
+        <form class="itinerary" *ngIf="showInputText" [formGroup]="itinerary_form">
+            <label class="form-label">Inicio</label>
+            <input type="date" class="form-control" formControlName="it_date_begin">
+            <label class="form-label">Fin</label>
+            <input type="date" class="form-control" formControlName="it_date_end">
+            <label class="form-label">Descripción</label>
+            <input type="text" class="form-control" formControlName="it_description">
+            <button (click)="addDayToItinerary()">Añadir</button>
+        </form>
         <div class="col text-center my-5">
             <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
         </div>

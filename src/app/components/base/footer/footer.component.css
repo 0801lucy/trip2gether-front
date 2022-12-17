@@ -1,8 +1,14 @@
-.container-fluid {
-    background: linear-gradient(360deg, rgba(46, 134, 130, 1) 30%, rgba(79, 253, 45, 0) 100%);
-    padding: 20px;
+.footer {
+    background-color: #2E8682;
+    color: white;
+
 }
 
 svg {
+    margin: 10px 0px 0px 5px;
     padding: 5px;
+}
+
+span {
+    font-size: 30px;
 }

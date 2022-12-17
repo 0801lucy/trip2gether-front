@@ -10,13 +10,14 @@ import { LoginComponent } from './components/users/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-
 import { ListTripComponent } from './components/trips/list-trip/list-trip.component';
 import { DetailTripComponent } from './components/trips/detail-trip/detail-trip.component';
 import { FormTripComponent } from './components/trips/form-trip/form-trip.component';
 import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
+import { MapsTripsComponent } from './components/trips/maps-trips/maps-trips.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -31,14 +32,18 @@ import { CommentsTripsComponent } from './components/trips/comments-trips/commen
     DetailTripComponent,
     FormTripComponent,
     MyProfileComponent,
-    CommentsTripsComponent
-
+    CommentsTripsComponent,
+    MapsTripsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'IzaSyBMOcTcAkobrlfKIBOJNz6lDw2R5fJsk_Q'
+    }),
+    HttpClientModule
   ],
   providers: [
     {

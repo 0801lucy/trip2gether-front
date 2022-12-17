@@ -79,3 +79,7 @@ textarea.ng-invalid.ng-touched {
 .cPointer {
     cursor: pointer;
 }
+
+.req {
+    color: red;
+}

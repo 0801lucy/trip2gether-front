@@ -1,81 +1,72 @@
-<div>
-
-    <h2 [routerLink]="['/']">trip2gether</h2>
-
-    <div>
-
-        <img src="../../../../assets/images/registro.jpg" alt="">
+<div class="register">
+    <div class="headerRegister">
+        <img src="../../../../assets/images/logo-green.png" alt="" [routerLink]="['/']" class="cPointer">
     </div>
-
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-        <div class="row">
-            <div class="col-md-4 mb-3 offset-1">
-                <label>Nombre <span class="req">*</span></label>
-                <input type="text" class="form-control" formControlName="name">
-                <p class="error" *ngIf="checkError('name', 'required')">Este campo es requerido</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label>Apellido<span class="req">*</span> </label>
-                <input type="text" class="form-control" formControlName="surname">
-                <p class="error" *ngIf="checkError('surname', 'required')">Este campo es requerido</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4 mb-3 offset-1">
-                <label>Usuario <span class="req">*</span></label>
-                <input type="text" class="form-control" formControlName="username">
-                <p class="error" *ngIf="checkError('username', 'required')">Campo requerido</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label>Contraseña <span class="req">*</span></label>
-                <input type="password" class="form-control" formControlName="password">
-                <p class="error" *ngIf="checkError('password', 'required')">Campo requerido</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4 mb-3 offset-1">
-                <label>Telefono <span class="req">*</span></label>
-                <input type="text" class="form-control" formControlName="phone">
-                <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label>Email <span class="req">*</span></label>
-                <input type="text" class="form-control" formControlName="email">
-                <p class="error" *ngIf="checkError('email', 'required')">Campo requerido</p>
-                <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4 mb-3 offset-1">
-                <label>Fecha de nacimiento <span class="req">*</span></label>
-                <input type="date" class="form-control" formControlName="birth_date">
-                <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label> Foto Perfil</label>
-                <input type="file" class="form-control" name="img_user" (change)="onChange($event)">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-8 mb-3 offset-1">
-                <label>Aficiones <span class="req">*</span></label>
-                <input type="text" class="form-control" id="aficiones" formControlName="hobbies">
-                <p class="error" *ngIf="checkError('hobbies', 'required')">Campo requerido</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-8 mb-3 offset-1">
-                <label>Personalidad <span class="req">*</span></label>
-                <input type="text" class="form-control col-" id="personalidad" formControlName="personality">
-                <p class="error" *ngIf="checkError('personality', 'required')">Campo requerido</p>
+    <figure>
+        <img src="../../../../assets/images/registro.jpg" alt="" class="img-fluid">
+    </figure>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-8">
+                <h1 class="textBlack my-5">Únete a la comunidad trip2gether</h1>
+                <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nombre <span class="req">*</span></label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <p class="error" *ngIf="checkError('name', 'required')">Este campo es requerido</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Apellido<span class="req">*</span> </label>
+                            <input type="text" class="form-control" formControlName="surname">
+                            <p class="error" *ngIf="checkError('surname', 'required')">Este campo es requerido</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Usuario <span class="req">*</span></label>
+                            <input type="text" class="form-control" formControlName="username">
+                            <p class="error" *ngIf="checkError('username', 'required')">Campo requerido</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Contraseña <span class="req">*</span></label>
+                            <input type="password" class="form-control" formControlName="password">
+                            <p class="error" *ngIf="checkError('password', 'required')">Campo requerido</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Telefono <span class="req">*</span></label>
+                            <input type="text" class="form-control" formControlName="phone">
+                            <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email <span class="req">*</span></label>
+                            <input type="text" class="form-control" formControlName="email">
+                            <p class="error" *ngIf="checkError('email', 'required')">Campo requerido</p>
+                            <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Fecha de nacimiento <span class="req">*</span></label>
+                            <input type="date" class="form-control" formControlName="birth_date">
+                            <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Foto Perfil <span class="req">*</span></label>
+                            <input type="file" class="form-control" name="img_user" (change)="onChange($event)">
+                        </div>
+                        <div class="col-12">
+                            <label>Aficiones <span class="req">*</span></label>
+                            <textarea class="form-control" rows="5" formControlName="hobbies"></textarea>
+                            <p class="error" *ngIf="checkError('hobbies', 'required')">Campo requerido</p>
+                        </div>
+                        <div class="col-12">
+                            <label>Personalidad <span class="req">*</span></label>
+                            <textarea class="form-control" rows="5" formControlName="personality"></textarea>
+                            <p class="error" *ngIf="checkError('personality', 'required')">Campo requerido</p>
+                        </div>
+                    </div>
+                    <div class="text-center mb-5">
+                        <button class="btn btn-lg btn-green" type="submit" [disabled]="!formulario.valid">Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <button class="btn btn-primary offset-4" type="submit" [disabled]="!formulario.valid">Enviar</button>
-    </form>
-
+    </div>
 </div>

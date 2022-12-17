@@ -1,44 +1,56 @@
-.principal {
-    background-image: url(../../../../assets/images/hero.jpg);
+.headerLanding {
+    padding: 30px 40px;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(../../../../assets/images/hero.jpg);
     background-size: cover;
-    width: 100vw;
     height: 100vh;
 }
 
-.titulobotones {
+nav ul li {
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+nav ul li:hover {
+    color: #3D3E48;
+}
+
+.textLanding {
+    margin-top: 25vh;
     color: white;
-    font-size: 2000;
 }
 
-.titulotexto h1 {
-    font-family: 'Poppins';
-    font-style: normal;
-    margin-top: 35%;
+.textLanding h1 {
+    font-weight: 300;
+    font-size: 48px;
 }
 
-button {
-    color: white;
+.textLanding h2 {
+    font-weight: 300;
+    font-size: 24px;
 }
 
-button:hover {
-    color: #2E8682
+.contLanding {
+    margin: 100px 0px;
 }
 
-.titulotexto h2 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-size: 1500;
-    margin-top: 35%;
+.contLanding h4 {
+    font-size: 18px;
+    font-weight: 700;
 }
 
-h4 {
-    font-family: 'Poppins';
-    font-style: normal;
+.contLanding h3 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.contLanding .numero {
+    font-size: 30px;
+    font-weight: 700;
     color: #2E8682;
-}
-
-.numero {
-    font-family: 'Poppins';
-    font-style: normal;
-    color: #2E8682
+    margin-top: 30px;
 }

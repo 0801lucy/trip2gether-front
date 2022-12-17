@@ -58,9 +58,9 @@ export class MyProfileComponent implements OnInit {
           Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
         ]),
 
-        // img_user: new FormControl(response.img_user, [
-        //   Validators.required,
-        // ]),
+        img_user: new FormControl(response.img_user, [
+          Validators.required,
+        ]),
 
         birth_date: new FormControl(response.birth_date, [
           Validators.required,
@@ -81,6 +81,26 @@ export class MyProfileComponent implements OnInit {
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
 
+
+    let changeProfile = new FormData(); {
+      changeProfile.append('img_user', this.files[0]);
+      changeProfile.append('name', this.formulario.value.name);
+      changeProfile.append('surname', this.formulario.value.surname);
+      changeProfile.append('username', this.formulario.value.username);
+      changeProfile.append('phone', this.formulario.value.phone);
+      changeProfile.append('hobbies', this.formulario.value.hobbies);
+      changeProfile.append('personality', this.formulario.value.personality);
+      changeProfile.append('birth_date', this.formulario.value.birth_date);
+
+      const response = await this.userService.updateProfile(changeProfile);
+
+      if (response.success) {
+        alert(response.success);
+      } else {
+        alert('Revisa los errores');
+      }
+    }
+
   }
 
   checkError(field: string, error: string): boolean | undefined {
@@ -96,27 +116,14 @@ export class MyProfileComponent implements OnInit {
   }
 
   async onSubmit() {
-
-    let changeProfile = new FormData();
-    changeProfile.append('img_user', this.files[0]);
-    changeProfile.append('name', this.formulario.value.name);
-    changeProfile.append('surname', this.formulario.value.surname);
-    changeProfile.append('username', this.formulario.value.username);
-    changeProfile.append('phone', this.formulario.value.phone);
-    changeProfile.append('hobbies', this.formulario.value.hobbies);
-    changeProfile.append('personality', this.formulario.value.personality);
-    changeProfile.append('birth_date', this.formulario.value.birth_date);
-
-    const response = await this.userService.updateProfile(changeProfile);
+    const response = await this.userService.updateProfile(this.formulario.value)
+    console.log(response);
 
     if (response.success) {
-      alert(response.success);
+      alert('Perfil actualizado!');
     } else {
-      alert('Revisa los errores');
+      alert('Ha habido algún problema, comprueba todos los datos')
     }
-
-
-
   }
 
 }

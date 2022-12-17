@@ -1,7 +1,6 @@
 <figure>
     <img src="../../../../assets/images/home.jpg" alt="" class="img-fluid">
 </figure>
-
 <div class="container m-auto">
     <h5 class="mt-5 text-center textGreen">Próximos viajes</h5>
     <h1 class="mb-5 text-center textBlack">Descubre lo que te apasiona</h1>
@@ -19,7 +18,7 @@
             </div>
         </div>
     </form>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-6 col-lg-4 mb-4" *ngFor="let trip of trips">
             <div class="card">
                 <div class="fotoCard" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+trip.img_trip+')'}">

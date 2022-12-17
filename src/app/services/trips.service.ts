@@ -55,9 +55,9 @@ export class TripsService {
 
   }
 
-  createItinerary(itinerary: any) {
+  createItinerary(itinerary: any, tripId: any) {
     return firstValueFrom(
-      this.httpClient.post(`${this.baseUrl}/itinerary`, itinerary)
+      this.httpClient.post(`${this.baseUrl}/itinerary`, itinerary, tripId)
     );
   }
 

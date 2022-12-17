@@ -36,8 +36,6 @@ export class DetailTripComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       const tripId = parseInt(params['tripId'])
       this.detail = await this.tripsService.getTripById(tripId);
-
-      console.log(this.detail);
     })
   }
 
@@ -48,8 +46,14 @@ export class DetailTripComponent implements OnInit {
 
   async addDayToItinerary() {
     //al pulsar añadir: Y resetea
-    const itinerary = await this.tripsService.createItinerary(this.itinerary_form.value);
-    console.log(this.itinerary_form.value);
+    this.activatedRoute.params.subscribe(async params => {
+      const tripId = parseInt(params['tripId'])
+      this.detail = await this.tripsService.getTripById(tripId);
+      console.log(tripId);
+      const itinerary = await this.tripsService.createItinerary(this.itinerary_form.value, tripId);
+      console.log(itinerary);
+    })
+
   }
 
 

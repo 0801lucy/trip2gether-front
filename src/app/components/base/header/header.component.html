@@ -1,15 +1,22 @@
-<div class="container">
-    <div class="row">
-        <div class="col-4 mt-3">
-            <h2 [routerLink]="['/']">trip2gether</h2>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <img src="../../../../assets/images/logo-green.png" alt="" [routerLink]="['/trips']" class="cPointer">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item" [routerLink]="['/trips']" routerLinkActive="active">
+                        <a class="nav-link">Viajes</a>
+                    </li>
+                    <li class="nav-item" [routerLink]="['/myprofile']" routerLinkActive="active">
+                        <a class="nav-link">Mi perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="onLogOut()">Logout</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userLogged"><img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + userLogged.img_user)"></li>
+
+                </ul>
+            </div>
         </div>
-        <nav class="row col-4 offset-4 mt-4">
-            <ul>
-                <li class="col-3" [routerLink]="['/trips']">Viajes</li>
-                <li class="col-3 offset-1" [routerLink]="['/myprofile']">Mi perfil</li>
-                <li class="col-3 offset-1" (click)="onLogOut()">Logout</li>
-                <!-- <li><img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)"></li> -->
-            </ul>
-        </nav>
-    </div>
-</div>
+    </nav>
+</header>

@@ -44,13 +44,22 @@ export class UsersService {
 
   }
 
+
+  // Recuperamos el perfil
   getProfile() {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/profile`)
     )
   }
-
+  // Modificamos el perfil
   updateProfile(pValues: FormData) {
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/profile`, pValues)
+    )
+  }
+
+  //Modifico la foto
+  updatePhoto(pValues: FormData) {
     return firstValueFrom(
       this.httpClient.put<any>(`${this.baseUrl}/profile`, pValues)
     )

@@ -4,40 +4,27 @@
 
 <h3 class="offset-2 mt-3">Mis datos personales</h3>
 
-<form [formGroup]="formulario" *ngIf="formulario" (ngSubmit)="onSubmit()">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <div class="row">
-        <div class="col-3 offset-2 mb-3 mt-5">
+        <div class="col-2 offset-3 mt-5">
             <label class="form-label">Nombre:</label>
-            <input type="text" class="form-control" formControlName="name" [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" formControlName="name">
             <p class="error" *ngIf="checkError('name', 'required')">Este campo es requerido <span>*</span></p>
         </div>
-        <div class="col-3 offset-1 mb-3 mt-5">
+        <div class="col-2 offset-1 mt-5">
             <label class="form-label">Apellidos:</label>
-            <input type="text" class="form-control" formControlName="surname" [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" formControlName="surname">
             <p class="error" *ngIf="checkError('surname', 'required')">Este campo es requerido <span>*</span></p>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-3 offset-2 mb-3 mt-2">
+        <div class="col-2 offset-3">
             <label class="form-label">Usuario:</label>
-            <input type="text" class="form-control" formControlName="username" [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" formControlName="username">
             <p class="error" *ngIf="checkError('username', 'required')"> Campo requerido <span>*</span></p>
         </div>
-        <div class="col-3 offset-1 mb-3 mt-2">
-            <label class="form-label">Contraseña:</label>
-            <input type="password" class="form-control" formControlName="password" [attr.disabled]="true">
-            <p class="error" *ngIf="checkError('password', 'required')">Campo requerido <span>*</span></p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-3 offset-2 mb-3 mt-2">
-            <label class="form-label">Teléfono:</label>
-            <input type="text" class="form-control" formControlName="phone" [attr.disabled]="bloqueo ? 'disabled': null">
-            <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido <span>*</span></p>
-        </div>
-        <div class="col-3 offset-1 mb-3 mt-2">
+        <div class="col-2 offset-1">
             <label class="form-label">Email:</label>
             <input type="text" class="form-control" formControlName="email" [attr.disabled]="true">
             <p class="error" *ngIf="checkError('email', 'required')">Campo requerido <span>*</span></p>
@@ -46,55 +33,51 @@
     </div>
 
     <div class="row">
-        <div class="col-3 offset-2 mb-3 mt-2">
-            <label class="form-label">Fecha de nacimiento:</label>
-            <input type="date" class="form-control" formControlName="birth_date" [attr.disabled]="bloqueo ? 'disabled': null">
-            <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span></p>
+        <div class="col-2 offset-3 mt-2">
+            <label class="form-label">Teléfono:</label>
+            <input type="text" class="form-control" formControlName="phone">
+            <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido <span>*</span></p>
         </div>
-
-
-
-
-
-
-        <div class="col-3 offset-1 mb-2">
-            <label class="form-label"> Foto de perfil:</label>
-            <input type="file" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null" name="img_user" (change)="onChange($event)">
-            <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
+        <div class="col-2 offset-1 mt-2">
+            <label class="form-label">Fecha de nacimiento:</label>
+            <input type="date" class="form-control" formControlName="birth_date">
+            <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span></p>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
     <div class="row">
-        <div class="col-3 offset-2 mb-3 mt-2">
+        <div class="col-5 offset-3 mt-2">
             <label class="form-label">Aficiones:</label>
-            <input type="text" class="form-control" id="aficiones" formControlName="hobbies" [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" id="aficiones" formControlName="hobbies">
             <p class="error" *ngIf="checkError('hobbies', 'required')">Campo requerido <span>*</span></p>
         </div>
 
-        <div class="col-3 offset-1 mb-3 mt-2">
+    </div>
+
+    <div class="row">
+        <div class="col-5 offset-3 mt-2">
             <label class="form-label">Personalidad:</label>
-            <input type="text" class="form-control col-8" id="personalidad" formControlName="personality" [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control col-8" id="personalidad" formControlName="personality">
             <p class="error" *ngIf="checkError('personality', 'required')">Campo requerido <span>*</span></p>
         </div>
     </div>
 
     <div class="row mt-3">
-        <button class="btn col-2 offset-3" type="submit" (click)="pulsarBoton()" [disabled]="!formulario.valid">Guardar cambios</button>
-        <button class="btn col-2 offset-1" (click)="pulsarBoton()" *ngIf="bloqueo">Editar perfil</button>
+        <button class="btn col-5 offset-3" type="submit">Actualizar perfil</button>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="offset-3" formControlName="img_user"></div>
+
+        <div class="col-3 offset-5">
+            <input type="file" class="form-control col-3" name="img_user" (change)="onChange($event)">
+            <button class="btn col-6 offset-6 mt-3" type="submit">Guardar foto</button>
+        </div>
     </div>
 </form>
 
-<h3 class="offset-2 mt-3">Mis viajes</h3>
+<h3 class="offset-2 mt-5">Mis viajes</h3>
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2 mb-3">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
 import { environment } from 'src/environments/environment';
@@ -21,7 +21,7 @@ export class MyProfileComponent implements OnInit {
   profile: any
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
-    private tripsService: TripsService
+    private tripsService: TripsService, private router: Router
   ) {
     this.serverUrl = environment.serverUrl;
     this.bloqueo = true;
@@ -45,18 +45,13 @@ export class MyProfileComponent implements OnInit {
           Validators.required,
         ]),
 
-        password: new FormControl('*******', [
-          Validators.required,
-        ]),
+        password: new FormControl('********'),
 
         phone: new FormControl(response.phone, [
           Validators.required,
         ]),
 
-        email: new FormControl(response.email, [
-          Validators.required,
-          Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
-        ]),
+        email: new FormControl(response.email),
 
         img_user: new FormControl(response.img_user, [
           Validators.required,
@@ -83,10 +78,10 @@ export class MyProfileComponent implements OnInit {
 
 
     let changeProfile = new FormData(); {
-      changeProfile.append('img_user', this.files[0]);
       changeProfile.append('name', this.formulario.value.name);
       changeProfile.append('surname', this.formulario.value.surname);
       changeProfile.append('username', this.formulario.value.username);
+      changeProfile.append('email', this.formulario.value.email);
       changeProfile.append('phone', this.formulario.value.phone);
       changeProfile.append('hobbies', this.formulario.value.hobbies);
       changeProfile.append('personality', this.formulario.value.personality);
@@ -101,6 +96,17 @@ export class MyProfileComponent implements OnInit {
       }
     }
 
+    let changePhoto = new FormData(); {
+      changePhoto.append('img_user', this.files[0])
+    }
+    const updatePhoto = await this.userService.updatePhoto(changePhoto);
+
+    if (updatePhoto.success) {
+      alert(updatePhoto.success);
+    } else {
+      alert('Revisa los errores');
+    }
+
   }
 
   checkError(field: string, error: string): boolean | undefined {
@@ -111,18 +117,26 @@ export class MyProfileComponent implements OnInit {
     this.files = $event.target.files;
   }
 
-  pulsarBoton() {
-    this.bloqueo = !this.bloqueo
-  }
-
   async onSubmit() {
     const response = await this.userService.updateProfile(this.formulario.value)
     console.log(response);
 
     if (response.success) {
       alert('Perfil actualizado!');
+      this.router.navigate(['/myprofile'])
     } else {
-      alert('Ha habido algún problema, comprueba todos los datos')
+      alert('Ha habido algún problema!')
+    }
+
+
+    const photo = await this.userService.updatePhoto(this.formulario.value)
+    console.log(photo);
+
+    if (photo.success) {
+      alert('Foto actualizada!')
+      this.router.navigate(['/myprofile'])
+    } else {
+      alert('Ha habido algún problema, contacta con nosotros!')
     }
   }
 

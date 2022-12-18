@@ -1,18 +1,17 @@
-.textContainer {
-    border-radius: 20px;
-    border: 2px solid #2E8682;
+table img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
-.messageBox {
-    height: 3em;
+.tableHead th {
+    background-color: var(--principalColor);
+    color: white;
+    font-weight: 400;
 }
 
-.textBox input {
-    border-radius: 20px;
-    border: 2px solid #2E8682;
-}
-
-button {
-    border: 2px solid #2E8682;
-    border-radius: 20px;
+h2 {
+    font-size: 32px;
+    font-weight: 700;
 }

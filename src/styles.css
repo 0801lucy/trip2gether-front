@@ -35,8 +35,20 @@ h1 {
 
 }
 
-.btn.btn.btn-green:hover {
+.btn.btn-green:hover {
     background-color: #1C5653;
+}
+
+.btn.btn-white {
+    background-color: white;
+    color: var(--principalColor);
+    border: 2px solid var(--principalColor);
+
+}
+
+.btn.btn-white:hover {
+    background-color: #1C5653;
+    color: white;
 }
 
 .error {

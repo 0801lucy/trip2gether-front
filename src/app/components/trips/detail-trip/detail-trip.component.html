@@ -78,67 +78,109 @@
     <h2 class="my-5 textBlack">Itinerario</h2>
     <div class="row">
         <div class="col">
-            <div class="itiDay">
-                <div class="row">
-                    <div class="col-auto circle">
-                        <i class="fas fa-circle"></i>
-                    </div>
-                    <div class="col circle">
-                        DÍA X
-                        <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
-                    </div>
-                </div>
-            </div>
-            <div class="itiDay">
-                <div class="row">
-                    <div class="col-auto circle">
-                        <i class="fas fa-circle"></i>
-                    </div>
-                    <div class="col circle">
-                        DÍA X
-                        <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
+            <div class="itinerary">
+                <div class="itiDay">
+                    <div class="row">
+                        <div class="col-auto circle">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="col circle">
+                            <span>DÍA X</span>
+                            <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="itiDay">
-                <div class="row">
-                    <div class="col-auto circle">
-                        <i class="fas fa-circle"></i>
+                <div class="itiDay">
+                    <div class="row">
+                        <div class="col-auto circle">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="col circle">
+                            <span>DÍA X</span>
+                            <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
+                        </div>
                     </div>
-                    <div class="col circle">
-                        DÍA X
-                        <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
+                </div>
+                <div class="itiDay">
+                    <div class="row">
+                        <div class="col-auto circle">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="col circle">
+                            <span>DÍA X</span>
+                            <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col my-5 text-center">
+                    <button (click)="onClick()" class="btn btn-lg btn-green">Crea tu itinerario</button>
+                </div>
+                <form class="itinerary" *ngIf="showInputText" [formGroup]="itinerary_form">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">Inicio</label>
+                            <input type="date" class="form-control" formControlName="it_date_begin">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Fin</label>
+                            <input type="date" class="form-control" formControlName="it_date_end">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" formControlName="it_description">
+                            <button (click)="addDayToItinerary()" class="btn btn-white mt-3">Añadir</button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+            </div>
         </div>
         <div class="col map">MAPA</div>
     </div>
 
-    <!-- BOTONES -->
+    <!-- SOLICITUDES / QUIENES VAMOS -->
+    <h2 class="mt-5">Solicitudes de viajeros</h2>
     <div class="row">
-        <div class="col my-5 text-center">
-            <button class="btn btn-lg btn-green">Me gustaría unirme</button>
+        <div class="col-md-6">
+            <div class="traveler">
+                Viajero
+            </div>
         </div>
-        <div class="col my-5 text-center">
-            <button (click)="onClick()" class="btn btn-lg btn-green">Crea tu itinerario</button>
+        <div class="col-md-6">
+            <div class="traveler">
+                Viajero
+            </div>
         </div>
-        <form class="itinerary" *ngIf="showInputText" [formGroup]="itinerary_form">
-            <label class="form-label">Inicio</label>
-            <input type="date" class="form-control" formControlName="it_date_begin">
-            <label class="form-label">Fin</label>
-            <input type="date" class="form-control" formControlName="it_date_end">
-            <label class="form-label">Descripción</label>
-            <input type="text" class="form-control" formControlName="it_description">
-            <button (click)="addDayToItinerary()">Añadir</button>
-        </form>
-        <div class="col text-center my-5">
-            <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
+        <div class="col-md-6">
+            <div class="traveler">
+                Viajero
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="traveler">
+                Viajero
+            </div>
         </div>
     </div>
+
 
 </div>
 
 <!-- COMENTARIOS -->
 <app-comments-trips></app-comments-trips>
+
+<!-- BOTONES -->
+<div class="row my-5">
+    <div class="col text-center">
+        <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
+    </div>
+    <div class="col  text-center">
+        <button class="btn btn-lg btn-green">Me gustaría unirme</button>
+    </div>
+</div>

@@ -50,3 +50,7 @@ h5 {
     font-weight: 800;
     font-size: 16px;
 }
+
+label {
+    font-weight: 500;
+}

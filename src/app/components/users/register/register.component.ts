@@ -17,36 +17,36 @@ export class RegisterComponent implements OnInit {
   constructor(private usersService: UsersService,
     private router: Router) {
     this.formulario = new FormGroup({
-      name: new FormControl('Pepito', [
+      name: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ]),
-      surname: new FormControl('Grillo', [
+      surname: new FormControl('', [
         Validators.required,
         Validators.maxLength(60)
       ]),
-      username: new FormControl('pepeg', [
+      username: new FormControl('', [
         Validators.required,
         Validators.maxLength(45)
       ]),
-      password: new FormControl('123456', [
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(6)
       ]),
-      phone: new FormControl('666666666', [
+      phone: new FormControl('', [
         Validators.required,
         Validators.maxLength(9)
       ]),
-      email: new FormControl('pepito@gmail.com', [
+      email: new FormControl('', [
         Validators.required,
         Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
       ]),
-      birth_date: new FormControl('1980-10-23'),
-      hobbies: new FormControl('prueba', [
+      birth_date: new FormControl(),
+      hobbies: new FormControl('', [
         Validators.required,
         Validators.maxLength(600)
       ]),
-      personality: new FormControl('prueba', [
+      personality: new FormControl('', [
         Validators.required,
         Validators.maxLength(600)
       ]),

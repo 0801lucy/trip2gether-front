@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
@@ -55,9 +56,12 @@ export class TripsService {
 
   }
 
-  createItinerary(itinerary: any, tripId: any) {
+  createItinerary(description: string, dateStart: Date, dateEnd: Date, tripId: number) {
+    const pipes = new DatePipe('en-US');
+    const dateFormat = 'yyyy-MM-dd';
+    const params = { it_description: description, it_date_begin: pipes.transform(dateStart, dateFormat), it_date_end: pipes.transform(dateEnd, dateFormat), trip_id: tripId }
     return firstValueFrom(
-      this.httpClient.post(`${this.baseUrl}/itinerary`, itinerary, tripId)
+      this.httpClient.post(`${this.baseUrl}/itinerary`, params)
     );
   }
 
@@ -89,6 +93,21 @@ export class TripsService {
     return firstValueFrom(
       this.httpClient.get<any[]>(`${this.baseUrl}/comment/${tripId}`)
     )
+  }
+
+  subscribeToTrip(tripId: number) {
+    const params = { trips_id: tripId, user_status: 'pending' }
+    return firstValueFrom(
+      this.httpClient.post(`${this.baseUrl}/request`, params, this.createHeaders())
+    )
+  }
+
+  createHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
   }
 
 }

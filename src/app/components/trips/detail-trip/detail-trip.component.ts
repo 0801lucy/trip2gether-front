@@ -18,6 +18,7 @@ export class DetailTripComponent implements OnInit {
   itinerary: string[];
   itinerary_form: FormGroup;
   showInputText: boolean;
+  tripId: number;
 
 
 
@@ -30,12 +31,14 @@ export class DetailTripComponent implements OnInit {
       it_date_begin: new FormControl(),
       it_date_end: new FormControl()
     })
+
+    this.tripId = -1;
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async params => {
-      const tripId = parseInt(params['tripId'])
-      this.detail = await this.tripsService.getTripById(tripId);
+      this.tripId = parseInt(params['tripId'])
+      this.detail = await this.tripsService.getTripById(this.tripId);
     })
   }
 
@@ -46,20 +49,20 @@ export class DetailTripComponent implements OnInit {
 
   async addDayToItinerary() {
     //al pulsar añadir: Y resetea
-    this.activatedRoute.params.subscribe(async params => {
-      const tripId = parseInt(params['tripId'])
-      this.detail = await this.tripsService.getTripById(tripId);
-      console.log(tripId);
-      const itinerary = await this.tripsService.createItinerary(this.itinerary_form.value, tripId);
-      console.log(itinerary);
-    })
-
+    const itinerary = await this.tripsService.createItinerary(
+      this.itinerary_form.value.it_description,
+      this.itinerary_form.value.it_date_begin,
+      this.itinerary_form.value.it_date_end,
+      this.tripId);
+    this.itinerary_form.reset();
+    console.log(itinerary);
   }
 
 
-
-
-
+  async onSubscribe() {
+    const response = await this.tripsService.subscribeToTrip(this.tripId);
+    console.log(response);
+  }
 
 
 }

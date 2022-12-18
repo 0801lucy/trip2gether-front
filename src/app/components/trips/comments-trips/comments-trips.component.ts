@@ -42,8 +42,9 @@ export class CommentsTripsComponent implements OnInit {
   }
 
   async onSubmit() {
-    const responseComments = await this.tripsService.createComment(this.form.value.inputMessage, this.tripid);
+    const responseComments = await this.tripsService.createComment(this.form.value.textMessage, this.tripid);
     this.comments = await this.tripsService.getCommentsByTrips(this.tripid);
+    this.form.reset();
   }
 }
 

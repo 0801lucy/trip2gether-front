@@ -16,7 +16,7 @@ export class MyProfileComponent implements OnInit {
   bloqueo: boolean;
   user: any;
   tripsOwn: any;
-  tripsSuscribed: any;
+  tripsSubscribed: any;
   serverUrl: string;
   files: any;
   profile: any
@@ -78,7 +78,7 @@ export class MyProfileComponent implements OnInit {
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
-    this.tripsSuscribed = await this.tripsService.getUserSuscrited();
+    this.tripsSubscribed = await this.tripsService.getUserSubscribed();
     let changeProfile = new FormData(); {
       changeProfile.append('img_user', this.files[0]);
       changeProfile.append('name', this.formulario.value.name);

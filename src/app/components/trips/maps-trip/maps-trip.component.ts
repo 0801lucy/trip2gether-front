@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { PaisesService } from 'src/app/services/paises.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Trip } from 'src/app/interfaces/trip.interface';
+import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
   selector: 'app-maps-trip',
@@ -8,26 +10,35 @@ import { PaisesService } from 'src/app/services/paises.service';
 })
 export class MapsTripsComponent implements OnInit {
 
-  lat: number;
-  lng: number;
+  // lat: number;
+  // lng: number;
   zoom: number;
-  mapTypeId: string;
+  // mapType: string;
+  // tripId: number;
+  // geometry: any;
 
-  paises: any[]
+  @Input() latitude!: number;
+  @Input() longitude!: number;
 
-  constructor(private paisesService: PaisesService) {
-    this.lat = 40;
-    this.lng = -3;
-    this.zoom = 6;
-    this.mapTypeId = 'hybrid';
-    this.paises = []
+
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
+    // this.lat = 40;
+    // this.lng = -3;
+    this.zoom = 8;
+    // this.mapType = '';
+    // this.tripId = -1;
+    // this.geometry = 0;
   }
 
   ngOnInit() {
-    this.paisesService.getAll()
-      .then(paises => this.paises = paises)
-      .catch(error => console.log(error))
+    // this.activatedRoute.params.subscribe(async params => {
+    //   this.tripId = parseInt(params['tripId'])
+    //   const geometry = await this.tripsService.getGeometry(this.tripId);
+    //   console.log(geometry);
+    // })
 
   }
-
 }
+
+
+

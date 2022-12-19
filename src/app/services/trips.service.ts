@@ -77,9 +77,9 @@ export class TripsService {
     )
 
   }
-  getUserSuscrited() {
+  getUserSubscribed() {
     return firstValueFrom(
-      this.httpClient.get(`${this.baseUrl}/user/suscribed`)
+      this.httpClient.get(`${this.baseUrl}/user/subscribed`)
 
     )
 
@@ -88,6 +88,12 @@ export class TripsService {
 
     return firstValueFrom(
       this.httpClient.get<any[]>(`${this.baseUrl}/comment/${tripId}`)
+    )
+  }
+
+  getGeometry(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/geometry/${tripId}`)
     )
   }
 

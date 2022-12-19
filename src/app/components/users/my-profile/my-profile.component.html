@@ -13,8 +13,7 @@
         </div>
         <div class="col-3 offset-1 mb-3 mt-5">
             <label class="form-label">Apellidos:</label>
-            <input type="text" class="form-control" formControlName="surname"
-                [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" formControlName="surname" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('surname', 'required')">Este campo es requerido <span>*</span></p>
         </div>
     </div>
@@ -22,8 +21,7 @@
     <div class="row">
         <div class="col-3 offset-2 mb-3 mt-2">
             <label class="form-label">Usuario:</label>
-            <input type="text" class="form-control" formControlName="username"
-                [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" formControlName="username" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('username', 'required')"> Campo requerido <span>*</span></p>
         </div>
         <div class="col-3 offset-1 mb-3 mt-2">
@@ -36,8 +34,7 @@
     <div class="row">
         <div class="col-3 offset-2 mb-3 mt-2">
             <label class="form-label">Teléfono:</label>
-            <input type="text" class="form-control" formControlName="phone"
-                [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" formControlName="phone" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido <span>*</span></p>
         </div>
         <div class="col-3 offset-1 mb-3 mt-2">
@@ -51,14 +48,12 @@
     <div class="row">
         <div class="col-3 offset-2 mb-3 mt-2">
             <label class="form-label">Fecha de nacimiento:</label>
-            <input type="date" class="form-control" formControlName="birth_date"
-                [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="date" class="form-control" formControlName="birth_date" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span></p>
         </div>
         <div class="col-3 offset-1 mb-2">
             <label class="form-label"> Foto de perfil:</label>
-            <input type="file" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null"
-                name="img_user" (change)="onChange($event)">
+            <input type="file" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null" name="img_user" (change)="onChange($event)">
             <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
         </div>
     </div>
@@ -66,15 +61,13 @@
     <div class="row">
         <div class="col-3 offset-2 mb-3 mt-2">
             <label class="form-label">Aficiones:</label>
-            <input type="text" class="form-control" id="aficiones" formControlName="hobbies"
-                [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control" id="aficiones" formControlName="hobbies" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('hobbies', 'required')">Campo requerido <span>*</span></p>
         </div>
 
         <div class="col-3 offset-1 mb-3 mt-2">
             <label class="form-label">Personalidad:</label>
-            <input type="text" class="form-control col-8" id="personalidad" formControlName="personality"
-                [attr.disabled]="bloqueo ? 'disabled': null">
+            <input type="text" class="form-control col-8" id="personalidad" formControlName="personality" [attr.disabled]="bloqueo ? 'disabled': null">
             <p class="error" *ngIf="checkError('personality', 'required')">Campo requerido <span>*</span></p>
         </div>
     </div>
@@ -124,7 +117,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2 mb-3">
-            <div class="card" *ngFor="let trip of tripsSuscribed">
+            <div class="card" *ngFor="let trip of tripsSubscribed">
                 <div class="fotoCard">
                 </div>
                 <div class="card-body">

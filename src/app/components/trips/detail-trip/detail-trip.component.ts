@@ -15,7 +15,7 @@ export class DetailTripComponent implements OnInit {
 
   detail!: Trip;
   serverUrl: string;
-  itinerary: string[];
+  itinerary: any;
   itinerary_form: FormGroup;
   showInputText: boolean;
   tripId: number;
@@ -24,7 +24,6 @@ export class DetailTripComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer) {
     this.serverUrl = environment.serverUrl;
-    this.itinerary = [];
     this.showInputText = false;
     this.itinerary_form = new FormGroup({
       it_description: new FormControl(),
@@ -39,6 +38,7 @@ export class DetailTripComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       this.tripId = parseInt(params['tripId'])
       this.detail = await this.tripsService.getTripById(this.tripId);
+      this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
     })
   }
 

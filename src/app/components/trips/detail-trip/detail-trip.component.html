@@ -79,41 +79,18 @@
     <div class="row">
         <div class="col">
             <div class="itinerary">
-                <div class="itiDay">
+                <div class="itiDay" *ngFor="let item of itinerary">
                     <div class="row">
                         <div class="col-auto circle">
                             <i class="fas fa-circle"></i>
                         </div>
                         <div class="col circle">
-                            <span>DÍA X</span>
-                            <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="itiDay">
-                    <div class="row">
-                        <div class="col-auto circle">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="col circle">
-                            <span>DÍA X</span>
-                            <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="itiDay">
-                    <div class="row">
-                        <div class="col-auto circle">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="col circle">
-                            <span>DÍA X</span>
-                            <div>Bienvenidos a Islandia: empezamos por Reikiavik</div>
+                            <span>{{item.it_description}}</span>
+                            <div class="dateItinerary">{{item.it_date_begin | date: 'dd/MM/y'}} - {{item.it_date_end | date: 'dd/MM/y'}}</div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col my-5 text-center">
                     <button (click)="onClick()" class="btn btn-lg btn-green">Crea tu itinerario</button>
@@ -134,11 +111,7 @@
                             <button (click)="addDayToItinerary()" class="btn btn-white mt-3">Añadir</button>
                         </div>
                     </div>
-
-
-
                 </form>
-
             </div>
         </div>
         <div class="col map">MAPA</div>

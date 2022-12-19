@@ -65,6 +65,12 @@ export class TripsService {
     );
   }
 
+  getItineraryByTripId(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/itinerary/${tripId}`)
+    )
+  }
+
 
   createComment(message: string, trip_id: number) {
     const body = { message, trip_id }

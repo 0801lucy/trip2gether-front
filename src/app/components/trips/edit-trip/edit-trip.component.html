@@ -1,0 +1,92 @@
+<figure>
+    <img src="../../../../assets/images/nuevo_viaje.jpg" alt="" class="img-fluid">
+</figure>
+<div class="container m-auto">
+    <h1 class="my-5">Editar viaje</h1>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <div class="row mb-3">
+            <div class="col-md">
+                <label class="form-label">Destino <span class="req">*</span></label>
+                <input type="text" class="form-control" #inputPlaces formControlName="destination" [attr.disabled]="true">
+                <p class="error" *ngIf="checkError('destination', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Mín.viajeros <span class="req">*</span></label>
+                <input type="number" class="form-control" formControlName="min_traveler">
+                <p class="error" *ngIf="checkError('min_traveler', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Máx.viajeros <span class="req">*</span></label>
+                <input type="number" class="form-control" formControlName="max_traveler">
+                <p class="error" *ngIf="checkError('max_traveler', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Edad mínima <span class="req">*</span></label>
+                <input type="number" class="form-control" formControlName="min_age">
+                <p class="error" *ngIf="checkError('min_age', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Edad máxima <span class="req">*</span></label>
+                <input type="number" class="form-control" formControlName="max_age">
+                <p class="error" *ngIf="checkError('max_age', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md">
+                <label class="form-label">Fecha de salida <span class="req">*</span></label>
+                <input type="date" class="form-control" formControlName="departure_date">
+                <p class="error" *ngIf="checkError('departure_date', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Duración (días) <span class="req">*</span></label>
+                <input type="number" class="form-control" formControlName="duration">
+                <p class="error" *ngIf="checkError('duration', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Precio <span class="req">*</span></label>
+                <input type="number" class="form-control" formControlName="price">
+                <p class="error" *ngIf="checkError('price', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md">
+                <label class="form-label">Subir imagen <span class="req">*</span></label>
+                <input type="file" class="form-control" name="img_trip" (change)="onChange($event)">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción <span class="req">*</span></label>
+            <textarea class="form-control" rows="8" formControlName="description"></textarea>
+            <p class="error" *ngIf="checkError('description', 'required')">El campo es obligatorio</p>
+        </div>
+        <h5 class="mb-3 mt-4">Incluido <span>(elige al menos 3 opciones)</span></h5>
+        <div class="row px-4">
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="flights">
+                <label class="form-check-label">Avión ida y vuelta</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="hotel">
+                <label class="form-check-label">Alojamiento</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="meals">
+                <label class="form-check-label">Media pensión</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="excursions">
+                <label class="form-check-label">Excursiones</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="rent_car">
+                <label class="form-check-label">Alquiler de coches</label>
+            </div>
+            <div class="form-check form-check-inline col-md-3">
+                <input class="form-check-input" type="checkbox" formControlName="insurance">
+                <label class="form-check-label">Seguro asistencia</label>
+            </div>
+        </div>
+        <div class="text-center my-5">
+            <button [routerLink]="['/trips', tripId]" class="btn btn-outline-danger me-3">Volver</button>
+            <input class="btn btn-green" type="submit" value="Guardar cambios">
+        </div>
+    </form>
+</div>

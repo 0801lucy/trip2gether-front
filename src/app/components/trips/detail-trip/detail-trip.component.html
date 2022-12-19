@@ -1,5 +1,5 @@
 <!-- DETALLE -->
-<div class="bg-tripDetail" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+detail.img_trip+')'}"></div>
+<div class="bg-tripDetail" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+detail.img_trip+')'}" *ngIf="detail"></div>
 <div class="container" *ngIf="detail">
     <div class="row my-5">
         <div class="col-md">
@@ -115,6 +115,12 @@
             </div>
         </div>
         <div class="col map">MAPA</div>
+    </div>
+
+    <!-- BOTONES -->
+    <div class="text-center my-5">
+        <button [routerLink]="['/trips']" class="btn btn-danger me-3">Borrar</button>
+        <button class="btn btn-green" [routerLink]="['/trips', 'edit', tripId]">Editar viaje</button>
     </div>
 
     <!-- SOLICITUDES / QUIENES VAMOS -->

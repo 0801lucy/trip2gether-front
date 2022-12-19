@@ -56,6 +56,12 @@ export class TripsService {
 
   }
 
+  getTripsCreatedByUser() {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/user/created`)
+    )
+  }
+
   createItinerary(description: string, dateStart: Date, dateEnd: Date, tripId: number) {
     const pipes = new DatePipe('en-US');
     const dateFormat = 'yyyy-MM-dd';

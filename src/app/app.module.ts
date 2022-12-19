@@ -18,6 +18,7 @@ import { FormTripComponent } from './components/trips/form-trip/form-trip.compon
 import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
+import { EditTripComponent } from './components/trips/edit-trip/edit-trip.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CommentsTripsComponent } from './components/trips/comments-trips/commen
     DetailTripComponent,
     FormTripComponent,
     MyProfileComponent,
-    CommentsTripsComponent
+    CommentsTripsComponent,
+    EditTripComponent
 
   ],
   imports: [

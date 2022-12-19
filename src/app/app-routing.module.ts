@@ -9,6 +9,7 @@ import { PrincipalComponent } from './components/base/principal/principal.compon
 import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
 import { LoginGuard } from './guards/login.guard';
+import { EditTripComponent } from './components/trips/edit-trip/edit-trip.component';
 
 
 const routes: Routes = [
@@ -17,8 +18,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'trips', component: ListTripComponent },
   { path: 'trips/new', component: FormTripComponent },
+  { path: 'trips/edit/:tripId', component: EditTripComponent },
   { path: 'trips/:tripId', component: DetailTripComponent },
   { path: 'myprofile', component: MyProfileComponent }
+
 
 ]
 

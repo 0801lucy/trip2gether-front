@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import jwtDecode from 'jwt-decode';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -57,7 +58,11 @@ export class UsersService {
       this.httpClient.put<any>(`${this.baseUrl}/profile`, pValues)
     )
   }
+  getUserData() {
+    return jwtDecode(localStorage.getItem('token')!) as any
+  }
 
 }
+
 
 

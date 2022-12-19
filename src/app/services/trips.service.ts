@@ -101,7 +101,6 @@ export class TripsService {
 
   }
   getCommentsByTrips(tripId: number) {
-
     return firstValueFrom(
       this.httpClient.get<any[]>(`${this.baseUrl}/comment/${tripId}`)
     )
@@ -112,6 +111,21 @@ export class TripsService {
     return firstValueFrom(
       this.httpClient.post(`${this.baseUrl}/request`, params, this.createHeaders())
     )
+  }
+
+  getSubscribedByTrip(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any[]>(`${this.baseUrl}/subscribed/${tripId}`)
+    )
+
+  }
+
+  manageUsers(tripId: number, userId: number, user_status: string) {
+    const params = { tripId, userId, user_status }
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/${tripId}/${userId}`, params)
+    )
+
   }
 
   createHeaders() {

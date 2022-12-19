@@ -126,24 +126,36 @@
     <!-- SOLICITUDES / QUIENES VAMOS -->
     <h2 class="mt-5">Solicitudes de viajeros</h2>
     <div class="row">
-        <div class="col-md-6">
-            <div class="traveler">
-                Viajero
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="traveler">
-                Viajero
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="traveler">
-                Viajero
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="traveler">
-                Viajero
+        <div class="card my-4 col-4" *ngFor="let user of subscribedUsers">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="fotoCard">
+                            <img class="img" [src]="serverUrl +'images/' + 
+                            user.img_user" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="username">{{user.username}}</div>
+
+                    </div>
+
+                    <div class="col">
+                        <div class="username">{{user.user_status}}</div>
+
+                    </div>
+
+                    <div class="col text-end">
+                        <button class="btn btn-green 
+                         mt-5 me-3" (click)="changeStatus(true)"><i class="far fa-thumbs-up">
+
+                            </i></button>
+                        <button class="btn btn-green 
+                         mt-5 me-3" (click)="changeStatus(false)"><i class="far fa-thumbs-down">
+                            </i></button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -162,4 +174,5 @@
     <div class="col  text-center">
         <button class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
     </div>
+
 </div>

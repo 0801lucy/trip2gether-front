@@ -7,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 
+
 @Component({
   selector: 'app-detail-trip',
   templateUrl: './detail-trip.component.html',
@@ -21,28 +22,44 @@ export class DetailTripComponent implements OnInit {
   showInputText: boolean;
   tripId: number;
   subscribedUsers: any;
+  userLoggedId: number;
+  userCreatorId: number;
+  userStatus: string;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private userService: UsersService) {
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
+
     this.serverUrl = environment.serverUrl;
     this.showInputText = false;
+
     this.itinerary_form = new FormGroup({
       it_description: new FormControl(),
       it_date_begin: new FormControl(),
       it_date_end: new FormControl()
     })
 
+    this.userLoggedId = 0
+    this.userCreatorId = 0
     this.tripId = -1;
+    this.userStatus = ''
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async params => {
       this.tripId = parseInt(params['tripId'])
+
       this.detail = await this.tripsService.getTripById(this.tripId);
       this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
       this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
       console.log(this.subscribedUsers);
 
+      this.userCreatorId = this.detail.user_id
+
+      const userData = this.usersService.getUserData()
+      this.userLoggedId = userData.user_id
+
+      const userStatus = await this.tripsService.getUserSubscribed()
+      console.log(userStatus)
     })
 
   }
@@ -69,13 +86,16 @@ export class DetailTripComponent implements OnInit {
     console.log(response);
   }
 
+  onProfile() {
+
+  }
 
   async changeStatus(aceptada: boolean) {
     let status = 'rechazada';
     if (aceptada) {
       status = 'aceptada';
     }
-    const userData = this.userService.getUserData()
+    const userData = this.usersService.getUserData()
     console.log(userData)
 
     const response = await this.tripsService.manageUsers(this.tripId, userData.user_id, status)

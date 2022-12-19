@@ -75,9 +75,10 @@
         </div>
     </div>
     <!-- ITINERARIO -->
-    <h2 class="my-5 textBlack">Itinerario</h2>
-    <div class="row">
-        <div class="col">
+
+    <div class="row my-5">
+        <div class="col-8">
+            <h2 class="textBlack">Itinerario</h2>
             <div class="itinerary">
                 <div class="itiDay" *ngFor="let item of itinerary">
                     <div class="row">
@@ -94,8 +95,7 @@
             </div>
             <div class="row">
                 <div class="col my-5 text-center">
-                    <button *ngIf="userLoggedId === userCreatorId" (click)="onClick()" class="btn btn-lg btn-green">Crea
-                        tu itinerario</button>
+                    <button *ngIf="userLoggedId === userCreatorId" (click)="onClick()" class="btn btn-lg btn-green">Crea tu itinerario</button>
                 </div>
                 <form class="itinerary" *ngIf="showInputText" [formGroup]="itinerary_form">
                     <div class="row">
@@ -116,7 +116,9 @@
                 </form>
             </div>
         </div>
-        <div class="col map">MAPA</div>
+        <div class="col map">
+            <app-maps-trip [latitude]="detail.lat" [longitude]="detail.lng"></app-maps-trip>
+        </div>
     </div>
 
     <!-- BOTONES -->
@@ -190,6 +192,3 @@
         </div>
     </div>
 </div>
-
-<app-maps-trip [latitude]="detail.lat" [longitude]="detail.lng"></app-maps-trip>
-<app-comments-trips></app-comments-trips>

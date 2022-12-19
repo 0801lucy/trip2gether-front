@@ -82,6 +82,14 @@ h3 {
     color: var(--principalColor);
 }
 
+.itiDay span {
+    font-size: 22px;
+}
+
+.dateItinerary {
+    font-size: 18px;
+}
+
 .map {
     background-color: lightgray;
     font-size: 30px;

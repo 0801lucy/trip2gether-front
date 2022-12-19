@@ -20,7 +20,9 @@ export class MyProfileComponent implements OnInit {
   tripsSubscribed: any;
   serverUrl: string;
   files: any;
-  profile: any
+  profile: any;
+  rating: number;
+  ratingArray: Array<number>;
 
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
@@ -30,10 +32,15 @@ export class MyProfileComponent implements OnInit {
     this.serverUrl = environment.serverUrl;
     this.bloqueo = true;
     this.profile = '';
+    this.rating = 0;
+    this.ratingArray = []
   }
 
   async ngOnInit(): Promise<void> {
     const response = await this.userService.getProfile()
+    this.profile = response;
+    this.rating = response.rating;
+    this.ratingArray = Array(5).fill(1)
     this.formulario = new FormGroup
       ({
         name: new FormControl(response.name, [
@@ -77,6 +84,8 @@ export class MyProfileComponent implements OnInit {
       this.user = await this.userService.getUserById(userId);
       console.log(this.user)
     })
+
+
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
     this.tripsSubscribed = await this.tripsService.getUserSubscribed();

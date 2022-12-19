@@ -79,17 +79,23 @@
                         <div class="row">
                             <div class="col-auto">
                                 <div class="fotoCard">
-                                    <img class="img" [src]="serverUrl +'images/' + trip.img_trip" alt="">
+                                    <img class="img" [src]="serverUrl +'images/' + 
+                                     trip.img_trip" alt="">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="destination">{{trip.destination}}</div>
-                                <div class="textBlack my-2"><i class="fas fa-plane-departure"></i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
-                                <div class="textGreen my-2">EDAD {{trip.min_age}} - {{trip.max_age}}</div>
-                                <div class="price my-2">desde <span class="textGreen">{{trip.price}}€</span></div>
+                                <div class="textBlack my-2"><i class="fas fa-plane-departure">
+
+                                    </i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
+                                <div class="textGreen my-2">EDAD {{trip.min_age}} -
+                                    {{trip.max_age}}</div>
+                                <div class="price my-2">desde <span class="textGreen">
+                                        {{trip.price}}€</span></div>
                             </div>
                             <div class="col text-end">
-                                <button [routerLink]="['/trips',trip.id]" class="btn btn-green mt-5 me-3">Ver viaje</button>
+                                <button [routerLink]="['/trips',trip.id]" class="btn btn-green 
+                                 mt-5 me-3">Ver viaje</button>
                             </div>
                         </div>
                     </div>
@@ -106,17 +112,23 @@
                         <div class="row">
                             <div class="col-auto">
                                 <div class="fotoCard">
-                                    <img class="img" [src]="serverUrl +'images/' + trip.img_trip" alt="">
+                                    <img class="img" [src]="serverUrl +'images/' + 
+                                      trip.img_trip" alt="">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="destination">{{trip.destination}}</div>
-                                <div class="textBlack my-2"><i class="fas fa-plane-departure"></i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
-                                <div class="textGreen my-2">EDAD {{trip.min_age}} - {{trip.max_age}}</div>
-                                <div class="price my-2">desde <span class="textGreen">{{trip.price}}€</span></div>
+                                <div class="textBlack my-2"><i class="fas fa-plane-departure">
+
+                                    </i> {{trip.departure_date | date: 'dd/MM/y'}}</div>
+                                <div class="textGreen my-2">EDAD {{trip.min_age}} -
+                                    {{trip.max_age}}</div>
+                                <div class="price my-2">desde <span class="textGreen">
+                                        {{trip.price}}€</span></div>
                             </div>
                             <div class="col text-end">
-                                <button [routerLink]="['/trips',trip.id]" class="btn btn-green mt-5 me-3">Ver viaje</button>
+                                <button [routerLink]="['/trips',trip.id]" class="btn btn-green 
+                                 mt-5 me-3">Ver viaje</button>
                             </div>
                         </div>
                     </div>

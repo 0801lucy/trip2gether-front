@@ -5,6 +5,7 @@ import { TripsService } from 'src/app/services/trips.service';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-detail-trip',
@@ -19,10 +20,10 @@ export class DetailTripComponent implements OnInit {
   itinerary_form: FormGroup;
   showInputText: boolean;
   tripId: number;
+  subscribedUsers: any;
 
 
-
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer) {
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private userService: UsersService) {
     this.serverUrl = environment.serverUrl;
     this.itinerary = [];
     this.showInputText = false;
@@ -39,7 +40,11 @@ export class DetailTripComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       this.tripId = parseInt(params['tripId'])
       this.detail = await this.tripsService.getTripById(this.tripId);
+      this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
+      console.log(this.subscribedUsers);
+
     })
+
   }
 
   async onClick() {
@@ -64,5 +69,18 @@ export class DetailTripComponent implements OnInit {
     console.log(response);
   }
 
+
+  async changeStatus(aceptada: boolean) {
+    let status = 'rechazada';
+    if (aceptada) {
+      status = 'aceptada';
+    }
+    const userData = this.userService.getUserData()
+    console.log(userData)
+
+    const response = await this.tripsService.manageUsers(this.tripId, userData.user_id, status)
+    console.log(response);
+
+  }
 
 }

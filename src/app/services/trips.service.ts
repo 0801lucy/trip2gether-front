@@ -81,7 +81,7 @@ export class TripsService {
     )
 
   }
-  getUserSuscrited() {
+  getUserSubscribed() {
     return firstValueFrom(
       this.httpClient.get(`${this.baseUrl}/user/suscribed`)
 

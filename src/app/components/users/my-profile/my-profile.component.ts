@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Sanitizer } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
 import { environment } from 'src/environments/environment';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-my-profile',
@@ -16,14 +17,14 @@ export class MyProfileComponent implements OnInit {
   bloqueo: boolean;
   user: any;
   tripsOwn: any;
-  tripsSuscribed: any;
+  tripsSubscribed: any;
   serverUrl: string;
   files: any;
   profile: any
 
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
-    private tripsService: TripsService, private router: Router
+    private tripsService: TripsService, private router: Router, private sanitizer: Sanitizer
   ) {
 
     this.serverUrl = environment.serverUrl;
@@ -48,19 +49,19 @@ export class MyProfileComponent implements OnInit {
           Validators.required,
         ]),
 
-        password: new FormControl('*******', [
-          Validators.required,
-        ]),
+        password: new FormControl('********'),
 
         phone: new FormControl(response.phone, [
           Validators.required,
         ]),
 
-        email: new FormControl(response.email, [
+        email: new FormControl(response.email),
+
+        img_user: new FormControl(response.img_user, [
           Validators.required,
-          Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
         ]),
-        birth_date: new FormControl(response.birth_date, [
+
+        birth_date: new FormControl(dayjs(response.birth_date).format('YYYY-MM-DD'), [
           Validators.required,
         ]),
         hobbies: new FormControl(response.hobbies, [
@@ -78,26 +79,32 @@ export class MyProfileComponent implements OnInit {
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
-    this.tripsSuscribed = await this.tripsService.getUserSuscrited();
-    let changeProfile = new FormData(); {
-      changeProfile.append('img_user', this.files[0]);
-      changeProfile.append('name', this.formulario.value.name);
-      changeProfile.append('surname', this.formulario.value.surname);
-      changeProfile.append('username', this.formulario.value.username);
-      changeProfile.append('phone', this.formulario.value.phone);
-      changeProfile.append('hobbies', this.formulario.value.hobbies);
-      changeProfile.append('personality', this.formulario.value.personality);
-      changeProfile.append('birth_date', this.formulario.value.birth_date);
-      const response = await this.userService.updateProfile(changeProfile);
+    this.tripsSubscribed = await this.tripsService.getUserSubscribed();
 
+  }
 
-      if (response.success) {
-        alert(response.success);
-      } else {
-        alert('Revisa los errores');
-      }
+  async onSubmit() {
+    let changeProfile = new FormData();
+    changeProfile.append('name', this.formulario.value.name);
+    changeProfile.append('surname', this.formulario.value.surname);
+    changeProfile.append('username', this.formulario.value.username);
+    changeProfile.append('email', this.formulario.value.email);
+    changeProfile.append('phone', this.formulario.value.phone);
+    changeProfile.append('hobbies', this.formulario.value.hobbies);
+    changeProfile.append('personality', this.formulario.value.personality);
+    changeProfile.append('birth_date', this.formulario.value.birth_date);
+    changeProfile.append('img_user', this.files[0]);
+
+    const response = await this.userService.updateProfile(changeProfile);
+
+    console.log(response);
+
+    if (response.success) {
+      alert('Perfil actualizado!');
+      this.router.navigate(['/myprofile'])
+    } else {
+      alert('Ha habido algún problema!')
     }
-
   }
 
   checkError(field: string, error: string): boolean | undefined {
@@ -108,19 +115,8 @@ export class MyProfileComponent implements OnInit {
     this.files = $event.target.files;
   }
 
-  pulsarBoton() {
+  onClick() {
     this.bloqueo = !this.bloqueo
-  }
-
-  async onSubmit() {
-    const response = await this.userService.updateProfile(this.formulario.value)
-    console.log(response);
-
-    if (response.success) {
-      alert('Perfil actualizado!');
-    } else {
-      alert('Ha habido algún problema, comprueba todos los datos')
-    }
   }
 
 }

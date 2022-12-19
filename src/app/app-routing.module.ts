@@ -9,6 +9,7 @@ import { PrincipalComponent } from './components/base/principal/principal.compon
 import { MyProfileComponent } from './components/users/my-profile/my-profile.component';
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
 import { LoginGuard } from './guards/login.guard';
+import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.component';
 
 
 const routes: Routes = [
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'trips', component: ListTripComponent },
   { path: 'trips/new', component: FormTripComponent },
   { path: 'trips/:tripId', component: DetailTripComponent },
-  { path: 'myprofile', component: MyProfileComponent }
-
+  { path: 'myprofile', component: MyProfileComponent },
+  { path: 'maps', component: MapsTripsComponent }
 ]
 
 @NgModule({

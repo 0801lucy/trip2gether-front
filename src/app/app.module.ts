@@ -42,7 +42,7 @@ import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.compo
     HttpClientModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'IzaSyBMOcTcAkobrlfKIBOJNz6lDw2R5fJsk_Q'
+      apiKey: 'AIzaSyBMOcTcAkobrlfKIBOJNz6lDw2R5fJsk_Q'
     }),
     HttpClientModule
   ],

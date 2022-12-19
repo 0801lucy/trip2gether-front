@@ -131,18 +131,5 @@ export class MyProfileComponent implements OnInit {
       alert('Ha habido algún problema, comprueba todos los datos')
     }
   }
-
-  updateRating(rating: number): void {
-    // Recuperar el ID del usuario que estoy puntuando, que seria el mismo del perfil que estoy visitando
-    // y tambien enviar el ID del usuario conectado ahora mismo
-    // Y finalmente el rating que seria el "rating"
-    /*     const payload = {
-          currentUserProfileId: 4,
-          currentUserConnected: 1,
-          rating
-        } */
-    this.rating = rating;
-  }
-
 }
 

@@ -10,6 +10,7 @@ import { MyProfileComponent } from './components/users/my-profile/my-profile.com
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
 import { LoginGuard } from './guards/login.guard';
 import { EditTripComponent } from './components/trips/edit-trip/edit-trip.component';
+import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,6 @@ const routes: Routes = [
   { path: 'trips/edit/:tripId', component: EditTripComponent },
   { path: 'trips/:tripId', component: DetailTripComponent },
   { path: 'myprofile', component: MyProfileComponent }
-
 
 ]
 

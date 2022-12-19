@@ -54,8 +54,9 @@ export class FormTripComponent implements OnInit {
       meals: new FormControl(false),
       excursions: new FormControl(false),
       rent_car: new FormControl(false),
-      insurance: new FormControl(false)
-
+      insurance: new FormControl(false),
+      lat: new FormControl(),
+      lng: new FormControl()
     })
   }
 
@@ -85,6 +86,11 @@ export class FormTripComponent implements OnInit {
     fd.append('excursions', this.formulario.value.excursions);
     fd.append('rent_car', this.formulario.value.rent_car);
     fd.append('insurance', this.formulario.value.insurance);
+    fd.append('lat', this.formulario.value.lat);
+    fd.append('lng', this.formulario.value.lng)
+
+    console.log(this.formulario.value);
+
 
     // Delegamos el envío del formulario en el servicio
     await this.tripsService.createTrip(fd);
@@ -97,10 +103,15 @@ export class FormTripComponent implements OnInit {
 
   loadAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.inputPlaces.nativeElement);
-    google.maps.event.addListener(autocomplete, 'place_changed', (event) => {
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
-      console.log(place);
       this.formulario.get('destination')?.setValue(place.name);
+      console.log(place);
+
+      this.formulario.get('lat')?.setValue(place.geometry?.location.lat());
+      this.formulario.get('lng')?.setValue(place.geometry?.location.lng());
+      console.log(place.geometry?.location.lat());
+      console.log(place.geometry?.location.lng());
     });
   }
 

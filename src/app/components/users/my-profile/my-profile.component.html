@@ -1,8 +1,6 @@
 <div class="myprofile">
     <figure>
-        <img src="../../../../assets/images/perfil.jpg"
-            alt=""
-            class="img-fluid">
+        <img src="../../../../assets/images/perfil.jpg" alt="" class="img-fluid">
     </figure>
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -10,215 +8,248 @@
                 <h1 class="textBlack my-5">Mis datos personales</h1>
                 <div class="offset-4">
 
-                    <div class="content"
-                        *ngIf="profile">
+                    <div class="content" *ngIf="profile">
                         <h5>{{ profile.name }}</h5>
                         <span>{{ rating }}</span>
 
-                        <svg *ngFor="let item of ratingArray; index as ratingNumber"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            class="bi bi-star star-icon"
-                            viewBox="0 0 24 24">
-                            <path *ngIf="ratingNumber + 1 <= rating"
-                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                            <path *ngIf="ratingNumber + 1 > rating"
-                                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                        <svg *ngFor="let item of ratingArray; index as ratingNumber" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-star star-icon" viewBox="0 0 24 24">
+                            <path *ngIf="ratingNumber + 1 <= rating" d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            <path *ngIf="ratingNumber + 1 > rating" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
                         </svg>
                     </div>
-                </div>
-                <form [formGroup]="formulario"
-                    *ngIf="formulario"
-                    (ngSubmit)="onSubmit()">
-                    <div class="row">
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Nombre <span class="req">*</span></label>
-                            <input type="text"
-                                class="form-control"
-                                formControlName="name"
-                                [attr.disabled]="bloqueo ? 'disabled': null">
-                            <p class="error"
-                                *ngIf="checkError('name', 'required')">Este campo es requerido
-                                <span>*</span>
-                            </p>
+                    <form [formGroup]="formulario" *ngIf="formulario" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-3 offset-2 mb-3 mt-5">
+                                <label class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" formControlName="name" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('name', 'required')">Este campo es requerido <span>*</span></p>
+                            </div>
+                            <div class="col-3 offset-1 mb-3 mt-5">
+                                <label class="form-label">Apellidos:</label>
+                                <input type="text" class="form-control" formControlName="surname" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('surname', 'required')">Este campo es requerido <span>*</span></p>
+                            </div>
                         </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Apellidos <span class="req">*</span></label>
-                            <input type="text"
-                                class="form-control"
-                                formControlName="surname"
-                                [attr.disabled]="bloqueo ? 'disabled': null">
-                            <p class="error"
-                                *ngIf="checkError('surname', 'required')">Este campo es requerido
-                                <span>*</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Usuario <span class="req">*</span></label>
-                            <input type="text"
-                                class="form-control"
-                                formControlName="username"
-                                [attr.disabled]="bloqueo ? 'disabled': null">
-                            <p class="error"
-                                *ngIf="checkError('username', 'required')"> Campo requerido <span>*</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Contraseña <span class="req">*</span></label>
-                            <input type="password"
-                                class="form-control"
-                                formControlName="password"
-                                [attr.disabled]="true">
-                            <p class="error"
-                                *ngIf="checkError('password', 'required')">Campo requerido <span>*</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Teléfono <span class="req">*</span></label>
-                            <input type="text"
-                                class="form-control"
-                                formControlName="phone"
-                                [attr.disabled]="bloqueo ? 'disabled': null">
-                            <p class="error"
-                                *ngIf="checkError('phone', 'required')">Campo requerido <span>*</span></p>
-                        </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Email <span class="req">*</span></label>
-                            <input type="text"
-                                class="form-control"
-                                formControlName="email"
-                                [attr.disabled]="true">
-                            <p class="error"
-                                *ngIf="checkError('email', 'required')">Campo requerido <span>*</span></p>
-                            <p class="error"
-                                *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto
-                                <span>*</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label">Fecha de nacimiento <span class="req">*</span></label>
-                            <input type="date"
-                                class="form-control"
-                                formControlName="birth_date"
-                                [attr.disabled]="bloqueo ? 'disabled': null">
-                            <p class="error"
-                                *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6 my-3">
-                            <label class="form-label"> Foto de perfil</label>
-                            <input type="file"
-                                class="form-control"
-                                formControlName="photo"
-                                [attr.disabled]="bloqueo ? 'disabled': null"
-                                name="img_user"
-                                (change)="onChange($event)">
-                            <p class="error"
-                                *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
-                        </div>
-                        <div class="col-md-12 my-3">
-                            <label class="form-label">Aficiones <span class="req">*</span></label>
-                            <textarea class="form-control"
-                                rows="4"
-                                formControlName="hobbies"
-                                [attr.disabled]="bloqueo ? 'disabled': null"></textarea>
-                            <p class="error"
-                                *ngIf="checkError('hobbies', 'required')">Campo requerido <span>*</span>
-                            </p>
-                        </div>
-                        <div class="col-md-12 my-3">
-                            <label class="form-label">Personalidad <span class="req">*</span></label>
-                            <textarea class="form-control"
-                                rows="4"
-                                formControlName="personality"
-                                [attr.disabled]="bloqueo ? 'disabled': null"></textarea>
-                            <p class="error"
-                                *ngIf="checkError('personality', 'required')">Campo requerido
-                                <span>*</span>
-                            </p>
-                        </div>
-                    </div>
 
-                    <div class="mt-3 text-center">
-                        <button class="btn btn-green mx-2"
-                            type="submit"
-                            (click)="onClick()"
-                            [disabled]="!formulario.valid">Guardar cambios</button>
-                        <button class="btn btn-green mx-2"
-                            (click)="onClick()"
-                            *ngIf="bloqueo">Editar perfil</button>
-                    </div>
-                </form>
-                <!-- VIAJES COMO ORGANIZADOR -->
-                <h2 class="textBlack mt-5 mb-2">Viajes como organizador</h2>
-                <!--                <div class="card my-4">
+                        <div class="row">
+                            <div class="col-3 offset-2 mb-3 mt-2">
+                                <label class="form-label">Usuario:</label>
+                                <input type="text" class="form-control" formControlName="username" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('username', 'required')"> Campo requerido <span>*</span></p>
+                            </div>
+                            <div class="col-3 offset-1 mb-3 mt-2">
+                                <label class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" formControlName="password" [attr.disabled]="true">
+                                <p class="error" *ngIf="checkError('password', 'required')">Campo requerido <span>*</span></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 offset-2 mb-3 mt-2">
+                                <label class="form-label">Teléfono:</label>
+                                <input type="text" class="form-control" formControlName="phone" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido <span>*</span></p>
+                            </div>
+                            <div class="col-3 offset-1 mb-3 mt-2">
+                                <label class="form-label">Email:</label>
+                                <input type="text" class="form-control" formControlName="email" [attr.disabled]="true">
+                                <p class="error" *ngIf="checkError('email', 'required')">Campo requerido <span>*</span></p>
+                                <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto <span>*</span></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 offset-2 mb-3 mt-2">
+                                <label class="form-label">Fecha de nacimiento:</label>
+                                <input type="date" class="form-control" formControlName="birth_date" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span></p>
+                            </div>
+                            <div class="col-3 offset-1 mb-2">
+                                <label class="form-label"> Foto de perfil:</label>
+                                <input type="file" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null" name="img_user" (change)="onChange($event)">
+                                <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 offset-2 mb-3 mt-2">
+                                <label class="form-label">Aficiones:</label>
+                                <input type="text" class="form-control" id="aficiones" formControlName="hobbies" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('hobbies', 'required')">Campo requerido <span>*</span></p>
+                            </div>
+
+                            <div class="col-3 offset-1 mb-3 mt-2">
+                                <label class="form-label">Personalidad:</label>
+                                <input type="text" class="form-control col-8" id="personalidad" formControlName="personality" [attr.disabled]="bloqueo ? 'disabled': null">
+                                <p class="error" *ngIf="checkError('personality', 'required')">Campo requerido <span>*</span></p>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <button class="btn col-2 offset-3" type="submit" (click)="onClick()" [disabled]="!formulario.valid">Guardar
+                                cambios</button>
+                            <button class="btn col-2 offset-1" (click)="onClick()" *ngIf="bloqueo">Editar perfil</button>
+                        </div>
+                    </form>
+
+                    <h3 class="offset-2 mt-3">Mis viajes</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-8 offset-3 mb-3">
+                                <div class="card" *ngFor="let trip of tripsOwn">
+                                    <div class="fotoCard">
+                                    </div>
+                                    <form [formGroup]="formulario" *ngIf="formulario" (ngSubmit)="onSubmit()">
+                                        <div class="row">
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Nombre <span class="req">*</span></label>
+                                                <input type="text" class="form-control" formControlName="name" [attr.disabled]="bloqueo ? 'disabled': null">
+                                                <p class="error" *ngIf="checkError('name', 'required')">Este campo es requerido
+                                                    <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Apellidos <span class="req">*</span></label>
+                                                <input type="text" class="form-control" formControlName="surname" [attr.disabled]="bloqueo ? 'disabled': null">
+                                                <p class="error" *ngIf="checkError('surname', 'required')">Este campo es requerido
+                                                    <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Usuario <span class="req">*</span></label>
+                                                <input type="text" class="form-control" formControlName="username" [attr.disabled]="bloqueo ? 'disabled': null">
+                                                <p class="error" *ngIf="checkError('username', 'required')"> Campo requerido <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Contraseña <span class="req">*</span></label>
+                                                <input type="password" class="form-control" formControlName="password" [attr.disabled]="true">
+                                                <p class="error" *ngIf="checkError('password', 'required')">Campo requerido <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Teléfono <span class="req">*</span></label>
+                                                <input type="text" class="form-control" formControlName="phone" [attr.disabled]="bloqueo ? 'disabled': null">
+                                                <p class="error" *ngIf="checkError('phone', 'required')">Campo requerido <span>*</span></p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Email <span class="req">*</span></label>
+                                                <input type="text" class="form-control" formControlName="email" [attr.disabled]="true">
+                                                <p class="error" *ngIf="checkError('email', 'required')">Campo requerido <span>*</span></p>
+                                                <p class="error" *ngIf="checkError('email', 'pattern')">Debe tener un formato correcto
+                                                    <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">Fecha de nacimiento <span class="req">*</span></label>
+                                                <input type="date" class="form-control" formControlName="birth_date" [attr.disabled]="bloqueo ? 'disabled': null">
+                                                <p class="error" *ngIf="checkError('birth_date', 'required')">Campo requerido <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label"> Foto de perfil</label>
+                                                <input type="file" class="form-control" formControlName="photo" [attr.disabled]="bloqueo ? 'disabled': null" name="img_user" (change)="onChange($event)">
+                                                <p class="error" *ngIf="checkError('photo', 'required')">Campo requerido <span>*</span></p>
+                                            </div>
+                                            <div class="col-md-12 my-3">
+                                                <label class="form-label">Aficiones <span class="req">*</span></label>
+                                                <textarea class="form-control" rows="4" formControlName="hobbies" [attr.disabled]="bloqueo ? 'disabled': null"></textarea>
+                                                <p class="error" *ngIf="checkError('hobbies', 'required')">Campo requerido <span>*</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12 my-3">
+                                                <label class="form-label">Personalidad <span class="req">*</span></label>
+                                                <textarea class="form-control" rows="4" formControlName="personality" [attr.disabled]="bloqueo ? 'disabled': null"></textarea>
+                                                <p class="error" *ngIf="checkError('personality', 'required')">Campo requerido
+                                                    <span>*</span>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3 text-center">
+                                            <button class="btn btn-green mx-2" type="submit" (click)="onClick()" [disabled]="!formulario.valid">Guardar cambios</button>
+                                            <button class="btn btn-green mx-2" (click)="onClick()" *ngIf="bloqueo">Editar perfil</button>
+                                        </div>
+                                    </form>
+                                    <!-- VIAJES COMO ORGANIZADOR -->
+                                    <h2 class="textBlack mt-5 mb-2">Viajes como organizador</h2>
+                                    <!--                <div class="card my-4">
                     <div class="card-body text-center my-5">
                         <h5>Aún no tienes viajes</h5>
                     </div>
                 </div> -->
-                <div class="card my-4"
-                    *ngFor="let trip of tripsOwn">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <div class="fotoCard">
-                                    <img class="img"
-                                        [src]="serverUrl +'images/' + 
-                                     trip.img_trip"
-                                        alt="">
+                                    <div class="card my-4" *ngFor="let trip of tripsOwn">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <div class="fotoCard">
+                                                        <img class="img" [src]="serverUrl +'images/' + 
+                                     trip.img_trip" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="destination">{{trip.destination}}</div>
+                                                    <div class="textBlack my-2"><i class="fas fa-plane-departure"></i> {{trip.departure_date
+                                                        | date: 'dd/MM/y'}}</div>
+                                                    <div class="textGreen my-2">EDAD {{trip.min_age}} - {{trip.max_age}}</div>
+                                                    <div class="price my-2">desde <span class="textGreen">{{trip.price}}€</span></div>
+                                                </div>
+                                                <div class="col text-end">
+                                                    <button [routerLink]="['/trips',trip.id]" class="btn btn-green mt-5 me-3">Ver
+                                                        viaje</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- MIS VIAJES -->
+                                    <h2 class="textBlack mt-5 mb-2">Mis viajes</h2>
+                                    <div class="card my-4">
+                                        <div class="card-body text-center my-5">
+                                            <h5>Aún no tienes viajes</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3>Viajes en los que participo</h3>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-8 offset-2 mb-3">
+                                        <div class="card" *ngFor="let trip of tripsSubscribed">
+                                            <div class="fotoCard">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col textBlack destination ">{{trip.destination}}</div>
+                                                    <div>
+                                                        <img class="img" [src]="serverUrl +'images/' + trip.img_trip" alt="">
+                                                    </div>
+                                                    <div class="col text-end price">desde <span class="textGreen">
+                                                            {{trip.price}}</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="card my-4" *ngFor="let trip of tripsSubscribed">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <div class="fotoCard">
+                                                                <img class="img" [src]="serverUrl +'images/' + trip.img_trip" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="destination">{{trip.destination}}</div>
+                                                            <div class="textBlack my-2"><i class="fas fa-plane-departure"></i> {{trip.departure_date
+                                                                | date: 'dd/MM/y'}}</div>
+                                                            <div class="textGreen my-2">EDAD {{trip.min_age}} - {{trip.max_age}}</div>
+                                                            <div class="price my-2">desde <span class="textGreen">{{trip.price}}€</span></div>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <button [routerLink]="['/trips',trip.id]" class="btn btn-green mt-5 me-3">Ver
+                                                                viaje</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="destination">{{trip.destination}}</div>
-                                <div class="textBlack my-2"><i class="fas fa-plane-departure"></i> {{trip.departure_date
-                                    | date: 'dd/MM/y'}}</div>
-                                <div class="textGreen my-2">EDAD {{trip.min_age}} - {{trip.max_age}}</div>
-                                <div class="price my-2">desde <span class="textGreen">{{trip.price}}€</span></div>
-                            </div>
-                            <div class="col text-end">
-                                <button [routerLink]="['/trips',trip.id]"
-                                    class="btn btn-green mt-5 me-3">Ver
-                                    viaje</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- MIS VIAJES -->
-                <h2 class="textBlack mt-5 mb-2">Mis viajes</h2>
-                <!--                 <div class="card my-4">
-                    <div class="card-body text-center my-5">
-                        <h5>Aún no tienes viajes</h5>
-                    </div>
-                </div> -->
-                <div class="card my-4"
-                    *ngFor="let trip of tripsSubscribed">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <div class="fotoCard">
-                                    <img class="img"
-                                        [src]="serverUrl +'images/' + 
-                                      trip.img_trip"
-                                        alt="">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="destination">{{trip.destination}}</div>
-                                <div class="textBlack my-2"><i class="fas fa-plane-departure"></i> {{trip.departure_date
-                                    | date: 'dd/MM/y'}}</div>
-                                <div class="textGreen my-2">EDAD {{trip.min_age}} - {{trip.max_age}}</div>
-                                <div class="price my-2">desde <span class="textGreen">{{trip.price}}€</span></div>
-                            </div>
-                            <div class="col text-end">
-                                <button [routerLink]="['/trips',trip.id]"
-                                    class="btn btn-green mt-5 me-3">Ver
-                                    viaje</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

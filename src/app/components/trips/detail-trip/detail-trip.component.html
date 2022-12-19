@@ -1,6 +1,5 @@
 <!-- DETALLE -->
-<div class="bg-tripDetail" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+detail.img_trip+')'}"
-    *ngIf="detail"></div>
+<div class="bg-tripDetail" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+detail.img_trip+')'}" *ngIf="detail"></div>
 <div class="container" *ngIf="detail">
     <div class="row my-5">
         <div class="col-md">
@@ -9,8 +8,7 @@
         <div class="col-auto">
             <div class="row">
                 <div class="col-auto p-0">
-                    <img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)" alt=""
-                        class="img_user">
+                    <img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)" alt="" class="img_user">
                 </div>
                 <div class="col textBlack creator"><span>Organizador</span>
                     <p>{{detail.username}}</p>
@@ -192,3 +190,6 @@
         </div>
     </div>
 </div>
+
+<app-maps-trip [latitude]="detail.lat" [longitude]="detail.lng"></app-maps-trip>
+<app-comments-trips></app-comments-trips>

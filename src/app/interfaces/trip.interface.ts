@@ -27,5 +27,7 @@ export interface Trip {
     personality: string,
     birth_date: Date,
     rating: number,
-    img_user: string
+    img_user: string,
+    lat: number,
+    lng: number
 }

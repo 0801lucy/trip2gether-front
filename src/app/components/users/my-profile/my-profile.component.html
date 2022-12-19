@@ -4,7 +4,7 @@
 
 <h3 class="offset-2 mt-3">Mis datos personales</h3>
 
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" *ngIf="formulario">
     <div class="row">
         <div class="col-2 offset-3 mt-5">
             <label class="form-label">Nombre:</label>
@@ -62,18 +62,15 @@
         </div>
     </div>
 
-    <div class="row mt-3">
-        <button class="btn col-5 offset-3" type="submit">Actualizar perfil</button>
-    </div>
-
-
     <div class="row mt-5">
-        <div class="offset-3" formControlName="img_user"></div>
-
+        <!-- <img class="offset-2 img_user" [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)"> -->
         <div class="col-3 offset-5">
             <input type="file" class="form-control col-3" name="img_user" (change)="onChange($event)">
-            <button class="btn col-6 offset-6 mt-3" type="submit">Guardar foto</button>
         </div>
+    </div>
+
+    <div class="row">
+        <button class="btn col-5 offset-3 mt-3" type="submit">Guardar cambios</button>
     </div>
 </form>
 

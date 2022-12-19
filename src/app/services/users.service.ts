@@ -58,12 +58,4 @@ export class UsersService {
     )
   }
 
-  //Modifico la foto
-  updatePhoto(pValues: FormData) {
-    return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/profile`, pValues)
-    )
-  }
-
-
 }

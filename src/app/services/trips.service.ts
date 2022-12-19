@@ -96,7 +96,7 @@ export class TripsService {
   }
 
   subscribeToTrip(tripId: number) {
-    const params = { trips_id: tripId, user_status: 'pending' }
+    const params = { trips_id: tripId, user_status: 'pendiente' }
     return firstValueFrom(
       this.httpClient.post(`${this.baseUrl}/request`, params, this.createHeaders())
     )

@@ -5,6 +5,8 @@ import { TripsService } from 'src/app/services/trips.service';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
+
 
 @Component({
   selector: 'app-detail-trip',
@@ -19,10 +21,12 @@ export class DetailTripComponent implements OnInit {
   itinerary_form: FormGroup;
   showInputText: boolean;
   tripId: number;
+  userLoggedId: number;
+  userCreatorId: number;
+  userStatus: string;
 
 
-
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer) {
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
     this.serverUrl = environment.serverUrl;
     this.itinerary = [];
     this.showInputText = false;
@@ -31,14 +35,28 @@ export class DetailTripComponent implements OnInit {
       it_date_begin: new FormControl(),
       it_date_end: new FormControl()
     })
-
+    this.userLoggedId = 0
+    this.userCreatorId = 0
     this.tripId = -1;
+    this.userStatus = ''
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async params => {
       this.tripId = parseInt(params['tripId'])
+
       this.detail = await this.tripsService.getTripById(this.tripId);
+
+      this.userCreatorId = this.detail.user_id
+
+      const userData = this.usersService.getUserData()
+      this.userLoggedId = userData.user_id
+
+      const userStatus = await this.tripsService.getUserSubscribed()
+      console.log(userStatus)
+
+
+
     })
   }
 
@@ -64,5 +82,8 @@ export class DetailTripComponent implements OnInit {
     console.log(response);
   }
 
+  onProfile() {
+
+  }
 
 }

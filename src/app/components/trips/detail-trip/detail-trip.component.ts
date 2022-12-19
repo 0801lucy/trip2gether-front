@@ -55,11 +55,4 @@ export class DetailTripComponent implements OnInit {
     })
 
   }
-
-
-
-
-
-
-
 }

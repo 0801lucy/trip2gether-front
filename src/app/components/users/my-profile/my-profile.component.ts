@@ -19,7 +19,9 @@ export class MyProfileComponent implements OnInit {
   tripsSuscribed: any;
   serverUrl: string;
   files: any;
-  profile: any
+  profile: any;
+  rating: number;
+  ratingArray: Array<number>;
 
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
@@ -29,10 +31,15 @@ export class MyProfileComponent implements OnInit {
     this.serverUrl = environment.serverUrl;
     this.bloqueo = true;
     this.profile = '';
+    this.rating = 0;
+    this.ratingArray = []
   }
 
   async ngOnInit(): Promise<void> {
     const response = await this.userService.getProfile()
+    this.profile = response;
+    this.rating = response.rating;
+    this.ratingArray = Array(5).fill(1)
     this.formulario = new FormGroup
       ({
         name: new FormControl(response.name, [
@@ -76,6 +83,8 @@ export class MyProfileComponent implements OnInit {
       this.user = await this.userService.getUserById(userId);
       console.log(this.user)
     })
+
+
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
     this.tripsSuscribed = await this.tripsService.getUserSuscrited();
@@ -121,6 +130,18 @@ export class MyProfileComponent implements OnInit {
     } else {
       alert('Ha habido algún problema, comprueba todos los datos')
     }
+  }
+
+  updateRating(rating: number): void {
+    // Recuperar el ID del usuario que estoy puntuando, que seria el mismo del perfil que estoy visitando
+    // y tambien enviar el ID del usuario conectado ahora mismo
+    // Y finalmente el rating que seria el "rating"
+    /*     const payload = {
+          currentUserProfileId: 4,
+          currentUserConnected: 1,
+          rating
+        } */
+    this.rating = rating;
   }
 
 }

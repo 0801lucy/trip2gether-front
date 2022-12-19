@@ -31,3 +31,7 @@ h2 {
 label {
     font-weight: 500;
 }
+
+.star-icon {
+    cursor: pointer;
+}

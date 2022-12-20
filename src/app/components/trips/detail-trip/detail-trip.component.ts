@@ -31,6 +31,7 @@ export class DetailTripComponent implements OnInit {
   userCreatorId: number;
   userStatus: string;
   userId: number;
+  usersAccepted: any;
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
@@ -52,6 +53,7 @@ export class DetailTripComponent implements OnInit {
     this.tripId = -1;
     this.userStatus = '';
     this.userId = -1;
+    this.usersAccepted = '';
   }
 
   ngOnInit(): void {
@@ -71,8 +73,8 @@ export class DetailTripComponent implements OnInit {
       this.userLoggedId = userData.user_id
       const userStatus = await this.tripsService.getUserSubscribed()
 
-      const usersAcepted = await this.tripsService.getUsersAccepted(this.tripId)
-      console.log(userData)
+      this.usersAccepted = await this.tripsService.getUsersAccepted(this.tripId)
+      console.log(this.usersAccepted)
     })
 
   }

@@ -215,8 +215,10 @@
         <div class="col text-center">
             <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
         </div>
-        <div class="col  text-center">
-            <button class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
+        <div *ngIf="userCreatorId !== userLoggedId">
+            <div class="col  text-center">
+                <button class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
+            </div>
         </div>
     </div>
-</div>f
+</div>

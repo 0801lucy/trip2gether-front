@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/interfaces/user.interface';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class DetailTripComponent implements OnInit {
   userLoggedId: number;
   userCreatorId: number;
   userStatus: string;
+  userId: number;
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
@@ -38,10 +40,11 @@ export class DetailTripComponent implements OnInit {
       it_date_end: new FormControl()
     })
 
-    this.userLoggedId = 0
-    this.userCreatorId = 0
+    this.userLoggedId = 0;
+    this.userCreatorId = 0;
     this.tripId = -1;
-    this.userStatus = ''
+    this.userStatus = '';
+    this.userId = -1;
   }
 
   ngOnInit(): void {
@@ -79,7 +82,7 @@ export class DetailTripComponent implements OnInit {
       this.itinerary_form.value.it_date_end,
       this.tripId);
     this.itinerary_form.reset();
-    console.log(itinerary);
+    this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
   }
 
 
@@ -92,15 +95,14 @@ export class DetailTripComponent implements OnInit {
 
   }
 
-  async changeStatus(aceptada: boolean) {
+  async changeStatus(aceptada: boolean, user: User) {
     let status = 'rechazada';
     if (aceptada) {
       status = 'aceptada';
     }
-    const userData = this.usersService.getUserData()
-    console.log(userData)
 
-    const response = await this.tripsService.manageUsers(this.tripId, userData.user_id, status)
+
+    const response = await this.tripsService.manageUsers(this.tripId, user.id, status)
     console.log(response);
 
   }

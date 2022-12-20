@@ -85,8 +85,6 @@ export class MyProfileComponent implements OnInit {
       console.log(this.user)
     })
 
-
-
     this.tripsOwn = await this.tripsService.getTripsByUser();
     this.tripsSubscribed = await this.tripsService.getUserSubscribed();
 

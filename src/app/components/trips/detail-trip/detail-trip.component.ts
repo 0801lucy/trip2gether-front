@@ -51,6 +51,7 @@ export class DetailTripComponent implements OnInit {
       this.detail = await this.tripsService.getTripById(this.tripId);
       this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
       this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
+
       console.log(this.subscribedUsers);
 
       this.userCreatorId = this.detail.user_id
@@ -86,9 +87,6 @@ export class DetailTripComponent implements OnInit {
     console.log(response);
   }
 
-  onProfile() {
-
-  }
 
   async changeStatus(aceptada: boolean) {
     let status = 'rechazada';

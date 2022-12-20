@@ -75,8 +75,8 @@
             </div>
         </div>
     </div>
-    <!-- ITINERARIO -->
 
+    <!-- ITINERARIO -->
     <div class="row my-5">
         <div class="col-8">
             <h2 class="textBlack">Itinerario</h2>
@@ -91,9 +91,7 @@
                             <div class="dateItinerary">{{item.it_date_begin | date: 'dd/MM/y'}}
                                 -{{item.it_date_end |
                                 date: 'dd/MM/y'}}</div>
-                            <div>
-                                <h5>{{item.it_place}}</h5>
-                            </div>
+                            <!-- <div><h5>{{item.it_place}}</h5></div> -->
                         </div>
                     </div>
                 </div>
@@ -116,14 +114,9 @@
                         <div class="col-12">
                             <label class="form-label">Descripción</label>
                             <input type="text" class="form-control" formControlName="it_description">
-
-
                             <label class="form-label">Lugar/Dirección</label>
                             <input type="text" class="form-control" id="inputPlaces" #inputPlaces>
-
                             <button (click)="addDayToItinerary()" class="btn btn-white mt-3">Añadir</button>
-
-
                         </div>
                     </div>
                 </form>
@@ -141,9 +134,8 @@
             <button class="btn btn-green" [routerLink]="['/trips', 'edit', tripId]">Editar viaje</button>
         </div>
     </div>
-    <!-- 
-    SOLICITUDES -->
 
+    <!--SOLICITUDES -->
     <div *ngIf="userLoggedId === userCreatorId">
         <h2 class="mt-5">Solicitudes de viajeros</h2>
         <div class="row">
@@ -158,20 +150,13 @@
                         </div>
                         <div class="col">
                             <div class="username">{{user.username}}</div>
-
                         </div>
-
                         <div class="col">
                             <div class="username">{{user.user_status}}</div>
-
                         </div>
-
                         <div class="col text-end">
-                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(true, user)"><i class="far fa-thumbs-up">
-
-                                </i></button>
-                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(false, user)"><i class="far fa-thumbs-down">
-                                </i></button>
+                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(true, user)"><i class="far fa-thumbs-up"></i></button>
+                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(false, user)"><i class="far fa-thumbs-down"></i></button>
                         </div>
                     </div>
                 </div>

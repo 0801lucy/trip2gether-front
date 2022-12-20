@@ -1,5 +1,4 @@
-<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" mapType="'HIBRYD'">
-    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" mapType="'HIBRYD'" [fitBounds]="false">
+    <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="itinerary.length === 0"></agm-marker>
 
-    <agm-marker *ngFor="let it of itinerary" [latitude]="it.it_lat" [longitude]="it.it_lng"></agm-marker>
-</agm-map>
+    <agm-marker *ngFor="let it of itinerary" [latitude]="it.it_lat" [longitude]="it.it_lng" [agmFitBounds]="true"></agm-marker>

@@ -112,10 +112,10 @@ export class MyProfileComponent implements OnInit {
     console.log(response);
 
     if (response.success) {
-      alert('Perfil actualizado!');
+      alert(response.success);
       this.router.navigate(['/myprofile'])
     } else {
-      alert('Ha habido algún problema!')
+      alert('Cambios Guardados')
     }
   }
 

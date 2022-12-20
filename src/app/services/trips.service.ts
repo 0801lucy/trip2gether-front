@@ -71,6 +71,22 @@ export class TripsService {
     );
   }
 
+  editTripById(formValues: any, tripId: number) {
+    return firstValueFrom(
+      this.httpClient.put(`${this.baseUrl}/edit/${tripId}`, formValues)
+    )
+  }
+
+  deleteTripById(tripId: number) {
+    console.log(tripId)
+    return firstValueFrom(
+      this.httpClient.put(`${this.baseUrl}/delete/${tripId}`, {})
+    )
+
+  }
+
+
+
   getItineraryByTripId(tripId: number) {
     return firstValueFrom(
       this.httpClient.get(`${this.baseUrl}/itinerary/${tripId}`)

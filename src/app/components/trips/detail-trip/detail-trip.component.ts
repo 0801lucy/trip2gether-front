@@ -138,4 +138,9 @@ export class DetailTripComponent implements OnInit {
     });
   }
 
+  async onDelete() {
+    const response = await this.tripsService.deleteTripById(this.tripId);
+    console.log(response);
+  }
+
 }

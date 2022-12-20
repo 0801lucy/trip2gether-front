@@ -151,12 +151,10 @@
                         </div>
 
                         <div class="col text-end">
-                            <button class="btn btn-green 
-                         mt-5 me-3" (click)="changeStatus(true)"><i class="far fa-thumbs-up">
+                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(true)"><i class="far fa-thumbs-up">
 
                                 </i></button>
-                            <button class="btn btn-green 
-                         mt-5 me-3" (click)="changeStatus(false)"><i class="far fa-thumbs-down">
+                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(false)"><i class="far fa-thumbs-down">
                                 </i></button>
                         </div>
                     </div>
@@ -186,9 +184,7 @@
             <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
         </div>
         <div class="col  text-center">
-            <button *ngIf="userLoggedId !== userCreatorId" class="btn btn-lg btn-green" (click)="onSubscribe()">Me
-                gustaría
-                unirme</button>
+            <button *ngIf="userLoggedId !== userCreatorId" class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
         </div>
     </div>
 </div>

@@ -40,9 +40,9 @@ export class DetailTripComponent implements OnInit {
       it_description: new FormControl(),
       it_date_begin: new FormControl(),
       it_date_end: new FormControl(),
-      destination: new FormControl(),
-      lat: new FormControl(),
-      lng: new FormControl()
+      it_place: new FormControl(),
+      it_lat: new FormControl(),
+      it_lng: new FormControl()
     })
 
     this.userLoggedId = 0
@@ -82,11 +82,18 @@ export class DetailTripComponent implements OnInit {
 
   async addDayToItinerary() {
     //al pulsar añadir: Y resetea
+    console.log(this.itinerary_form.value);
+
+    this.itinerary_form.value.it_place = (document.getElementById('inputPlaces')! as HTMLInputElement).value;
+
     const itinerary = await this.tripsService.createItinerary(
       this.itinerary_form.value.it_description,
       this.itinerary_form.value.it_date_begin,
       this.itinerary_form.value.it_date_end,
       this.tripId,
+      this.itinerary_form.value.it_lat,
+      this.itinerary_form.value.it_lng,
+      this.itinerary_form.value.it_place
     );
 
     this.itinerary_form.reset();
@@ -123,8 +130,8 @@ export class DetailTripComponent implements OnInit {
       this.itinerary_form.get('destination')?.setValue(place.name);
       console.log(place);
 
-      this.itinerary_form.get('lat')?.setValue(place.geometry?.location.lat());
-      this.itinerary_form.get('lng')?.setValue(place.geometry?.location.lng());
+      this.itinerary_form.get('it_lat')?.setValue(place.geometry?.location.lat());
+      this.itinerary_form.get('it_lng')?.setValue(place.geometry?.location.lng());
       console.log(place.geometry?.location.lat());
       console.log(place.geometry?.location.lng());
     });

@@ -62,10 +62,10 @@ export class TripsService {
     )
   }
 
-  createItinerary(description: string, dateStart: Date, dateEnd: Date, tripId: number) {
+  createItinerary(description: string, dateStart: Date, dateEnd: Date, tripId: number, lat: number, lng: number, place: string) {
     const pipes = new DatePipe('en-US');
     const dateFormat = 'yyyy-MM-dd';
-    const params = { it_description: description, it_date_begin: pipes.transform(dateStart, dateFormat), it_date_end: pipes.transform(dateEnd, dateFormat), trip_id: tripId }
+    const params = { it_description: description, it_date_begin: pipes.transform(dateStart, dateFormat), it_date_end: pipes.transform(dateEnd, dateFormat), trip_id: tripId, it_lat: lat, it_lng: lng, it_place: place }
     return firstValueFrom(
       this.httpClient.post(`${this.baseUrl}/itinerary`, params)
     );

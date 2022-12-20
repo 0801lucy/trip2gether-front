@@ -34,6 +34,7 @@ export class DetailTripComponent implements OnInit {
   AcceptedUsers: any;
   userCreatorName: string;
   imageUserCreator: string;
+  numberOfRequest: number;
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
@@ -57,6 +58,7 @@ export class DetailTripComponent implements OnInit {
     this.userId = -1;
     this.userCreatorName = ''
     this.imageUserCreator = ''
+    this.numberOfRequest = 0
 
   }
 
@@ -82,6 +84,9 @@ export class DetailTripComponent implements OnInit {
 
       this.userCreatorName = this.detail.username
       this.imageUserCreator = this.detail.img_user
+
+      this.numberOfRequest = this.subscribedUsers.length
+      console.log(this.numberOfRequest)
 
     })
 

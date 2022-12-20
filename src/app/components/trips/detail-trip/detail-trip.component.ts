@@ -49,6 +49,9 @@ export class DetailTripComponent implements OnInit {
       this.tripId = parseInt(params['tripId'])
 
       this.detail = await this.tripsService.getTripById(this.tripId);
+      this.detail.lat = parseFloat(String(this.detail.lat));
+      this.detail.lng = parseFloat(String(this.detail.lng));
+
       this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
       this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
       console.log(this.subscribedUsers);

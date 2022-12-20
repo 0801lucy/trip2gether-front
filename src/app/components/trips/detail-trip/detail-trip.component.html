@@ -23,6 +23,7 @@
                     <i class="far fa-calendar textGreen"></i>
                     <h6 class="card-subtitle my-1 text-muted">{{detail.duration}} días</h6>
                     <h5 class="card-title textBlack">{{detail.departure_date | date: 'dd/MM/y'}}</h5>
+                    <h5></h5>
                 </div>
             </div>
         </div>
@@ -90,6 +91,9 @@
                             <div class="dateItinerary">{{item.it_date_begin | date: 'dd/MM/y'}}
                                 -{{item.it_date_end |
                                 date: 'dd/MM/y'}}</div>
+                            <div>
+                                <h5>{{item.it_place}}</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,14 +115,21 @@
                         <div class="col-12">
                             <label class="form-label">Descripción</label>
                             <input type="text" class="form-control" formControlName="it_description">
+
+
+                            <label class="form-label">Lugar/Dirección</label>
+                            <input type="text" class="form-control" id="inputPlaces" #inputPlaces>
+
                             <button (click)="addDayToItinerary()" class="btn btn-white mt-3">Añadir</button>
+
+
                         </div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col map">
-            <app-maps-trip [latitude]="detail.lat" [longitude]="detail.lng"></app-maps-trip>
+            <app-maps-trip [latitude]="detail.lat" [longitude]="detail.lng" [itinerary]="itinerary"></app-maps-trip>
         </div>
     </div>
 
@@ -201,4 +212,4 @@
             <button class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
         </div>
     </div>
-</div>
+</div>f

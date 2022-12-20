@@ -1,5 +1,5 @@
 <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" mapType="'HIBRYD'">
-    <agm-marker [latitude]="latitude" [longitude]="longitude">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
 
-    </agm-marker>
+    <agm-marker *ngFor="let it of itinerary" [latitude]="it.it_lat" [longitude]="it.it_lng"></agm-marker>
 </agm-map>

@@ -79,14 +79,19 @@ export class MyProfileComponent implements OnInit {
         ])
       })
 
+
     this.activatedRoute.params.subscribe(async params => {
       const userId = parseInt(params['userId']);
       this.user = await this.userService.getUserById(userId);
       console.log(this.user)
+
+
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
     this.tripsSubscribed = await this.tripsService.getUserSubscribed();
+    console.log(this.tripsSubscribed);
+
 
   }
 

@@ -95,7 +95,7 @@ export class TripsService {
   }
   getUserSubscribed() {
     return firstValueFrom(
-      this.httpClient.get(`${this.baseUrl}/user/subscribed`)
+      this.httpClient.get(`${this.baseUrl}/user/suscribed`)
 
     )
 

@@ -77,7 +77,7 @@ export class DetailTripComponent implements OnInit {
       this.itinerary_form.value.it_date_end,
       this.tripId);
     this.itinerary_form.reset();
-    console.log(itinerary);
+    this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
   }
 
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+/// <reference path="../../../../../node_modules/@types/googlemaps/index.d.ts" />
+
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Trip } from 'src/app/interfaces/trip.interface';
 import { TripsService } from 'src/app/services/trips.service';
@@ -14,6 +16,8 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./detail-trip.component.css']
 })
 export class DetailTripComponent implements OnInit {
+
+  @ViewChild('inputPlaces') inputPlaces!: ElementRef;
 
   detail!: Trip;
   serverUrl: string;
@@ -35,7 +39,10 @@ export class DetailTripComponent implements OnInit {
     this.itinerary_form = new FormGroup({
       it_description: new FormControl(),
       it_date_begin: new FormControl(),
-      it_date_end: new FormControl()
+      it_date_end: new FormControl(),
+      destination: new FormControl(),
+      lat: new FormControl(),
+      lng: new FormControl()
     })
 
     this.userLoggedId = 0
@@ -70,6 +77,7 @@ export class DetailTripComponent implements OnInit {
   async onClick() {
     //pintar input text un botón 'añadir'
     this.showInputText = !this.showInputText;
+    setTimeout(() => this.loadAutocomplete(), 500);
   }
 
   async addDayToItinerary() {
@@ -78,7 +86,9 @@ export class DetailTripComponent implements OnInit {
       this.itinerary_form.value.it_description,
       this.itinerary_form.value.it_date_begin,
       this.itinerary_form.value.it_date_end,
-      this.tripId);
+      this.tripId,
+    );
+
     this.itinerary_form.reset();
     console.log(itinerary);
   }
@@ -104,6 +114,20 @@ export class DetailTripComponent implements OnInit {
     const response = await this.tripsService.manageUsers(this.tripId, userData.user_id, status)
     console.log(response);
 
+  }
+
+  loadAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(document.getElementById('inputPlaces') as HTMLInputElement);
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      const place = autocomplete.getPlace();
+      this.itinerary_form.get('destination')?.setValue(place.name);
+      console.log(place);
+
+      this.itinerary_form.get('lat')?.setValue(place.geometry?.location.lat());
+      this.itinerary_form.get('lng')?.setValue(place.geometry?.location.lng());
+      console.log(place.geometry?.location.lat());
+      console.log(place.geometry?.location.lng());
+    });
   }
 
 }

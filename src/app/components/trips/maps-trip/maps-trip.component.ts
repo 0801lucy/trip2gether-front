@@ -16,12 +16,14 @@ export class MapsTripsComponent implements OnInit {
 
   @Input() latitude!: number;
   @Input() longitude!: number;
+  @Input() itinerary: any
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
     this.zoom = 8;
 
-  }
+  };
+
 
   ngOnInit() {
 

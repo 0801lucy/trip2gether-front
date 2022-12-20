@@ -52,6 +52,7 @@ export class DetailTripComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(async params => {
       this.tripId = parseInt(params['tripId'])
 
@@ -62,6 +63,8 @@ export class DetailTripComponent implements OnInit {
       this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
       this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
       console.log(this.subscribedUsers);
+
+
 
       this.userCreatorId = this.detail.user_id
 

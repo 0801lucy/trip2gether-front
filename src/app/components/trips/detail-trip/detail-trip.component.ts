@@ -66,15 +66,13 @@ export class DetailTripComponent implements OnInit {
       this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
       this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
 
-
-
       this.userCreatorId = this.detail.user_id
       const userData = this.usersService.getUserData()
       this.userLoggedId = userData.user_id
       const userStatus = await this.tripsService.getUserSubscribed()
 
       const usersAcepted = await this.tripsService.getUsersAccepted(this.tripId)
-      console.log(usersAcepted)
+      console.log(userData)
     })
 
   }

@@ -83,7 +83,9 @@ export class EditTripComponent implements OnInit {
     return this.formulario.get(field)?.hasError(error) && this.formulario.get(field)?.touched
   }
 
-  onSubmit() {
+  async onSubmit() {
+    const response = await this.tripsService.editTripById(this.formulario.value, this.tripId)
+    console.log(response);
 
   }
 
@@ -91,6 +93,8 @@ export class EditTripComponent implements OnInit {
   onChange($event: any) {
     this.files = $event.target.files;
   }
+
+
 
 
 }

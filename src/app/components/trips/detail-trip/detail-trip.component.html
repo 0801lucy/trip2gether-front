@@ -1,6 +1,5 @@
 <!-- DETALLE -->
-<div class="bg-tripDetail" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+detail.img_trip+')'}"
-    *ngIf="detail"></div>
+<div class="bg-tripDetail" [ngStyle]="{backgroundImage:'url('+ serverUrl +'images/'+detail.img_trip+')'}" *ngIf="detail"></div>
 <div class="container" *ngIf="detail">
     <div class="row my-5">
         <div class="col-md">
@@ -9,8 +8,7 @@
         <div class="col-auto">
             <div class="row">
                 <div class="col-auto p-0">
-                    <img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)" alt=""
-                        class="img_user">
+                    <img [src]="sanitizer.bypassSecurityTrustUrl(serverUrl + 'images/' + detail.img_user)" alt="" class="img_user">
                 </div>
                 <div class="col textBlack creator"><span>Organizador</span>
                     <p>{{detail.username}}</p>
@@ -139,7 +137,7 @@
     <!-- BOTONES -->
     <div *ngIf="userCreatorId === userLoggedId">
         <div class="text-center my-5">
-            <button [routerLink]="['/trips']" class="btn btn-danger me-3">Borrar</button>
+            <button [routerLink]="['/trips']" class="btn btn-danger me-3" (click)="onDelete()">Borrar</button>
             <button class="btn btn-green" [routerLink]="['/trips', 'edit', tripId]">Editar viaje</button>
         </div>
     </div>
@@ -168,12 +166,10 @@
                         </div>
 
                         <div class="col text-end">
-                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(true, user)"><i
-                                    class="far fa-thumbs-up">
+                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(true, user)"><i class="far fa-thumbs-up">
 
                                 </i></button>
-                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(false, user)"><i
-                                    class="far fa-thumbs-down">
+                            <button class="btn btn-green mt-5 me-3" (click)="changeStatus(false, user)"><i class="far fa-thumbs-down">
                                 </i></button>
                         </div>
                     </div>

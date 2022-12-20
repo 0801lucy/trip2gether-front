@@ -87,7 +87,8 @@
                         </div>
                         <div class="col circle">
                             <span>{{item.it_description}}</span>
-                            <div class="dateItinerary">{{item.it_date_begin | date: 'dd/MM/y'}} - {{item.it_date_end |
+                            <div class="dateItinerary">{{item.it_date_begin | date: 'dd/MM/y'}}
+                                -{{item.it_date_end |
                                 date: 'dd/MM/y'}}</div>
                         </div>
                     </div>
@@ -126,8 +127,8 @@
         <button [routerLink]="['/trips']" class="btn btn-danger me-3">Borrar</button>
         <button class="btn btn-green" [routerLink]="['/trips', 'edit', tripId]">Editar viaje</button>
     </div>
-
-    <!-- SOLICITUDES -->
+    <!-- 
+    SOLICITUDES -->
     <div *ngIf="userLoggedId === userCreatorId">
         <h2 class="mt-5">Solicitudes de viajeros</h2>
         <div class="row">
@@ -161,8 +162,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- QUIENES VAMOS -->
+    </div> -
+    <!--  QUIENES VAMOS -->
     <div *ngIf="userLoggedId !== userCreatorId">
         <h2 class="mt-5">Quienes vamos</h2>
         <div class="row">
@@ -197,7 +198,7 @@
             <button [routerLink]="['/trips']" class="btn btn-outline-danger me-3">Volver</button>
         </div>
         <div class="col  text-center">
-            <button *ngIf="userLoggedId !== userCreatorId" class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
+            <button class="btn btn-lg btn-green" (click)="onSubscribe()">Me gustaría unirme</button>
         </div>
     </div>
 </div>

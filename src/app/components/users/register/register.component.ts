@@ -74,13 +74,11 @@ export class RegisterComponent implements OnInit {
 
     if (response.success) {
       alert(response.success);
-      this.router.navigate(['/login'])
-    } else {
-      alert('revisa tus errores');
+
     }
+    this.router.navigate(['/login'])
 
   }
-
   onChange($event: any) {
     this.files = $event.target.files;
   }

@@ -4,13 +4,11 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
+
   apiUrl: 'http://localhost:3000/api',
   serverUrl: 'http://localhost:3000/api'
-=======
-  apiUrl: ' https://f062-77-225-253-65.eu.ngrok.io/api',
-  serverUrl: ' https://f062-77-225-253-65.eu.ngrok.io/'
->>>>>>> featured-trip
+
+
 }
 
 /*

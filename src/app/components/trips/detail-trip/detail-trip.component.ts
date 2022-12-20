@@ -91,9 +91,6 @@ export class DetailTripComponent implements OnInit {
     console.log(response);
   }
 
-  onProfile() {
-
-  }
 
   async changeStatus(aceptada: boolean, user: User) {
     let status = 'rechazada';

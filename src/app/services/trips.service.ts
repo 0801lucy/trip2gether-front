@@ -142,6 +142,12 @@ export class TripsService {
     )
   }
 
+  getUsersAccepted(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get(`${this.baseUrl}/suscribed/accepted/${tripId}`)
+    )
+  }
+
 }
 
 

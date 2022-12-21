@@ -5,6 +5,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-trip',
@@ -22,28 +23,31 @@ export class FormTripComponent implements OnInit {
   constructor(private tripsService: TripsService, private router: Router) {
 
     this.formulario = new FormGroup({
-      destination: new FormControl('Polonia', [
+      destination: new FormControl('', [
         Validators.required
       ]),
-      min_traveler: new FormControl('10', [
+      min_traveler: new FormControl('', [
         Validators.required
       ]),
-      max_traveler: new FormControl('20', [
+      max_traveler: new FormControl('', [
         Validators.required
       ]),
-      min_age: new FormControl('25', [
+      min_age: new FormControl('', [
         Validators.required
       ]),
-      max_age: new FormControl('35', [
+      max_age: new FormControl('', [
         Validators.required
       ]),
       departure_date: new FormControl('2023-05-10', [
         Validators.required
       ]),
-      duration: new FormControl('10', [
+      duration: new FormControl('', [
         Validators.required
       ]),
-      price: new FormControl('1500', [
+      price: new FormControl('', [
+        Validators.required
+      ]),
+      img_user: new FormControl('', [
         Validators.required
       ]),
       description: new FormControl('prueba', [
@@ -52,7 +56,7 @@ export class FormTripComponent implements OnInit {
       flights: new FormControl(false),
       hotel: new FormControl(false),
       meals: new FormControl(false),
-      excursions: new FormControl(false),
+      excursions: new FormControl(true),
       rent_car: new FormControl(false),
       insurance: new FormControl(false),
       lat: new FormControl(),
@@ -94,8 +98,17 @@ export class FormTripComponent implements OnInit {
 
     // Delegamos el envío del formulario en el servicio
     await this.tripsService.createTrip(fd);
-    this.router.navigate(['/trips']);
+    Swal.fire({
+      icon: 'success',
+      title: '¡Yuhuuu!',
+      text: 'Has creado un nuevo viaje',
+      confirmButtonColor: '#2E8682',
+    })
+    this.router.navigate(['/trips'])
   }
+
+
+
 
   onChange($event: any) {
     this.files = $event.target.files;

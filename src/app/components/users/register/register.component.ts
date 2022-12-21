@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -41,10 +42,16 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
       ]),
-      birth_date: new FormControl(),
+      birth_date: new FormControl(
+        '', [
+        Validators.required
+      ]),
       hobbies: new FormControl('', [
         Validators.required,
         Validators.maxLength(600)
+      ]),
+      img_user: new FormControl('', [
+        Validators.required
       ]),
       personality: new FormControl('', [
         Validators.required,
@@ -72,11 +79,16 @@ export class RegisterComponent implements OnInit {
 
     const response = await this.usersService.register(fd);
 
-    if (response.success) {
-      alert(response.success);
-
+    if (response) {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Registro completado!',
+        text: 'Bienvenido a la comunidad de trip2gether',
+        confirmButtonColor: '#2E8682',
+      })
+      this.router.navigate(['/login'])
     }
-    this.router.navigate(['/login'])
+
 
   }
   onChange($event: any) {

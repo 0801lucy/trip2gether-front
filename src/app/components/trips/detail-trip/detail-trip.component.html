@@ -257,11 +257,11 @@
     <div *ngIf="userLoggedId === userCreatorId">
         <app-comments-trips></app-comments-trips>
     </div>
-
-    <!--     <div *ngIf="userLoggedId ==  ">
-        <app-comments-trips></app-comments-trips>
-    </div> -->
-
+    <div *ngFor="let user of AcceptedUsers">
+        <div *ngIf="userLoggedId === user.users_id">
+            <app-comments-trips></app-comments-trips>
+        </div>
+    </div>
 
     <!-- BOTONES -->
     <div class="row my-5">

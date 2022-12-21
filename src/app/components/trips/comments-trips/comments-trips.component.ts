@@ -1,10 +1,11 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 import { environment } from 'src/environments/environment';
+
 
 
 
@@ -14,6 +15,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./comments-trips.component.css']
 })
 export class CommentsTripsComponent implements OnInit {
+
+  @Input() AcceptedUsers!: number
 
   form: FormGroup;
   tripid: number;

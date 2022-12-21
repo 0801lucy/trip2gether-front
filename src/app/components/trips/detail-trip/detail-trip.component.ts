@@ -38,6 +38,7 @@ export class DetailTripComponent implements OnInit {
   acceptedUsers: [];
 
 
+
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
 
     this.serverUrl = environment.serverUrl;
@@ -62,6 +63,7 @@ export class DetailTripComponent implements OnInit {
     this.numberOfRequests = 0
     this.acceptedUsers = [];
 
+
   }
 
   ngOnInit(): void {
@@ -73,22 +75,24 @@ export class DetailTripComponent implements OnInit {
       this.detail.lat = parseFloat(String(this.detail.lat));
       this.detail.lng = parseFloat(String(this.detail.lng));
 
-      this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
-      this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
+      this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId);
+      this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId);
 
-      this.userCreatorId = this.detail.user_id
-      const userData = this.usersService.getUserData()
-      this.userLoggedId = userData.user_id
-      const userStatus = await this.tripsService.getUserSubscribed()
+      this.userCreatorId = this.detail.user_id;
+      const userData = this.usersService.getUserData();
+      this.userLoggedId = userData.user_id;
+      const userStatus = await this.tripsService.getUserSubscribed();
 
-      this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId)
-      console.log(this.AcceptedUsers)
+      this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId);
+      console.log(this.AcceptedUsers);
 
-      this.userCreatorName = this.detail.username
-      this.imageUserCreator = this.detail.img_user
+      this.userCreatorName = this.detail.username;
+      this.imageUserCreator = this.detail.img_user;
 
-      this.numberOfRequests = this.subscribedUsers.length
-      console.log(this.numberOfRequests)
+      this.numberOfRequests = this.subscribedUsers.length;
+      console.log(this.numberOfRequests);
+
+
 
     })
 

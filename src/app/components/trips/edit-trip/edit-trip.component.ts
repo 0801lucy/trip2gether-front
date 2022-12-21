@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TripsService } from 'src/app/services/trips.service';
 import * as dayjs from 'dayjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-trip',
@@ -16,7 +17,7 @@ export class EditTripComponent implements OnInit {
   tripId: number;
   trip: any;
 
-  constructor(private tripsService: TripsService, private activatedRoute: ActivatedRoute) {
+  constructor(private tripsService: TripsService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.formulario = new FormGroup({
       destination: new FormControl('', [
         Validators.required
@@ -77,6 +78,16 @@ export class EditTripComponent implements OnInit {
       this.formulario.get('insurance')?.setValue(this.trip.insurance);
 
     })
+
+    Swal.fire({
+      icon: 'success',
+      title: '¡Registro completado!',
+      text: 'Bienvenido a la comunidad de trip2gether',
+      confirmButtonColor: '#2E8682',
+    })
+
+
+
   }
 
   checkError(field: string, error: string): boolean | undefined {

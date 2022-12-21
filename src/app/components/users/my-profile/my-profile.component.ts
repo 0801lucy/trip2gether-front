@@ -5,6 +5,7 @@ import { TripsService } from 'src/app/services/trips.service';
 import { UsersService } from 'src/app/services/users.service';
 import { environment } from 'src/environments/environment';
 import * as dayjs from 'dayjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-profile',
@@ -64,9 +65,9 @@ export class MyProfileComponent implements OnInit {
 
         email: new FormControl(response.email),
 
-        img_user: new FormControl(response.img_user, [
-          Validators.required,
-        ]),
+        // img_user: new FormControl(response.img_user, [
+        //   Validators.required,
+        // ]),
 
         birth_date: new FormControl(dayjs(response.birth_date).format('YYYY-MM-DD'), [
           Validators.required,
@@ -100,17 +101,21 @@ export class MyProfileComponent implements OnInit {
     changeProfile.append('hobbies', this.formulario.value.hobbies);
     changeProfile.append('personality', this.formulario.value.personality);
     changeProfile.append('birth_date', this.formulario.value.birth_date);
-    changeProfile.append('img_user', this.files[0]);
+    // changeProfile.append('img_user', this.files[0]);
 
     const response = await this.userService.updateProfile(changeProfile);
 
     console.log(response);
 
-    if (response.success) {
-      alert('Perfil actualizado!');
+    if (response) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Perfil actualizado',
+        text: 'Cambios guardados correctamente',
+        confirmButtonColor: '#2E8682',
+      })
       this.router.navigate(['/myprofile'])
-    } else {
-      alert('Ha habido algún problema!')
+
     }
   }
 

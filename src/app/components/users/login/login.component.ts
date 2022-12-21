@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Upsss...',
-        text: 'Comprueba tu email y contraseña!',
+        text: 'Comprueba tu email y contraseña',
+        confirmButtonColor: '#2E8682',
         footer: '<a href="http://localhost:4200/register">Tambien puedes registrate aquí...</a>'
       })
     }

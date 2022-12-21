@@ -100,9 +100,9 @@ export class FormTripComponent implements OnInit {
     await this.tripsService.createTrip(fd);
     Swal.fire({
       icon: 'success',
-      title: 'Yuhuuu..',
-      text: 'Has creado un nuevo viaje!',
-      footer: '<a href="http://localhost:4200/trips/new">Quieres crear otro viaje? pulsa aquí!</a>'
+      title: '¡Yuhuuu!',
+      text: 'Has creado un nuevo viaje',
+      confirmButtonColor: '#2E8682',
     })
     this.router.navigate(['/trips'])
   }

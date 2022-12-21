@@ -1,7 +1,7 @@
 /// <reference path="../../../../../node_modules/@types/googlemaps/index.d.ts" />
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Trip } from 'src/app/interfaces/trip.interface';
 import { TripsService } from 'src/app/services/trips.service';
 import { environment } from 'src/environments/environment';
@@ -37,7 +37,7 @@ export class DetailTripComponent implements OnInit {
   numberOfRequest: number;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
+  constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService, private router: Router) {
 
     this.serverUrl = environment.serverUrl;
     this.showInputText = false;
@@ -59,6 +59,7 @@ export class DetailTripComponent implements OnInit {
     this.userCreatorName = ''
     this.imageUserCreator = ''
     this.numberOfRequest = 0
+
 
   }
 
@@ -156,4 +157,9 @@ export class DetailTripComponent implements OnInit {
     console.log(response);
   }
 
+  viewProfile() {
+    //this.router.navigate(['/users/'${userId}])
+
+
+  }
 }

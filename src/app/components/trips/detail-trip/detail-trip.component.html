@@ -152,7 +152,7 @@
                                 </div>
                             </div>
                             <div class="col ps-0">
-                                <div class="username">{{user.username}}</div>
+                                <div class="username" (click)="viewProfile()">{{user.username}}</div>
                             </div>
                             <div class="col-auto">
                                 <div class="status" ngClass="{{user.user_status}}">{{user.user_status}}</div>

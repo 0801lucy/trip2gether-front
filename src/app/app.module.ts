@@ -20,6 +20,7 @@ import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { CommentsTripsComponent } from './components/trips/comments-trips/comments-trips.component';
 import { EditTripComponent } from './components/trips/edit-trip/edit-trip.component';
 import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.component';
+import { UsersProfileComponent } from './components/users/users-profile/users-profile.component';
 
 
 
@@ -37,7 +38,8 @@ import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.compo
     MyProfileComponent,
     CommentsTripsComponent,
     EditTripComponent,
-    MapsTripsComponent
+    MapsTripsComponent,
+    UsersProfileComponent
 
   ],
   imports: [

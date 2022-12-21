@@ -1,0 +1,18 @@
+input,
+textarea {
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: #eee;
+    border: none;
+}
+
+input.username {
+    background-color: #fff;
+    display: inline;
+    width: 50%;
+}
+
+.fotouser {
+    width: 70px;
+    border-radius: 50%;
+}

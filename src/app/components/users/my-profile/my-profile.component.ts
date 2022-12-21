@@ -83,16 +83,10 @@ export class MyProfileComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       const userId = parseInt(params['userId']);
       this.user = await this.userService.getUserById(userId);
-      console.log(this.user)
-
-
     })
 
     this.tripsOwn = await this.tripsService.getTripsByUser();
     this.tripsSubscribed = await this.tripsService.getUserSubscribed();
-    console.log(this.tripsSubscribed);
-
-
   }
 
   async onSubmit() {
@@ -108,8 +102,6 @@ export class MyProfileComponent implements OnInit {
     changeProfile.append('img_user', this.files[0]);
 
     const response = await this.userService.updateProfile(changeProfile);
-
-    console.log(response);
 
     if (response.success) {
       alert(response.success);

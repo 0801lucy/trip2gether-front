@@ -25,19 +25,19 @@ export class FormTripComponent implements OnInit {
       destination: new FormControl('Polonia', [
         Validators.required
       ]),
-      min_traveler: new FormControl('10', [
+      min_traveler: new FormControl('5', [
         Validators.required
       ]),
       max_traveler: new FormControl('20', [
         Validators.required
       ]),
-      min_age: new FormControl('25', [
+      min_age: new FormControl('18', [
         Validators.required
       ]),
-      max_age: new FormControl('35', [
+      max_age: new FormControl('99', [
         Validators.required
       ]),
-      departure_date: new FormControl('2023-05-10', [
+      departure_date: new FormControl('2022-12-22', [
         Validators.required
       ]),
       duration: new FormControl('10', [
@@ -46,7 +46,7 @@ export class FormTripComponent implements OnInit {
       price: new FormControl('1500', [
         Validators.required
       ]),
-      description: new FormControl('prueba', [
+      description: new FormControl('', [
         Validators.required
       ]),
       flights: new FormControl(false),
@@ -68,7 +68,6 @@ export class FormTripComponent implements OnInit {
   }
 
   async onSubmit() {
-    // Creación del objeto donde incluimos todos los campos del formulario y además la imagen
     let fd = new FormData();
     fd.append('img_trip', this.files[0]);
     fd.append('destination', this.formulario.value.destination);
@@ -89,10 +88,6 @@ export class FormTripComponent implements OnInit {
     fd.append('lat', this.formulario.value.lat);
     fd.append('lng', this.formulario.value.lng)
 
-    console.log(this.formulario.value);
-
-
-    // Delegamos el envío del formulario en el servicio
     await this.tripsService.createTrip(fd);
     this.router.navigate(['/trips']);
   }
@@ -106,12 +101,9 @@ export class FormTripComponent implements OnInit {
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
       this.formulario.get('destination')?.setValue(place.name);
-      console.log(place);
 
       this.formulario.get('lat')?.setValue(place.geometry?.location.lat());
       this.formulario.get('lng')?.setValue(place.geometry?.location.lng());
-      console.log(place.geometry?.location.lat());
-      console.log(place.geometry?.location.lng());
     });
   }
 

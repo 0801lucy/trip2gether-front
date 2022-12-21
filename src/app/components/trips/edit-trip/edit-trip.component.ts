@@ -75,7 +75,6 @@ export class EditTripComponent implements OnInit {
       this.formulario.get('excursions')?.setValue(this.trip.excursions);
       this.formulario.get('rent_car')?.setValue(this.trip.rent_car);
       this.formulario.get('insurance')?.setValue(this.trip.insurance);
-
     })
   }
 
@@ -85,8 +84,6 @@ export class EditTripComponent implements OnInit {
 
   async onSubmit() {
     const response = await this.tripsService.editTripById(this.formulario.value, this.tripId)
-    console.log(response);
-
   }
 
 

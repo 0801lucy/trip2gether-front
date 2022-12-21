@@ -74,7 +74,6 @@ export class RegisterComponent implements OnInit {
 
     if (response.success) {
       alert(response.success);
-
     }
     this.router.navigate(['/login'])
 

@@ -34,7 +34,6 @@ export class ListTripComponent implements OnInit {
   async ngOnInit() {
     this.trips = await this.tripsService.getAllTrips();
     this.destinations = await this.tripsService.getDestinations();
-    console.log(this.destinations);
   }
 
   newTrip() {
@@ -48,10 +47,5 @@ export class ListTripComponent implements OnInit {
       this.trips = await this.tripsService.filterByDestination($event.target.value);
     }
   }
-
-
-
-
-
 
 }

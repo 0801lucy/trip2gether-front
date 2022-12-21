@@ -38,7 +38,7 @@ export class FormTripComponent implements OnInit {
       max_age: new FormControl('', [
         Validators.required
       ]),
-      departure_date: new FormControl('2023-05-10', [
+      departure_date: new FormControl('2022-12-22', [
         Validators.required
       ]),
       duration: new FormControl('', [
@@ -50,13 +50,13 @@ export class FormTripComponent implements OnInit {
       img_user: new FormControl('', [
         Validators.required
       ]),
-      description: new FormControl('prueba', [
+      description: new FormControl('', [
         Validators.required
       ]),
       flights: new FormControl(false),
       hotel: new FormControl(false),
       meals: new FormControl(false),
-      excursions: new FormControl(true),
+      excursions: new FormControl(false),
       rent_car: new FormControl(false),
       insurance: new FormControl(false),
       lat: new FormControl(),
@@ -72,7 +72,6 @@ export class FormTripComponent implements OnInit {
   }
 
   async onSubmit() {
-    // Creación del objeto donde incluimos todos los campos del formulario y además la imagen
     let fd = new FormData();
     fd.append('img_trip', this.files[0]);
     fd.append('destination', this.formulario.value.destination);
@@ -93,10 +92,6 @@ export class FormTripComponent implements OnInit {
     fd.append('lat', this.formulario.value.lat);
     fd.append('lng', this.formulario.value.lng)
 
-    console.log(this.formulario.value);
-
-
-    // Delegamos el envío del formulario en el servicio
     await this.tripsService.createTrip(fd);
     Swal.fire({
       icon: 'success',
@@ -119,12 +114,9 @@ export class FormTripComponent implements OnInit {
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
       this.formulario.get('destination')?.setValue(place.name);
-      console.log(place);
 
       this.formulario.get('lat')?.setValue(place.geometry?.location.lat());
       this.formulario.get('lng')?.setValue(place.geometry?.location.lng());
-      console.log(place.geometry?.location.lat());
-      console.log(place.geometry?.location.lng());
     });
   }
 

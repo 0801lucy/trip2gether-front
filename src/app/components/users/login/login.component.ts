@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     const response = await this.usersService.login(this.form.value);
-    console.log(response)
     if (response.success) {
       localStorage.setItem('token', response.token);
       this.router.navigate(['/trips'])

@@ -7,12 +7,12 @@ import { TripsService } from 'src/app/services/trips.service';
 import { environment } from 'src/environments/environment';
 
 
-
 @Component({
   selector: 'app-comments-trips',
   templateUrl: './comments-trips.component.html',
   styleUrls: ['./comments-trips.component.css']
 })
+
 export class CommentsTripsComponent implements OnInit {
 
   form: FormGroup;
@@ -38,7 +38,7 @@ export class CommentsTripsComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       this.tripid = parseInt(params['tripId']);
       this.comments = await this.tripsService.getCommentsByTrips(this.tripid);
-    })
+    });
   }
 
   async onSubmit() {

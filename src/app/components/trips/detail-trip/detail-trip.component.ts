@@ -84,13 +84,13 @@ export class DetailTripComponent implements OnInit {
       const userStatus = await this.tripsService.getUserSubscribed();
 
       this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId);
-      console.log(this.AcceptedUsers);
+
 
       this.userCreatorName = this.detail.username;
       this.imageUserCreator = this.detail.img_user;
 
       this.numberOfRequests = this.subscribedUsers.length;
-      console.log(this.numberOfRequests);
+
 
 
 

@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CommentsTripsComponent implements OnInit {
 
-  @Input() AcceptedUsers!: number
+  @Input() AcceptedUsers!: []
 
   form: FormGroup;
   tripid: number;

@@ -54,3 +54,7 @@ nav ul li:hover {
     color: #2E8682;
     margin-top: 30px;
 }
+
+.contLanding p {
+    text-align: justify;
+}

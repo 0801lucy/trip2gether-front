@@ -82,11 +82,11 @@
 
                 <!-- VIAJES COMO ORGANIZADOR -->
                 <h2 class="textBlack mt-5 mb-2">Viajes como organizador</h2>
-                <!-- <div class="card my-4">
-                     <div class="card-body text-center my-5">
-                         <h5>Aún no tienes viajes</h5>
-                     </div>
-                 </div> -->
+                <div class="card my-4" *ngIf="tripsOwn && tripsOwn.length === 0">
+                    <div class="card-body text-center my-5">
+                        <h5>Aún no tienes viajes</h5>
+                    </div>
+                </div>
                 <div class="card my-4" *ngFor="let trip of tripsOwn">
                     <div class="card-body">
                         <div class="row">
@@ -109,11 +109,11 @@
                 </div>
                 <!-- MIS VIAJES -->
                 <h2 class="textBlack mt-5 mb-2">Mis viajes</h2>
-                <!-- <div class="card my-4">
-                     <div class="card-body text-center my-5">
-                         <h5>Aún no tienes viajes</h5>
-                     </div>
-                 </div> -->
+                <div class="card my-4" *ngIf="tripsSubscribed && tripsSubscribed.length === 0">
+                    <div class="card-body text-center my-5">
+                        <h5>Aún no tienes viajes</h5>
+                    </div>
+                </div>
                 <div class="card my-4" *ngFor="let trip of tripsSubscribed">
                     <div class="card-body">
                         <div class="row">

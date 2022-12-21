@@ -23,7 +23,6 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.url;
-        console.log(event.url);
 
         if (this.publicUrls.includes(event.url)) {
           this.mostrarCabecera = false;

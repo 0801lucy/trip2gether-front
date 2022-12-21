@@ -78,15 +78,6 @@ export class EditTripComponent implements OnInit {
       this.formulario.get('insurance')?.setValue(this.trip.insurance);
     })
 
-    Swal.fire({
-      icon: 'success',
-      title: '¡Registro completado!',
-      text: 'Bienvenido a la comunidad de trip2gether',
-      confirmButtonColor: '#2E8682',
-    })
-
-
-
   }
 
   checkError(field: string, error: string): boolean | undefined {
@@ -94,7 +85,13 @@ export class EditTripComponent implements OnInit {
   }
 
   async onSubmit() {
-    const response = await this.tripsService.editTripById(this.formulario.value, this.tripId)
+    this.formulario.markAllAsTouched();
+    const response = await this.tripsService.editTripById(this.formulario.value, this.tripId);
+    Swal.fire({
+      icon: 'success',
+      title: 'Cambios guardados correctamente',
+      confirmButtonColor: '#2E8682',
+    })
   }
 
 

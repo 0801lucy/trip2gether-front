@@ -156,3 +156,7 @@ h3 {
     padding: 15px;
     margin: 20px 0;
 }
+
+.solicitudes .username {
+    cursor: pointer;
+}

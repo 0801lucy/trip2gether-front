@@ -18,7 +18,7 @@
                         </span>
                     </div>
                 </div>
-                <form [formGroup]="formulario">
+                <form [formGroup]="formulario" *ngIf="formulario">
                     <div class="row">
                         <div class="col-md-4 my-3">
                             <label class="form-label">Nombre</label>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="mt-3 text-center">
-                        <button [routerLink]="['/trips', profile.user_id]" class="btn btn-outline-danger mx-2" type="submit">Volver</button>
+                        <button (click)="historyBack()" class="btn btn-outline-danger mx-2" type="submit">Volver</button>
                     </div>
                 </form>
             </div>

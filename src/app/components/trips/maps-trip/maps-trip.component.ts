@@ -16,7 +16,7 @@ export class MapsTripsComponent implements OnInit {
 
   @Input() latitude!: number;
   @Input() longitude!: number;
-  @Input() itinerary: any
+  @Input() itinerary: any;
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {

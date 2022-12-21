@@ -136,6 +136,13 @@ export class TripsService {
 
   }
 
+  getOnlyPendingByTrip(tripId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any[]>(`${this.baseUrl}/pending/${tripId}`)
+    )
+
+  }
+
   manageUsers(tripId: number, userId: number, user_status: string) {
     const params = { tripId, userId, user_status }
     return firstValueFrom(

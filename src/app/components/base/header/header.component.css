@@ -32,7 +32,7 @@ li img {
 }
 
 li a:hover {
-    font-weight: 600;
+    color: var(--principalColor);
 }
 
 li:last-child {

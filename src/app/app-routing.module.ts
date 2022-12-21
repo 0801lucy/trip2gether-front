@@ -11,6 +11,8 @@ import { CommentsTripsComponent } from './components/trips/comments-trips/commen
 import { LoginGuard } from './guards/login.guard';
 import { EditTripComponent } from './components/trips/edit-trip/edit-trip.component';
 import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.component';
+import { UsersProfileComponent } from './components/users/users-profile/users-profile.component';
+
 
 
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'trips/new', component: FormTripComponent },
   { path: 'trips/edit/:tripId', component: EditTripComponent },
   { path: 'trips/:tripId', component: DetailTripComponent },
-  { path: 'myprofile', component: MyProfileComponent }
+  { path: 'myprofile', component: MyProfileComponent },
+  { path: 'users/:userId', component: UsersProfileComponent }
+
 
 ]
 

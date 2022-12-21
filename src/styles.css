@@ -12,6 +12,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+label {
+    font-weight: 500;
+}
+
 .textBlack {
     color: var(--textColorBlack);
 }
@@ -94,4 +98,18 @@ textarea.ng-invalid.ng-touched {
 
 .req {
     color: red;
+}
+
+
+.rating {
+    padding: 8px 0px 0px 10px;
+    /*     border: 1px solid gray; */
+    display: inline-block;
+    border-radius: 12px;
+}
+
+.rating svg {
+    fill: gold;
+    width: 34px !important;
+    height: 34px !important;
 }

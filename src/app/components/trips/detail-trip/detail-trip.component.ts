@@ -34,7 +34,9 @@ export class DetailTripComponent implements OnInit {
   AcceptedUsers: any;
   userCreatorName: string;
   imageUserCreator: string;
-  numberOfRequest: number;
+  numberOfRequests: number;
+  acceptedUsers: [];
+
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, public sanitizer: DomSanitizer, private usersService: UsersService) {
@@ -58,7 +60,10 @@ export class DetailTripComponent implements OnInit {
     this.userId = -1;
     this.userCreatorName = '';
     this.imageUserCreator = '';
-    this.numberOfRequest = 0;
+    this.numberOfRequests = 0;
+    this.acceptedUsers = [];
+
+
   }
 
   ngOnInit(): void {
@@ -70,20 +75,26 @@ export class DetailTripComponent implements OnInit {
       this.detail.lat = parseFloat(String(this.detail.lat));
       this.detail.lng = parseFloat(String(this.detail.lng));
 
-      this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
-      this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId)
+      this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId);
+      this.subscribedUsers = await this.tripsService.getSubscribedByTrip(this.tripId);
 
-      this.userCreatorId = this.detail.user_id
-      const userData = this.usersService.getUserData()
-      this.userLoggedId = userData.user_id
-      const userStatus = await this.tripsService.getUserSubscribed()
+      this.userCreatorId = this.detail.user_id;
+      const userData = this.usersService.getUserData();
+      this.userLoggedId = userData.user_id;
+      const userStatus = await this.tripsService.getUserSubscribed();
 
-      this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId)
+      this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId);
 
-      this.userCreatorName = this.detail.username
-      this.imageUserCreator = this.detail.img_user
 
-      this.numberOfRequest = this.subscribedUsers.length
+      this.userCreatorName = this.detail.username;
+      this.imageUserCreator = this.detail.img_user;
+
+      this.numberOfRequests = this.subscribedUsers.length;
+
+      this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId);
+
+
+      this.numberOfRequests = this.subscribedUsers.length;
     });
 
   }
@@ -107,7 +118,7 @@ export class DetailTripComponent implements OnInit {
     );
 
     this.itinerary_form.reset();
-    this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId)
+    this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId);
   }
 
   async onSubscribe() {
@@ -123,7 +134,7 @@ export class DetailTripComponent implements OnInit {
     }
 
 
-    const response = await this.tripsService.manageUsers(this.tripId, user.id, status)
+    const response = await this.tripsService.manageUsers(this.tripId, user.id, status);
   }
 
   loadAutocomplete() {

@@ -91,6 +91,7 @@ export class RegisterComponent implements OnInit {
 
 
   }
+
   onChange($event: any) {
     this.files = $event.target.files;
   }

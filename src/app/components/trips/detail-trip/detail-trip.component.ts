@@ -62,9 +62,6 @@ export class DetailTripComponent implements OnInit {
     this.imageUserCreator = '';
     this.numberOfRequests = 0;
     this.acceptedUsers = [];
-
-
-
   }
 
   ngOnInit(): void {
@@ -80,11 +77,6 @@ export class DetailTripComponent implements OnInit {
       this.itinerary = await this.tripsService.getItineraryByTripId(this.tripId);
       this.subscribedUsers = await this.tripsService.getOnlyPendingByTrip(this.tripId);
       this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId);
-
-      console.log(this.AcceptedUsers);
-      console.log(this.subscribedUsers);
-
-
 
       this.userCreatorId = this.detail.user_id;
       const userData = this.usersService.getUserData();
@@ -143,9 +135,6 @@ export class DetailTripComponent implements OnInit {
     const response = await this.tripsService.manageUsers(this.tripId, user.id, status);
     this.subscribedUsers = await this.tripsService.getOnlyPendingByTrip(this.tripId);
     this.AcceptedUsers = await this.tripsService.getUsersAccepted(this.tripId);
-
-    // console.log(this.subscribedUsers, this.acceptedUsers);
-
   }
 
   loadAutocomplete() {
@@ -169,11 +158,12 @@ export class DetailTripComponent implements OnInit {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await this.tripsService.deleteTripById(this.tripId);
-        await Swal.fire(
-          'Borrado',
-          'Tu viaje ha sido borrado 😟',
-          'success'
-        );
+        await Swal.fire({
+          icon: 'success',
+          title: 'Viaje borraddo',
+          text: 'Tu viaje ha sido borrado',
+          confirmButtonColor: '#2E8682'
+        });
         this.router.navigate(['/trips']);
       }
     })
@@ -181,7 +171,6 @@ export class DetailTripComponent implements OnInit {
 
   userLoggedIsSubscribed() {
     return this.subscribedUsers.find((user: User) => user.id === this.userLoggedId);
-
   }
 
 }

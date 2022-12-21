@@ -10,9 +10,7 @@ import { TripsService } from 'src/app/services/trips.service';
 })
 export class MapsTripsComponent implements OnInit {
 
-
   zoom: number;
-
 
   @Input() latitude!: number;
   @Input() longitude!: number;
@@ -21,13 +19,10 @@ export class MapsTripsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService) {
     this.zoom = 8;
-
   };
 
 
   ngOnInit() {
-
-
   }
 }
 

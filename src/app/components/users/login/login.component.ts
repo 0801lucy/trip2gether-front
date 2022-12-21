@@ -26,13 +26,9 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ])
     })
-
-
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   async onSubmit() {
     const response = await this.usersService.login(this.form.value);

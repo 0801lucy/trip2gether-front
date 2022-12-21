@@ -29,7 +29,6 @@ export class MyProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UsersService,
     private tripsService: TripsService, private router: Router, private sanitizer: Sanitizer
   ) {
-
     this.serverUrl = environment.serverUrl;
     this.bloqueo = true;
     this.profile = '';
@@ -104,8 +103,6 @@ export class MyProfileComponent implements OnInit {
 
     const response = await this.userService.updateProfile(changeProfile);
 
-    console.log(response);
-
     if (response) {
       Swal.fire({
         icon: 'success',
@@ -114,7 +111,6 @@ export class MyProfileComponent implements OnInit {
         confirmButtonColor: '#2E8682',
       })
       this.router.navigate(['/myprofile'])
-
     }
   }
 

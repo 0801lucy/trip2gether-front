@@ -102,9 +102,6 @@ export class FormTripComponent implements OnInit {
     this.router.navigate(['/trips'])
   }
 
-
-
-
   onChange($event: any) {
     this.files = $event.target.files;
   }

@@ -14,7 +14,6 @@ import { MapsTripsComponent } from './components/trips/maps-trip/maps-trip.compo
 import { UsersProfileComponent } from './components/users/users-profile/users-profile.component';
 
 
-
 const routes: Routes = [
   { path: '', component: PrincipalComponent },
   { path: 'register', component: RegisterComponent },
@@ -25,8 +24,6 @@ const routes: Routes = [
   { path: 'trips/:tripId', component: DetailTripComponent },
   { path: 'myprofile', component: MyProfileComponent },
   { path: 'users/:userId', component: UsersProfileComponent }
-
-
 ]
 
 @NgModule({

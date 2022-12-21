@@ -16,6 +16,7 @@
             </div>
         </div>
     </div>
+
     <!-- BOTONES -->
     <div *ngIf="userCreatorId === userLoggedId">
         <div class="text-end mt-3 mb-5">
@@ -134,8 +135,6 @@
         </div>
     </div>
 
-
-
     <!--SOLICITUDES -->
     <div *ngIf="subscribedUsers && subscribedUsers.length > 0" class="solicitudes">
         <div *ngIf="userLoggedId === userCreatorId">
@@ -168,6 +167,7 @@
             </div>
         </div>
     </div>
+
     <!--  QUIENES VAMOS -->
     <div *ngIf="userLoggedId !== userCreatorId">
         <h2 class="mt-5">Quienes vamos</h2>
@@ -205,7 +205,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
